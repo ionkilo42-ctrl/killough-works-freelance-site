@@ -1,0 +1,11 @@
+.next
+node_modules
+out
+.DS_Store
+*.log
+.env
+.env.local
+.env.production
+dist
+coverage
+data/intake-submissions.json
