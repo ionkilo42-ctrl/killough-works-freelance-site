@@ -2,7 +2,7 @@ import { LeadForm } from "@/components/lead-form";
 import { caseStudyPlaceholders, pricing, proofBlocks, services } from "@/data/site";
 
 const bookingUrl =
-  process.env.NEXT_PUBLIC_BOOKING_URL ?? "https://cal.com/your-handle/discovery";
+  process.env.NEXT_PUBLIC_BOOKING_URL?.trim() || "#contact";
 
 export default function Home() {
   return (

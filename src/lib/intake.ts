@@ -63,8 +63,11 @@ export async function handleIntake(payload: Partial<IntakePayload>) {
   };
 
   const apiKey = process.env.RESEND_API_KEY;
-  const inbox = process.env.LEAD_INBOX;
-  const from = process.env.LEAD_FROM_EMAIL ?? "Killough Works <onboarding@resend.dev>";
+  const inbox = process.env.INTAKE_TO_EMAIL ?? process.env.LEAD_INBOX;
+  const from =
+    process.env.INTAKE_FROM_EMAIL ??
+    process.env.LEAD_FROM_EMAIL ??
+    "Killough Works <onboarding@resend.dev>";
 
   if (apiKey && inbox) {
     const resend = new Resend(apiKey);
@@ -89,6 +92,20 @@ export async function handleIntake(payload: Partial<IntakePayload>) {
     return {
       mode: "email",
       message: "Thanks. Your project details are in. I’ll follow up by email.",
+    };
+  }
+
+  if (process.env.NODE_ENV === "production") {
+    console.warn("Intake submission received without email delivery configured.", {
+      submittedAt: submission.submittedAt,
+      email: submission.email,
+      projectType: submission.projectType,
+    });
+
+    return {
+      mode: "unconfigured",
+      message:
+        "Thanks. Your project details are in, but email delivery is not configured yet. Please email hello@killough.works directly so nothing gets missed.",
     };
   }
 

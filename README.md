@@ -41,7 +41,8 @@ npm run dev
 
 ## Lead intake behavior
 
-- In local development, if `RESEND_API_KEY` and `LEAD_INBOX` are not set, submissions are saved to `data/intake-submissions.json`.
+- In local development, if `RESEND_API_KEY` and `INTAKE_TO_EMAIL` are not set, submissions are saved to `data/intake-submissions.json`.
+- In production, if Resend is still unset, the API returns a safe warning message and logs the submission metadata instead of trying to write to the deployment filesystem.
 - In production, set the Resend vars so submissions are emailed to the inbox you want to monitor.
 
 ## Key files
@@ -56,11 +57,11 @@ npm run dev
 
 ## Suggested production setup
 
-- `NEXT_PUBLIC_BOOKING_URL`: live discovery call booking link
+- `NEXT_PUBLIC_BOOKING_URL`: live discovery call booking link. If blank, the call CTA falls back to the intake section.
 - `NEXT_PUBLIC_SITE_URL`: live domain
 - `RESEND_API_KEY`: Resend API key
-- `LEAD_INBOX`: destination inbox
-- `LEAD_FROM_EMAIL`: verified sender
+- `INTAKE_TO_EMAIL`: destination inbox
+- `INTAKE_FROM_EMAIL`: verified sender
 
 ## Verification
 

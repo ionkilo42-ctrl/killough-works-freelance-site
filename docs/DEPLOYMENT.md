@@ -9,8 +9,8 @@ Deploy on Vercel or Netlify. This project is a small Next.js site with one API r
 - `NEXT_PUBLIC_SITE_URL`
 - `NEXT_PUBLIC_BOOKING_URL`
 - `RESEND_API_KEY`
-- `LEAD_INBOX`
-- `LEAD_FROM_EMAIL`
+- `INTAKE_TO_EMAIL`
+- `INTAKE_FROM_EMAIL`
 
 ## Vercel
 
@@ -30,6 +30,7 @@ Deploy on Vercel or Netlify. This project is a small Next.js site with one API r
 ## Booking flow
 
 Set `NEXT_PUBLIC_BOOKING_URL` to a real Cal.com or Calendly link before launch.
+If it is blank, the site safely routes the CTA back to the intake section.
 
 ## Domain and inbox
 
