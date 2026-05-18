@@ -73,3 +73,4 @@ npm run build
 ## Deployment note
 
 - Production booking CTA should resolve from `NEXT_PUBLIC_BOOKING_URL`.
+- Deployment identity note: production-trigger commits should use the linked team email.
