@@ -105,7 +105,7 @@ export async function handleIntake(payload: Partial<IntakePayload>) {
     return {
       mode: "unconfigured",
       message:
-        "Thanks. Your project details are in, but email delivery is not configured yet. Please email hello@killough.works directly so nothing gets missed.",
+        "Thanks. Your project details are in, but email delivery is not configured yet. Please email ionkilo42ai@gmail.com directly so nothing gets missed.",
     };
   }
 

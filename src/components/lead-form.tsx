@@ -140,7 +140,7 @@ export function LeadForm() {
         <button type="submit" disabled={status === "loading"}>
           {status === "loading" ? "Sending..." : "Send Project Details"}
         </button>
-        <a className="text-link" href="mailto:hello@killough.works?subject=Freelance%20Project%20Inquiry">
+        <a className="text-link" href="mailto:ionkilo42ai@gmail.com?subject=Freelance%20Project%20Inquiry">
           Or email directly
         </a>
       </div>

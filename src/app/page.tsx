@@ -103,10 +103,11 @@ export default function Home() {
 
       <section className="section" id="portfolio">
         <div className="section-heading">
-          <p className="section-label">Portfolio / Case Study Direction</p>
-          <h2>Replace placeholders with live breakdowns as the first projects close.</h2>
+          <p className="section-label">Portfolio / Example Builds</p>
+          <h2>Starter systems and example builds I can ship first.</h2>
           <p>
-            These are intentionally framed as example engagement patterns, not fake client wins.
+            These show the kind of work I can do right now. They are not client wins, and they are
+            not presented as proof I have not earned yet.
           </p>
         </div>
         <div className="case-grid">

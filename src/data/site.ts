@@ -63,19 +63,19 @@ export const proofBlocks = [
 export const caseStudyPlaceholders = [
   {
     title: "Restaurant Offer Funnel",
-    status: "Placeholder case study",
+    status: "Example build",
     summary:
       "A compact landing page, offer capture form, and follow-up sequence for a local food brand running seasonal promos.",
   },
   {
     title: "Creator Launch Stack",
-    status: "Placeholder case study",
+    status: "Example build",
     summary:
       "A homepage, product waitlist, and lightweight automation chain for a creator selling a workshop or digital product.",
   },
   {
     title: "Service Business Intake Upgrade",
-    status: "Placeholder case study",
+    status: "Example build",
     summary:
       "A cleaner services page, better qualification flow, and faster handoff for inquiries that currently arrive by DM or scattered email.",
   },
