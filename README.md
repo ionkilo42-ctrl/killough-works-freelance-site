@@ -69,3 +69,7 @@ npm run dev
 npm run lint
 npm run build
 ```
+
+## Deployment note
+
+- Production booking CTA should resolve from `NEXT_PUBLIC_BOOKING_URL`.
