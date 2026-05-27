@@ -1,82 +1,87 @@
-export const services = [
+export const buildCards = [
   {
-    title: "Pitch Image / Offer Card",
+    title: "DM Pitch Images / Offer Cards",
     summary:
-      "A clean visual you can send in DMs so a local business instantly understands the thing you want to build for them.",
-    outcomes: ["DM-ready image", "Plain-language offer", "Clear next step"],
+      "Quick visuals for Facebook, Instagram, text threads, or DMs that make an offer easier to understand and easier to trust.",
   },
   {
-    title: "Mini Lead Capture Page",
+    title: "Mini Lead Capture Pages",
     summary:
-      "A simple mobile page for service businesses that are still collecting jobs through scattered Facebook messages, texts, and screenshots.",
-    outcomes: ["Photo upload", "Job details", "Owner gets organized lead info"],
+      "Tight pages for one offer, one service, or one promo when the current link in bio or homepage is doing too much.",
   },
   {
-    title: "Quote / Intake Flow",
+    title: "Quote / Intake Flows",
     summary:
-      "A lightweight form that asks the right questions before the business owner replies, so leads are easier to price and follow up with.",
-    outcomes: ["Better questions", "Less back-and-forth", "Faster replies"],
+      "Simple request forms that help people send the right details the first time instead of bouncing between screenshots and messages.",
   },
   {
-    title: "Simple Business Tool",
+    title: "Simple Business Tools",
     summary:
-      "Tiny coded utilities for real bottlenecks: menus, discount hubs, booking prep, checklists, galleries, directories, or request pages.",
-    outcomes: ["Specific use case", "Fast prototype", "Useful link to share"],
+      "Small coded helpers for quoting, booking, routing, or organizing incoming jobs without turning the business into software theater.",
   },
   {
-    title: "AI Workflow Starter",
+    title: "AI Workflow Starters",
     summary:
-      "Small AI-assisted workflows for owners who need help turning messy messages, notes, photos, or posts into organized business actions.",
-    outcomes: ["Prompted process", "Reusable workflow", "Less admin drag"],
+      "Small useful AI setups for repetitive writing, sorting, follow-up, or research tasks that already exist in the business.",
+  },
+  {
+    title: "Landing Page / Profile Cleanup",
+    summary:
+      "Sharper headlines, cleaner calls to action, and better structure for pages and profiles that feel vague, noisy, or unfinished.",
   },
 ];
 
-export const pricing = [
+export const starterPricing = [
   {
-    title: "DM Pitch Image",
+    title: "Pitch image / offer card",
     range: "$10-$25",
-    detail: "Best when you need a sharp visual offer to send to a lead today.",
+    detail: "Best for turning a rough idea, screenshot, or post into something clearer and more usable fast.",
   },
   {
-    title: "Tiny Fix / Copy Cleanup",
+    title: "Copy / CTA cleanup",
     range: "$15-$35",
-    detail: "Best for tightening a post, landing section, CTA, intake wording, or offer explanation.",
+    detail: "Best for tightening an offer, profile, caption, service section, or call to action that is almost working.",
   },
   {
-    title: "Starter Build",
+    title: "Tiny coded page or form",
     range: "$35-$75",
-    detail: "Best for a small coded page, quote form, gallery, menu, checklist, or lead request flow.",
+    detail: "Best for a focused page, quote form, QR hub, or other small build that solves one real bottleneck.",
   },
   {
-    title: "Deeper Build",
+    title: "Deeper custom build",
     range: "$150+",
-    detail: "For bigger flows, custom logic, multiple pages, or ongoing improvements after the first useful version works.",
+    detail: "Best for when the first small win clearly points to a broader flow, tool, or custom system worth building next.",
   },
 ];
 
-export const proofBlocks = [
-  "I do not start by selling a giant website. I look for the smallest useful thing that could help someone say yes.",
-  "Built for local businesses, creators, and operators who need practical help more than agency theater.",
-  "Cheap first builds create trust, proof, screenshots, and momentum before anyone commits to something bigger.",
+export const processSteps = [
+  "Send a business, post, screenshot, site, or idea.",
+  "I map the bottleneck.",
+  "I suggest the smallest useful thing to build.",
+  "You approve the price.",
+  "I ship the first version.",
 ];
 
-export const caseStudyPlaceholders = [
-  {
-    title: "Pressure Washing Quote Flow",
-    status: "Example starter build",
-    summary:
-      "A mobile intake page where customers choose house, driveway, gutters, fence, or roof, then send photos and contact details in one organized request.",
-  },
-  {
-    title: "Pet Sitting Booking Helper",
-    status: "Example starter build",
-    summary:
-      "A simple service menu and request form that turns long Facebook posts into a cleaner booking path for pet, farm, and overnight care.",
-  },
-  {
-    title: "Restaurant Discount Hub",
-    status: "Example starter build",
-    summary:
-      "A QR-friendly landing page that keeps current offers, partner discounts, and local business links in one place.",
-  },
+export const bestFit = [
+  "Local service businesses",
+  "Creators",
+  "Restaurants",
+  "Side hustlers",
+  "People selling through Facebook, Instagram, or texts",
+  "People who need clarity before they need complexity",
+];
+
+export const examples = [
+  "Pressure washing quote request page",
+  "Pet/farm sitting booking helper",
+  "Restaurant discount QR hub",
+  "Handyman job request form",
+  "Tree service photo quote flow",
+  "Creator offer landing page",
+];
+
+export const signalPoints = [
+  "Cheap first builds are intentional.",
+  "They create trust, screenshots, proof, testimonials, and momentum.",
+  "If the first small thing works, the next build gets easier to justify.",
 ];
