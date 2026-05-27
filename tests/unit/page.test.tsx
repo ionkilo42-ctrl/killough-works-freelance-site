@@ -13,8 +13,8 @@ describe("Home page", () => {
     render(<Home />);
 
     expect(screen.getByText("Small useful builds for messy business problems.")).toBeInTheDocument();
-    expect(screen.getByText("Field notes")).toBeInTheDocument();
-    expect(screen.getByText("First build menu")).toBeInTheDocument();
+    expect(screen.getAllByText("Field notes").length).toBeGreaterThan(0);
+    expect(screen.getByText("Starter prices")).toBeInTheDocument();
     expect(screen.queryByRole("link", { name: "Book a quick call" })).not.toBeInTheDocument();
   });
 });

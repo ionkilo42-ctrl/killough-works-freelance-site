@@ -15,21 +15,49 @@ const hasBookingUrl = Boolean(rawBookingUrl);
 export default function Home() {
   return (
     <main className="shell">
-      <section className="hero-card" id="top">
-        <div className="hero-shell">
-          <div className="hero-copy">
-            <div className="eyebrow">Killough Works</div>
-            <nav className="nav">
+      <section className="hero-workshop" id="top">
+        <div className="identity-strip">
+          <div>
+            <p className="eyebrow">Killough Works</p>
+            <p className="identity-note">
+              Small coded tools, offer visuals, and lead flows for local businesses and creators.
+            </p>
+          </div>
+          <nav className="route-nav" aria-label="Section links">
+            <span className="route-nav-label">Jump</span>
+            <div className="route-nav-links">
               <a href="#builds">What I build</a>
+              <a href="#examples">Use cases</a>
               <a href="#pricing">Starter pricing</a>
               <a href="#process">How it works</a>
               <a href="#contact">Send it</a>
-            </nav>
-            <p className="micro-note">Offer cleanup, intake repair, and tiny build energy.</p>
-            <p className="hero-kicker">
-              Small coded tools, offer visuals, and lead flows for local businesses and creators.
-            </p>
-            <h1>Small useful builds for messy business problems.</h1>
+            </div>
+          </nav>
+        </div>
+
+        <div className="hero-ledger">
+          <aside className="artifact-card signal-card">
+            <p className="panel-label">Field notes</p>
+            <p className="signal-card-title">Most small businesses do not need a giant agency project first.</p>
+            <ul className="signal-bullets">
+              <li>One useful page.</li>
+              <li>One clearer offer.</li>
+              <li>One better intake flow.</li>
+              <li>One small tool that saves a back-and-forth.</li>
+            </ul>
+            <div className="tag-row">
+              <span>$10-$25</span>
+              <span>send screenshot</span>
+              <span>DM-ready</span>
+            </div>
+          </aside>
+
+          <article className="hero-essay">
+            <p className="micro-note">Offer workshop / intake repair / tiny build energy</p>
+            <div className="headline-stack">
+              <p className="headline-note">Not a discovery-call funnel.</p>
+              <h1>Small useful builds for messy business problems.</h1>
+            </div>
             <p className="lede">
               I turn posts, screenshots, DMs, rough ideas, and broken lead flows into simple
               pages, visuals, forms, and tools people can actually use.
@@ -46,28 +74,46 @@ export default function Home() {
               <span>Useful first</span>
               <span>Fast to ship</span>
               <span>Taste over template</span>
+              <span>Tailored to what exists</span>
             </div>
-          </div>
+          </article>
 
-          <aside className="hero-map">
-            <p className="panel-label">Field notes</p>
-            <div className="map-lines" aria-hidden="true" />
-            <ul>
-              <li>Send the messy version first.</li>
-              <li>I map the bottleneck before I sell a bigger build.</li>
-              <li>Most first wins are a page, a form, a visual, or a small tool.</li>
-            </ul>
+          <aside className="artifact-card process-board">
+            <p className="panel-label">Mini signal path</p>
+            <div className="mini-steps">
+              <p>
+                <span>01</span> send the messy version
+              </p>
+              <p>
+                <span>02</span> I map the bottleneck
+              </p>
+              <p>
+                <span>03</span> I price the smallest useful fix
+              </p>
+              <p>
+                <span>04</span> first version ships
+              </p>
+            </div>
             <p className="panel-note">
-              You do not need a discovery call to start. You can send a screenshot, link, caption,
-              post, or rough idea and I will turn it into a clearer first move.
+              You can start with a screenshot, a post, a caption, a rough offer, or a half-broken
+              lead flow. If the work is clearly bigger, the call comes later.
             </p>
           </aside>
         </div>
+
+        <div className="example-rail" id="examples">
+          {examples.slice(0, 5).map((item) => (
+            <article className="example-tile" key={item.title}>
+              <p className="panel-label">{item.tag}</p>
+              <h3>{item.title}</h3>
+            </article>
+          ))}
+        </div>
       </section>
 
-      <section className="section constellation-section" id="builds">
+      <section className="section field-section" id="builds">
         <div className="section-heading">
-          <p className="section-label">What I actually build</p>
+          <p className="section-label">Field notes</p>
           <h2>Small things that help a real person say yes faster.</h2>
           <p>
             This is not positioned like a giant agency retainer. The work starts with one useful
@@ -76,9 +122,9 @@ export default function Home() {
           </p>
         </div>
         <div className="build-grid">
-          {buildCards.map((item, index) => (
+          {buildCards.map((item) => (
             <article className="build-card" key={item.title}>
-              <span className="card-index">0{index + 1}</span>
+              <span className="card-index">{item.tag}</span>
               <h3>{item.title}</h3>
               <p>{item.summary}</p>
             </article>
@@ -88,7 +134,7 @@ export default function Home() {
 
       <section className="section" id="pricing">
         <div className="section-heading">
-          <p className="section-label">First build menu</p>
+          <p className="section-label">Starter prices</p>
           <h2>Low pricing on purpose.</h2>
           <p>
             Cheap first builds create trust, screenshots, proof, testimonials, and momentum before
@@ -99,6 +145,7 @@ export default function Home() {
         <div className="pricing-grid">
           {starterPricing.map((item) => (
             <article className="pricing-card" key={item.title}>
+              <p className="pricing-note">{item.note}</p>
               <p className="price">{item.range}</p>
               <h3>{item.title}</h3>
               <p>{item.detail}</p>
@@ -144,13 +191,14 @@ export default function Home() {
 
         <div>
           <div className="section-heading compact">
-            <p className="section-label">Examples</p>
+            <p className="section-label">Use cases</p>
             <h2>Useful first builds I can shape around what you already have.</h2>
           </div>
           <div className="examples-grid">
             {examples.map((item) => (
-              <article className="example-card" key={item}>
-                <h3>{item}</h3>
+              <article className="example-card" key={item.title}>
+                <p className="panel-label">{item.tag}</p>
+                <h3>{item.title}</h3>
               </article>
             ))}
           </div>
@@ -159,7 +207,7 @@ export default function Home() {
 
       <section className="section contact-section" id="contact">
         <div className="section-heading">
-          <p className="section-label">Send the messy version</p>
+          <p className="section-label">Send me the messy version</p>
           <h2>Send a link, screenshot, post, business, or rough idea.</h2>
           <p>
             I will look at what is already there, map the bottleneck, and suggest the smallest

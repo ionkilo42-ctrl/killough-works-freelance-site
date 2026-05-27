@@ -48,6 +48,11 @@ export function LeadForm() {
 
   return (
     <form className="lead-form" onSubmit={onSubmit}>
+      <div className="form-intro">
+        <p className="panel-label">Send it to Jonathan</p>
+        <p className="form-note">Messy is fine. Links, screenshots, rough offers, and half-formed ideas all work.</p>
+      </div>
+
       <div className="field-grid">
         <label>
           Name
