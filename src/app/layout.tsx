@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Instrument_Sans, Space_Grotesk } from "next/font/google";
 
 import "./globals.css";
+import "./mobile-signal.css";
 
 const sans = Instrument_Sans({
   variable: "--font-sans",
