@@ -1,82 +1,82 @@
 export const services = [
   {
-    title: "AI Website / Landing Page Setup",
+    title: "Pitch Image / Offer Card",
     summary:
-      "Fast, credible pages for launches, offers, and service businesses that need clarity, trust, and a real conversion path.",
-    outcomes: ["Message clarity", "Modern responsive design", "Launch-ready CTA flow"],
+      "A clean visual you can send in DMs so a local business instantly understands the thing you want to build for them.",
+    outcomes: ["DM-ready image", "Plain-language offer", "Clear next step"],
   },
   {
-    title: "AI Lead Capture & Follow-Up Systems",
+    title: "Mini Lead Capture Page",
     summary:
-      "Forms, qualification, auto-replies, routing, and lightweight follow-up so leads do not disappear after the first click.",
-    outcomes: ["Lead intake", "Auto-response logic", "Simple CRM handoff"],
+      "A simple mobile page for service businesses that are still collecting jobs through scattered Facebook messages, texts, and screenshots.",
+    outcomes: ["Photo upload", "Job details", "Owner gets organized lead info"],
   },
   {
-    title: "Creator / Local Business Automation",
+    title: "Quote / Intake Flow",
     summary:
-      "Practical automation for inquiries, content pipelines, admin work, booking prep, and repetitive service tasks.",
-    outcomes: ["Less manual work", "Faster response times", "Cleaner operations"],
+      "A lightweight form that asks the right questions before the business owner replies, so leads are easier to price and follow up with.",
+    outcomes: ["Better questions", "Less back-and-forth", "Faster replies"],
   },
   {
-    title: "AI Workflow Integration",
+    title: "Simple Business Tool",
     summary:
-      "Fit AI into the business where it actually helps: support, research, internal tools, or content production.",
-    outcomes: ["Tool setup", "Prompt/system design", "Operational guardrails"],
+      "Tiny coded utilities for real bottlenecks: menus, discount hubs, booking prep, checklists, galleries, directories, or request pages.",
+    outcomes: ["Specific use case", "Fast prototype", "Useful link to share"],
   },
   {
-    title: "MVP / Prototype Development",
+    title: "AI Workflow Starter",
     summary:
-      "Working prototypes for founders and operators who need a believable product slice before overinvesting.",
-    outcomes: ["Rapid scoping", "Working vertical slice", "Demo-ready build"],
+      "Small AI-assisted workflows for owners who need help turning messy messages, notes, photos, or posts into organized business actions.",
+    outcomes: ["Prompted process", "Reusable workflow", "Less admin drag"],
   },
 ];
 
 export const pricing = [
   {
-    title: "Launch Page Sprint",
-    range: "$750-$1,500",
-    detail: "Best for a clean freelance, creator, or local-business front door with a strong CTA.",
+    title: "DM Pitch Image",
+    range: "$10-$25",
+    detail: "Best when you need a sharp visual offer to send to a lead today.",
   },
   {
-    title: "Lead Capture System",
-    range: "$1,500-$3,500",
-    detail: "Best for intake forms, qualification, follow-up, and better inquiry handling.",
+    title: "Tiny Fix / Copy Cleanup",
+    range: "$15-$35",
+    detail: "Best for tightening a post, landing section, CTA, intake wording, or offer explanation.",
   },
   {
-    title: "Automation Setup",
-    range: "$1,500-$4,000",
-    detail: "Best for repetitive workflows, creator operations, and admin-heavy service businesses.",
+    title: "Starter Build",
+    range: "$35-$75",
+    detail: "Best for a small coded page, quote form, gallery, menu, checklist, or lead request flow.",
   },
   {
-    title: "MVP Prototype",
-    range: "$3,500-$8,500+",
-    detail: "Best for founders who need a serious prototype quickly, not a six-month buildout.",
+    title: "Deeper Build",
+    range: "$150+",
+    detail: "For bigger flows, custom logic, multiple pages, or ongoing improvements after the first useful version works.",
   },
 ];
 
 export const proofBlocks = [
-  "Clear scope, honest constraints, and fast iteration.",
-  "AI-native execution without vague 'innovation' language.",
-  "Built for working operators, not enterprise theater.",
+  "I do not start by selling a giant website. I look for the smallest useful thing that could help someone say yes.",
+  "Built for local businesses, creators, and operators who need practical help more than agency theater.",
+  "Cheap first builds create trust, proof, screenshots, and momentum before anyone commits to something bigger.",
 ];
 
 export const caseStudyPlaceholders = [
   {
-    title: "Restaurant Offer Funnel",
-    status: "Example build",
+    title: "Pressure Washing Quote Flow",
+    status: "Example starter build",
     summary:
-      "A compact landing page, offer capture form, and follow-up sequence for a local food brand running seasonal promos.",
+      "A mobile intake page where customers choose house, driveway, gutters, fence, or roof, then send photos and contact details in one organized request.",
   },
   {
-    title: "Creator Launch Stack",
-    status: "Example build",
+    title: "Pet Sitting Booking Helper",
+    status: "Example starter build",
     summary:
-      "A homepage, product waitlist, and lightweight automation chain for a creator selling a workshop or digital product.",
+      "A simple service menu and request form that turns long Facebook posts into a cleaner booking path for pet, farm, and overnight care.",
   },
   {
-    title: "Service Business Intake Upgrade",
-    status: "Example build",
+    title: "Restaurant Discount Hub",
+    status: "Example starter build",
     summary:
-      "A cleaner services page, better qualification flow, and faster handoff for inquiries that currently arrive by DM or scattered email.",
+      "A QR-friendly landing page that keeps current offers, partner discounts, and local business links in one place.",
   },
 ];
