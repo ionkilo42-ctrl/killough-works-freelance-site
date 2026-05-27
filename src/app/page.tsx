@@ -54,9 +54,17 @@ export default function Home() {
 
           <article className="hero-essay">
             <p className="micro-note">Offer workshop / intake repair / tiny build energy</p>
-            <div className="headline-stack">
+            <div className="hero-poster">
               <p className="headline-note">Not a discovery-call funnel.</p>
-              <h1>Small useful builds for messy business problems.</h1>
+              <div className="headline-stack">
+                <span className="poster-mark">KW-01</span>
+                <h1>Small useful builds for messy business problems.</h1>
+              </div>
+              <div className="hero-orbit">
+                <span>pressure wash quote page</span>
+                <span>restaurant QR hub</span>
+                <span>tree service photo flow</span>
+              </div>
             </div>
             <p className="lede">
               I turn posts, screenshots, DMs, rough ideas, and broken lead flows into simple
@@ -102,8 +110,8 @@ export default function Home() {
         </div>
 
         <div className="example-rail" id="examples">
-          {examples.slice(0, 5).map((item) => (
-            <article className="example-tile" key={item.title}>
+          {examples.slice(0, 5).map((item, index) => (
+            <article className={`example-tile example-tile-${index + 1}`} key={item.title}>
               <p className="panel-label">{item.tag}</p>
               <h3>{item.title}</h3>
             </article>
@@ -122,8 +130,8 @@ export default function Home() {
           </p>
         </div>
         <div className="build-grid">
-          {buildCards.map((item) => (
-            <article className="build-card" key={item.title}>
+          {buildCards.map((item, index) => (
+            <article className={`build-card build-card-${index + 1}`} key={item.title}>
               <span className="card-index">{item.tag}</span>
               <h3>{item.title}</h3>
               <p>{item.summary}</p>
@@ -143,8 +151,8 @@ export default function Home() {
           </p>
         </div>
         <div className="pricing-grid">
-          {starterPricing.map((item) => (
-            <article className="pricing-card" key={item.title}>
+          {starterPricing.map((item, index) => (
+            <article className={`pricing-card pricing-card-${index + 1}`} key={item.title}>
               <p className="pricing-note">{item.note}</p>
               <p className="price">{item.range}</p>
               <h3>{item.title}</h3>
@@ -166,7 +174,7 @@ export default function Home() {
         </div>
         <div className="process-grid">
           {processSteps.map((step, index) => (
-            <article className="process-card" key={step}>
+            <article className={`process-card process-card-${index + 1}`} key={step}>
               <span className="step-number">Step {index + 1}</span>
               <p>{step}</p>
             </article>
@@ -195,8 +203,8 @@ export default function Home() {
             <h2>Useful first builds I can shape around what you already have.</h2>
           </div>
           <div className="examples-grid">
-            {examples.map((item) => (
-              <article className="example-card" key={item.title}>
+            {examples.map((item, index) => (
+              <article className={`example-card example-card-${index + 1}`} key={item.title}>
                 <p className="panel-label">{item.tag}</p>
                 <h3>{item.title}</h3>
               </article>
