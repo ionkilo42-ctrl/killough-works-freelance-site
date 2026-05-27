@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #07101a;
-  --bg-deep: #04070d;
-  --panel: #0d1726;
-  --panel-soft: #121e31;
-  --paper: rgba(244, 238, 224, 0.05);
-  --line: rgba(146, 196, 197, 0.2);
-  --line-strong: rgba(198, 165, 106, 0.4);
-  --dash: rgba(244, 238, 224, 0.14);
-  --text: #f4eee0;
-  --muted: #b4c0c6;
-  --gold: #c6a56a;
-  --teal: #9ccdc4;
-  --ember: #d77750;
-  --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  --bg: #122030;
+  --bg-deep: #0a111a;
+  --panel: #182536;
+  --panel-soft: #223248;
+  --paper: rgba(247, 243, 232, 0.08);
+  --line: rgba(147, 197, 199, 0.28);
+  --line-strong: rgba(198, 167, 112, 0.46);
+  --dash: rgba(247, 243, 232, 0.18);
+  --text: #f3efe4;
+  --muted: #c3cdd3;
+  --gold: #d0af72;
+  --teal: #a6d2ca;
+  --ember: #de8760;
+  --shadow: 0 24px 80px rgba(2, 7, 16, 0.3);
 }
 
 * {
@@ -31,10 +31,11 @@ body {
   color: var(--text);
   font-family: var(--font-sans), sans-serif;
   background:
-    radial-gradient(circle at 12% 10%, rgba(156, 205, 196, 0.09), transparent 22%),
-    radial-gradient(circle at 82% 12%, rgba(215, 119, 80, 0.1), transparent 18%),
-    radial-gradient(circle at 48% 36%, rgba(198, 165, 106, 0.08), transparent 20%),
-    linear-gradient(180deg, #09111d 0%, #060b13 45%, #03060a 100%);
+    radial-gradient(circle at 14% 12%, rgba(166, 210, 202, 0.18), transparent 22%),
+    radial-gradient(circle at 76% 10%, rgba(222, 135, 96, 0.14), transparent 18%),
+    radial-gradient(circle at 48% 35%, rgba(208, 175, 114, 0.14), transparent 22%),
+    linear-gradient(125deg, transparent 18%, rgba(136, 193, 209, 0.11) 34%, transparent 51%),
+    linear-gradient(180deg, #162434 0%, #111b29 42%, #0a111a 100%);
 }
 
 body::before,
@@ -46,19 +47,21 @@ body::after {
 }
 
 body::before {
-  opacity: 0.55;
+  opacity: 0.72;
   background-image:
     radial-gradient(circle at 10% 18%, rgba(255, 255, 255, 0.8) 0 1px, transparent 1.6px),
     radial-gradient(circle at 22% 72%, rgba(255, 255, 255, 0.6) 0 1px, transparent 1.6px),
     radial-gradient(circle at 46% 34%, rgba(255, 255, 255, 0.5) 0 1px, transparent 1.7px),
     radial-gradient(circle at 78% 20%, rgba(255, 255, 255, 0.7) 0 1px, transparent 1.5px),
     radial-gradient(circle at 88% 48%, rgba(255, 255, 255, 0.52) 0 1px, transparent 1.6px),
-    linear-gradient(130deg, transparent 12%, rgba(156, 205, 196, 0.1) 12.3%, transparent 12.8%),
-    linear-gradient(156deg, transparent 72%, rgba(198, 165, 106, 0.09) 72.3%, transparent 72.8%);
+    radial-gradient(circle at 32% 24%, rgba(255, 247, 222, 0.12), transparent 18%),
+    radial-gradient(circle at 71% 40%, rgba(158, 221, 214, 0.1), transparent 22%),
+    linear-gradient(126deg, transparent 12%, rgba(156, 205, 196, 0.14) 12.5%, transparent 13.2%),
+    linear-gradient(156deg, transparent 70%, rgba(198, 165, 106, 0.12) 70.4%, transparent 71.2%);
 }
 
 body::after {
-  opacity: 0.13;
+  opacity: 0.18;
   background-image:
     repeating-linear-gradient(
       0deg,
@@ -89,7 +92,7 @@ a {
 }
 
 .hero-workshop,
-.artifact-card,
+  .artifact-card,
 .build-card,
 .pricing-card,
 .process-card,
@@ -217,7 +220,7 @@ a {
   overflow: hidden;
   border: 1px solid var(--line);
   background:
-    linear-gradient(180deg, rgba(18, 28, 44, 0.98), rgba(10, 17, 28, 0.98)),
+    linear-gradient(180deg, rgba(33, 49, 70, 0.96), rgba(18, 29, 43, 0.98)),
     var(--panel);
   box-shadow: var(--shadow);
 }
@@ -240,10 +243,10 @@ a {
       90deg,
       transparent 0,
       transparent 27px,
-      rgba(255, 255, 255, 0.03) 27px,
-      rgba(255, 255, 255, 0.03) 28px
+      rgba(255, 255, 255, 0.045) 27px,
+      rgba(255, 255, 255, 0.045) 28px
     ),
-    linear-gradient(135deg, transparent 0 84%, rgba(198, 165, 106, 0.07) 84.4%, transparent 85%);
+    linear-gradient(135deg, transparent 0 84%, rgba(198, 165, 106, 0.1) 84.4%, transparent 85%);
   pointer-events: none;
 }
 
@@ -259,7 +262,7 @@ a {
   content: "";
   position: absolute;
   inset: 0.7rem;
-  border: 1px dashed rgba(244, 238, 224, 0.12);
+  border: 1px dashed rgba(244, 238, 224, 0.15);
   pointer-events: none;
 }
 
@@ -278,7 +281,7 @@ a {
 
 .signal-card {
   transform: translateY(1.25rem);
-  border-radius: 26px 18px 24px 20px;
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
 }
 
 .signal-card-title {
@@ -314,7 +317,8 @@ a {
   font-size: 0.8rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  background: rgba(244, 238, 224, 0.03);
+  background: rgba(247, 243, 232, 0.05);
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
 }
 
 .tag-row span:nth-child(2n),
@@ -328,6 +332,39 @@ a {
   align-content: start;
 }
 
+.hero-poster {
+  position: relative;
+  display: grid;
+  gap: 0.7rem;
+  padding: 1rem 1rem 1.2rem 1.2rem;
+  background:
+    linear-gradient(180deg, rgba(247, 243, 232, 0.04), transparent 70%),
+    rgba(20, 32, 46, 0.64);
+  border: 1px solid rgba(166, 210, 202, 0.18);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
+}
+
+.hero-poster::before,
+.hero-poster::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.hero-poster::before {
+  inset: 0.65rem;
+  border: 1px dashed rgba(247, 243, 232, 0.14);
+}
+
+.hero-poster::after {
+  left: -2rem;
+  right: -1rem;
+  top: 1rem;
+  height: 11rem;
+  background: radial-gradient(ellipse at center, rgba(173, 214, 227, 0.12), transparent 68%);
+  transform: rotate(-9deg);
+}
+
 .micro-note {
   margin: 0;
   color: var(--teal);
@@ -339,6 +376,20 @@ a {
 .headline-stack {
   display: grid;
   gap: 0.55rem;
+}
+
+.poster-mark {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid rgba(208, 175, 114, 0.35);
+  color: var(--gold);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: rgba(12, 19, 29, 0.7);
 }
 
 .headline-note {
@@ -379,6 +430,26 @@ h3 {
   font-size: 1.03rem;
 }
 
+.hero-orbit {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.35rem;
+}
+
+.hero-orbit span {
+  padding: 0.35rem 0.55rem;
+  color: var(--text);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(245, 240, 226, 0.06);
+  border-top: 1px solid rgba(208, 175, 114, 0.25);
+  border-bottom: 1px solid rgba(166, 210, 202, 0.22);
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -388,12 +459,13 @@ h3 {
 
 .button,
 button {
-  border: 0;
+  border: 1px solid transparent;
   border-radius: 0;
   padding: 0.95rem 1.2rem;
   font: inherit;
   cursor: pointer;
   transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
 }
 
 .button:hover,
@@ -414,12 +486,12 @@ button {
 .button.tertiary {
   color: var(--text);
   border: 1px solid var(--line-strong);
-  background: rgba(244, 238, 224, 0.04);
+  background: rgba(244, 238, 224, 0.06);
 }
 
 .process-board {
   transform: translateY(3rem);
-  border-radius: 18px 26px 20px 24px;
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 18px) 100%, 0 100%, 0 14px);
 }
 
 .mini-steps {
@@ -450,24 +522,29 @@ button {
 
 .example-rail {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: 1.2fr 0.9fr 1.25fr 0.95fr 1.15fr;
   gap: 0.8rem;
   margin-top: 1.5rem;
 }
 
 .example-tile {
   min-height: 8.5rem;
-  border-radius: 18px;
-  transform: rotate(-1deg);
-}
-
-.example-tile:nth-child(2),
-.example-tile:nth-child(4) {
-  transform: rotate(1deg);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
 }
 
 .example-tile h3 {
   margin-top: 0.5rem;
+}
+
+.example-tile-1,
+.example-tile-3,
+.example-tile-5 {
+  transform: translateY(0.6rem);
+}
+
+.example-tile-2,
+.example-tile-4 {
+  min-height: 7.4rem;
 }
 
 .section {
@@ -513,11 +590,11 @@ button {
 }
 
 .build-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1.2fr 0.9fr 1.05fr;
 }
 
 .pricing-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: 1.15fr 1fr 1fr 1.2fr;
 }
 
 .examples-grid {
@@ -528,27 +605,52 @@ button {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
-.build-card:nth-child(2n),
-.pricing-card:nth-child(2n),
-.example-card:nth-child(2n) {
-  transform: translateY(0.4rem);
-}
-
 .build-card {
-  border-radius: 24px 18px 22px 20px;
+  min-height: 12rem;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
 }
 
 .pricing-card {
-  border-radius: 20px 24px 18px 22px;
+  min-height: 100%;
+  clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
 }
 
 .process-card {
   min-height: 12rem;
-  border-radius: 20px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
 }
 
 .example-card {
-  border-radius: 18px 24px 20px 18px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 16px) 100%, 0 100%);
+}
+
+.build-card-2,
+.build-card-5 {
+  transform: translateY(0.8rem);
+}
+
+.build-card-1,
+.build-card-4 {
+  background:
+    linear-gradient(180deg, rgba(39, 56, 79, 0.94), rgba(18, 29, 43, 0.98)),
+    var(--panel-soft);
+}
+
+.pricing-card-1,
+.pricing-card-4 {
+  background:
+    linear-gradient(180deg, rgba(36, 54, 77, 0.96), rgba(18, 29, 43, 0.98)),
+    var(--panel-soft);
+}
+
+.pricing-card-2,
+.pricing-card-3 {
+  transform: translateY(1rem);
+}
+
+.example-card-2,
+.example-card-5 {
+  transform: translateY(0.7rem);
 }
 
 .card-index,
@@ -579,9 +681,10 @@ button {
 }
 
 .signal-board p {
-  border-left: 2px solid rgba(198, 165, 106, 0.38);
-  background: rgba(13, 23, 38, 0.8);
+  border-left: 2px solid rgba(198, 165, 106, 0.5);
+  background: rgba(26, 40, 58, 0.78);
   color: var(--muted);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px));
 }
 
 .two-column-section {
@@ -595,8 +698,9 @@ button {
 
 .fit-pill {
   border: 1px dashed rgba(244, 238, 224, 0.18);
-  border-radius: 999px;
-  background: rgba(244, 238, 224, 0.03);
+  border-radius: 0;
+  background: rgba(244, 238, 224, 0.05);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
 }
 
 .contact-grid {
@@ -607,7 +711,7 @@ button {
 .contact-copy,
 .lead-form,
 .quiet-cta {
-  border-radius: 22px;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
 }
 
 .contact-copy ol {
@@ -652,10 +756,10 @@ select,
 textarea {
   width: 100%;
   border: 1px solid rgba(244, 238, 224, 0.12);
-  border-radius: 14px;
+  border-radius: 0;
   padding: 0.95rem 1rem;
   color: var(--text);
-  background: rgba(244, 238, 224, 0.04);
+  background: rgba(247, 243, 232, 0.06);
   font: inherit;
 }
 
@@ -755,12 +859,15 @@ textarea {
 
   .signal-card,
   .process-board,
-  .build-card:nth-child(2n),
-  .pricing-card:nth-child(2n),
-  .example-card:nth-child(2n),
-  .example-tile,
-  .example-tile:nth-child(2),
-  .example-tile:nth-child(4) {
+  .build-card-2,
+  .build-card-5,
+  .pricing-card-2,
+  .pricing-card-3,
+  .example-card-2,
+  .example-card-5,
+  .example-tile-1,
+  .example-tile-3,
+  .example-tile-5 {
     transform: none;
   }
 
