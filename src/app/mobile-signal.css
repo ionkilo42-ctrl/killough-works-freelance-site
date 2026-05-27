@@ -1,0 +1,53 @@
+@media (max-width: 640px) {
+  .process-grid {
+    gap: 0.72rem;
+  }
+
+  .process-card {
+    min-height: auto;
+    padding: 0.82rem 0.95rem 0.9rem;
+  }
+
+  .process-card::after {
+    inset: 0.48rem;
+  }
+
+  .process-card::before {
+    background:
+      repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 20px,
+        rgba(255, 255, 255, 0.04) 20px,
+        rgba(255, 255, 255, 0.04) 21px
+      ),
+      linear-gradient(135deg, transparent 0 82%, rgba(198, 165, 106, 0.09) 82.4%, transparent 83%);
+  }
+
+  .process-card .step-number,
+  .step-number {
+    display: block;
+    margin-bottom: 0.58rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.24em;
+  }
+
+  .process-card p {
+    margin: 0;
+    color: var(--text);
+    font-size: clamp(1.08rem, 4.9vw, 1.32rem);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+  }
+}
+
+@media (max-width: 420px) {
+  .process-card {
+    padding: 0.78rem 0.85rem 0.86rem;
+  }
+
+  .process-card p {
+    font-size: 1.1rem;
+    line-height: 1.42;
+  }
+}
