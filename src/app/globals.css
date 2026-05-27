@@ -900,6 +900,31 @@ textarea {
     padding: 1rem;
   }
 
+  .process-grid {
+    gap: 0.9rem;
+  }
+
+  .process-card {
+    min-height: auto;
+    padding: 1.02rem 1.06rem 1.08rem;
+  }
+
+  .process-card::after {
+    inset: 0.56rem;
+  }
+
+  .process-card .step-number,
+  .step-number {
+    margin-bottom: 0.68rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+  }
+
+  .process-card p {
+    font-size: clamp(1.24rem, 5.8vw, 1.56rem);
+    line-height: 1.38;
+  }
+
   h1 {
     max-width: none;
     font-size: clamp(2.2rem, 11vw, 3.4rem);
@@ -935,5 +960,16 @@ textarea {
   .route-nav-links {
     gap: 0.7rem;
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .process-card {
+    padding: 0.98rem 0.98rem 1.02rem;
+  }
+
+  .process-card p {
+    font-size: 1.2rem;
+    line-height: 1.36;
   }
 }
