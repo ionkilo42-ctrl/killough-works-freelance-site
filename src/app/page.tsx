@@ -1,121 +1,86 @@
 import { LeadForm } from "@/components/lead-form";
-import { caseStudyPlaceholders, pricing, proofBlocks, services } from "@/data/site";
+import {
+  bestFit,
+  buildCards,
+  examples,
+  processSteps,
+  signalPoints,
+  starterPricing,
+} from "@/data/site";
 
-const bookingUrl =
-  process.env.NEXT_PUBLIC_BOOKING_URL?.trim() || "#contact";
+const rawBookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL?.trim();
+const bookingUrl = rawBookingUrl || "#contact";
+const hasBookingUrl = Boolean(rawBookingUrl);
 
 export default function Home() {
   return (
     <main className="shell">
       <section className="hero-card" id="top">
-        <div className="eyebrow">Killough Works</div>
-        <nav className="nav">
-          <a href="#services">Services</a>
-          <a href="#proof">Why It Works</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <div className="hero-grid">
-          <div>
-            <p className="kicker">AI-powered systems builder for creators, local businesses, and modern service brands.</p>
-            <h1>Launch pages, lead systems, and AI workflows that help small teams move faster.</h1>
+        <div className="hero-shell">
+          <div className="hero-copy">
+            <div className="eyebrow">Killough Works</div>
+            <nav className="nav">
+              <a href="#builds">What I build</a>
+              <a href="#pricing">Starter pricing</a>
+              <a href="#process">How it works</a>
+              <a href="#contact">Send it</a>
+            </nav>
+            <p className="micro-note">Offer cleanup, intake repair, and tiny build energy.</p>
+            <p className="hero-kicker">
+              Small coded tools, offer visuals, and lead flows for local businesses and creators.
+            </p>
+            <h1>Small useful builds for messy business problems.</h1>
             <p className="lede">
-              Clear positioning, better intake, smarter follow-up, and practical AI integration.
-              No bloated retainer theater. No generic agency language. Just useful systems that
-              make a business easier to run and easier to buy from.
+              I turn posts, screenshots, DMs, rough ideas, and broken lead flows into simple
+              pages, visuals, forms, and tools people can actually use.
             </p>
             <div className="hero-actions">
-              <a className="button primary" href={bookingUrl} target="_blank" rel="noreferrer">
-                Book a Discovery Call
+              <a className="button primary" href="#contact">
+                Send me what you have
               </a>
-              <a className="button secondary" href="#contact">
-                Start With the Intake Form
+              <a className="button secondary" href="#pricing">
+                See starter offers
               </a>
             </div>
-            <div className="mini-proof">
-              <span>Fast deployment</span>
-              <span>Lead-focused</span>
-              <span>Launch-first scope</span>
+            <div className="signal-row">
+              <span>Useful first</span>
+              <span>Fast to ship</span>
+              <span>Taste over template</span>
             </div>
           </div>
-          <aside className="hero-panel">
-            <p className="panel-label">Best Fit</p>
+
+          <aside className="hero-map">
+            <p className="panel-label">Field notes</p>
+            <div className="map-lines" aria-hidden="true" />
             <ul>
-              <li>Creators who need a sharper digital front door</li>
-              <li>Local businesses tired of losing inquiries</li>
-              <li>Service brands that want useful automation without complexity</li>
-              <li>Founders who need a prototype that feels real fast</li>
+              <li>Send the messy version first.</li>
+              <li>I map the bottleneck before I sell a bigger build.</li>
+              <li>Most first wins are a page, a form, a visual, or a small tool.</li>
             </ul>
             <p className="panel-note">
-              Typical first engagement: 1-3 weeks, clear scope, tangible deliverable.
+              You do not need a discovery call to start. You can send a screenshot, link, caption,
+              post, or rough idea and I will turn it into a clearer first move.
             </p>
           </aside>
         </div>
       </section>
 
-      <section className="section" id="services">
+      <section className="section constellation-section" id="builds">
         <div className="section-heading">
-          <p className="section-label">Services</p>
-          <h2>Built around the fastest path to traction.</h2>
+          <p className="section-label">What I actually build</p>
+          <h2>Small things that help a real person say yes faster.</h2>
           <p>
-            The focus is not enterprise complexity. It is getting a credible offer, better inquiry
-            handling, and operational lift into the business quickly.
+            This is not positioned like a giant agency retainer. The work starts with one useful
+            thing that makes the business easier to understand, easier to contact, or easier to buy
+            from.
           </p>
         </div>
-        <div className="service-grid">
-          {services.map((service) => (
-            <article className="service-card" key={service.title}>
-              <h3>{service.title}</h3>
-              <p>{service.summary}</p>
-              <ul>
-                {service.outcomes.map((outcome) => (
-                  <li key={outcome}>{outcome}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section" id="proof">
-        <div className="section-heading">
-          <p className="section-label">Trust</p>
-          <h2>Credibility comes from clarity and working systems.</h2>
-        </div>
-        <div className="proof-grid">
-          {proofBlocks.map((item) => (
-            <article className="proof-card" key={item}>
-              <p>{item}</p>
-            </article>
-          ))}
-        </div>
-        <div className="trust-strip">
-          <p>
-            Ideal clients: creators, restaurants, agencies, service businesses, and startups
-            needing a fast proof-of-concept.
-          </p>
-          <p>
-            Engagement style: direct communication, practical AI use, and narrow scope before
-            expansion.
-          </p>
-        </div>
-      </section>
-
-      <section className="section" id="portfolio">
-        <div className="section-heading">
-          <p className="section-label">Portfolio / Example Builds</p>
-          <h2>Starter systems and example builds I can ship first.</h2>
-          <p>
-            These show the kind of work I can do right now. They are not client wins, and they are
-            not presented as proof I have not earned yet.
-          </p>
-        </div>
-        <div className="case-grid">
-          {caseStudyPlaceholders.map((study) => (
-            <article className="case-card" key={study.title}>
-              <span>{study.status}</span>
-              <h3>{study.title}</h3>
-              <p>{study.summary}</p>
+        <div className="build-grid">
+          {buildCards.map((item, index) => (
+            <article className="build-card" key={item.title}>
+              <span className="card-index">0{index + 1}</span>
+              <h3>{item.title}</h3>
+              <p>{item.summary}</p>
             </article>
           ))}
         </div>
@@ -123,65 +88,115 @@ export default function Home() {
 
       <section className="section" id="pricing">
         <div className="section-heading">
-          <p className="section-label">Pricing Guidance</p>
-          <h2>Simple starting ranges that help qualify real work.</h2>
+          <p className="section-label">First build menu</p>
+          <h2>Low pricing on purpose.</h2>
           <p>
-            These are starting points, not locked packages. The goal is to anchor expectations
-            without sounding vague or overbuilt.
+            Cheap first builds create trust, screenshots, proof, testimonials, and momentum before
+            bigger projects. The point is to start with something useful, not force a giant scope
+            too early.
           </p>
         </div>
         <div className="pricing-grid">
-          {pricing.map((item) => (
+          {starterPricing.map((item) => (
             <article className="pricing-card" key={item.title}>
-              <h3>{item.title}</h3>
               <p className="price">{item.range}</p>
+              <h3>{item.title}</h3>
               <p>{item.detail}</p>
+            </article>
+          ))}
+        </div>
+        <div className="signal-board">
+          {signalPoints.map((item) => (
+            <p key={item}>{item}</p>
+          ))}
+        </div>
+      </section>
+
+      <section className="section" id="process">
+        <div className="section-heading">
+          <p className="section-label">Signal path</p>
+          <h2>Start with the smallest useful move.</h2>
+        </div>
+        <div className="process-grid">
+          {processSteps.map((step, index) => (
+            <article className="process-card" key={step}>
+              <span className="step-number">Step {index + 1}</span>
+              <p>{step}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="section cta-section">
-        <div className="cta-card">
-          <div>
-            <p className="section-label">Discovery Call CTA</p>
-            <h2>Need a fast second brain for launch, automation, or a prototype?</h2>
-            <p>
-              Start with a short call if the project already has motion. Use the intake form if you
-              want a cleaner handoff first.
-            </p>
+      <section className="section two-column-section" id="fit">
+        <div>
+          <div className="section-heading compact">
+            <p className="section-label">Best fit</p>
+            <h2>Built for people who already have something real, just not clean yet.</h2>
           </div>
-          <a className="button primary" href={bookingUrl} target="_blank" rel="noreferrer">
-            Book the Call
-          </a>
+          <div className="fit-grid">
+            {bestFit.map((item) => (
+              <article className="fit-pill" key={item}>
+                {item}
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div className="section-heading compact">
+            <p className="section-label">Examples</p>
+            <h2>Useful first builds I can shape around what you already have.</h2>
+          </div>
+          <div className="examples-grid">
+            {examples.map((item) => (
+              <article className="example-card" key={item}>
+                <h3>{item}</h3>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="section contact-section" id="contact">
         <div className="section-heading">
-          <p className="section-label">Intake / Contact</p>
-          <h2>Send the project details in one shot.</h2>
+          <p className="section-label">Send the messy version</p>
+          <h2>Send a link, screenshot, post, business, or rough idea.</h2>
           <p>
-            This form is designed to qualify quickly: what you do, what you need, how fast, and
-            what budget range makes sense.
+            I will look at what is already there, map the bottleneck, and suggest the smallest
+            useful thing to build first.
           </p>
         </div>
         <div className="contact-grid">
           <div className="contact-copy">
-            <h3>What happens next</h3>
+            <p className="panel-label">What happens next</p>
             <ol>
-              <li>You send the essentials.</li>
-              <li>I review fit, scope, and likely approach.</li>
-              <li>You get a reply with next steps or a call link.</li>
+              <li>You send what you have.</li>
+              <li>I reply with the bottleneck and the smallest useful build.</li>
+              <li>If it is clearly bigger than a starter build, then a call makes sense.</li>
             </ol>
             <p className="contact-note">
-              If you are still shaping the project, that is fine. Just be specific about the
-              bottleneck.
+              Plainspoken scope, tailored suggestions, and no pressure to turn a small problem into
+              a giant project.
             </p>
           </div>
           <LeadForm />
         </div>
       </section>
+
+      {hasBookingUrl ? (
+        <section className="section quiet-cta-section">
+          <div className="quiet-cta">
+            <div>
+              <p className="section-label">Bigger projects</p>
+              <h2>Already have a bigger project or want to talk it through?</h2>
+              <p>Book a quick call.</p>
+            </div>
+            <a className="button tertiary" href={bookingUrl} target="_blank" rel="noreferrer">
+              Book a quick call
+            </a>
+          </div>
+        </section>
+      ) : null}
     </main>
   );
 }

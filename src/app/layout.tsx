@@ -14,9 +14,9 @@ const display = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Killough Works | AI-Powered Systems Builder",
+  title: "Killough Works | Small Useful Builds for Messy Business Problems",
   description:
-    "Freelance AI website, automation, lead capture, and MVP build services for creators, local businesses, and modern service brands.",
+    "Small coded tools, offer visuals, lead flows, and starter builds for local businesses, creators, and service owners.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

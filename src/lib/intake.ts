@@ -8,9 +8,7 @@ export type IntakePayload = {
   email: string;
   business: string;
   website?: string;
-  projectType: string;
   budget: string;
-  timeline: string;
   summary: string;
 };
 
@@ -18,9 +16,7 @@ const requiredFields: Array<keyof IntakePayload> = [
   "name",
   "email",
   "business",
-  "projectType",
   "budget",
-  "timeline",
   "summary",
 ];
 
@@ -75,15 +71,13 @@ export async function handleIntake(payload: Partial<IntakePayload>) {
       from,
       to: [inbox],
       replyTo: submission.email,
-      subject: `New freelance lead: ${submission.name} / ${submission.projectType}`,
+      subject: `New freelance lead: ${submission.name} / ${submission.business}`,
       text: [
         `Name: ${submission.name}`,
         `Email: ${submission.email}`,
         `Business: ${submission.business}`,
-        `Website: ${submission.website || "N/A"}`,
-        `Project type: ${submission.projectType}`,
+        `Reference link: ${submission.website || "N/A"}`,
         `Budget: ${submission.budget}`,
-        `Timeline: ${submission.timeline}`,
         "",
         submission.summary,
       ].join("\n"),
@@ -99,7 +93,7 @@ export async function handleIntake(payload: Partial<IntakePayload>) {
     console.warn("Intake submission received without email delivery configured.", {
       submittedAt: submission.submittedAt,
       email: submission.email,
-      projectType: submission.projectType,
+      business: submission.business,
     });
 
     return {
