@@ -13,8 +13,8 @@ describe("Home page", () => {
     render(<Home />);
 
     expect(screen.getByText("Small coded tools for messy business moments.")).toBeInTheDocument();
-    expect(screen.getByText("Starter fixes from $10-$35")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "See what I build" })).toHaveAttribute("href", "#categories");
+    expect(screen.getByText(/Starter fixes from \$10-\$35/)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Start small" })).toHaveAttribute("href", "#how-it-starts");
     expect(screen.getByRole("link", { name: "Browse all field notes" })).toHaveAttribute(
       "href",
       "/field-notes",

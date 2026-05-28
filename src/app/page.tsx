@@ -1,13 +1,10 @@
 import { LeadForm } from "@/components/lead-form";
 import { FeaturedVisualCard } from "@/components/featured-visual-card";
-import { FieldNoteCard } from "@/components/field-note-card";
 import {
   coreCategories,
   featuredVisuals,
   fieldNotes,
-  practicalSignals,
   processSteps,
-  starterPricing,
 } from "@/data/site";
 
 const rawBookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL?.trim();
@@ -21,10 +18,11 @@ export default function Home() {
         <div className="topline">
           <div>
             <p className="eyebrow">Killough Works</p>
-            <p className="identity-note">I build small digital bridges between attention and action.</p>
+            <p className="identity-note">Small digital fixes for rough, real business moments.</p>
           </div>
           <nav className="route-nav" aria-label="Section links">
-            <a href="#categories">What I build</a>
+            <a href="#what-i-fix">What I fix</a>
+            <a href="#how-it-starts">How it starts</a>
             <a href="#field-notes">Field Notes</a>
             <a href="#contact">Send it</a>
             <a className="route-nav-cta" href="/pay">
@@ -33,76 +31,44 @@ export default function Home() {
           </nav>
         </div>
 
-        <div className="hero-grid">
-          <aside className="stamp-card maker-stamp">
-            <span className="stamp-kicker">KW maker&apos;s stamp</span>
-            <div className="stamp-monogram" aria-hidden="true">
-              <span>K</span>
-              <span>W</span>
-            </div>
-            <p>Blueprint dark. Gold edge. Field-note energy. Built to feel handcrafted, not techy.</p>
-          </aside>
-
+        <div className="hero-grid home-hero-grid">
           <article className="hero-card hero-copy">
-            <p className="micro-note">Project Innovation / Phase One</p>
+            <p className="micro-note">Send the messy version</p>
             <h1>Small coded tools for messy business moments.</h1>
             <p className="lede">
-              I turn screenshots, posts, rough offers, and broken intake flows into simple pages,
-              forms, visuals, and tiny systems people can actually use.
+              Send a screenshot, rough offer, post, form, or messy lead flow. I&apos;ll find the
+              smallest useful fix.
             </p>
             <div className="hero-actions">
               <a className="button primary" href="#contact">
                 Send me the messy version
               </a>
-              <a className="button secondary" href="#categories">
-                See what I build
+              <a className="button secondary" href="#how-it-starts">
+                Start small
               </a>
-            </div>
-            <div className="signal-row">
-              {practicalSignals.map((signal) => (
-                <span key={signal}>{signal}</span>
-              ))}
             </div>
           </article>
 
-          <aside className="stamp-card process-card">
-            <p className="panel-label">Starter build signal</p>
-            <ul className="process-list">
-              {starterPricing.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
+          <aside className="hero-side-panel">
+            <p className="panel-label">Messy is okay</p>
+            <p className="side-panel-title">Send the thing before it is polished.</p>
+            <ul className="messy-list">
+              <li>A screenshot of the current page</li>
+              <li>A rough caption, offer, or promo idea</li>
+              <li>A form, inbox, DM thread, or lead path that keeps getting stuck</li>
             </ul>
+            <p className="contact-note">Starter fixes from $10-$35. Bigger builds start only after the first useful move is clear.</p>
           </aside>
         </div>
       </section>
 
-      <section className="section" id="categories">
-        <div className="section-heading">
-          <p className="section-label">Core categories</p>
-          <h2>Small useful builds before giant projects.</h2>
-          <p>
-            The work starts with a practical first move: clearer signal, better intake, a tighter
-            offer, or a tiny build that removes friction.
-          </p>
-        </div>
-        <div className="category-grid">
-          {coreCategories.map((item) => (
-            <article className="category-card" key={item.title}>
-              <p className="card-kicker">{item.title}</p>
-              <h3>{item.title}</h3>
-              <p>{item.summary}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section">
+      <section className="section visual-section">
         <div className="section-heading">
           <p className="section-label">Featured visuals</p>
-          <h2>Useful frames for practical work.</h2>
+          <h2>A visual system for practical clarity.</h2>
           <p>
-            Three active image panels carry the signal now. The same card system still holds cleanly
-            when other notes stay in blueprint fallback.
+            Image, language, and layout work together here, not as decoration, but as a way to make
+            messy business problems easier to see.
           </p>
         </div>
         <div className="visual-grid">
@@ -112,16 +78,37 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" id="what-i-fix">
+        <div className="section-heading">
+          <p className="section-label">What I fix</p>
+          <h2>Small fixes for the places business gets stuck.</h2>
+          <p>Most projects do not need a giant plan to begin. They need one clear first move.</p>
+        </div>
+        <div className="category-grid">
+          {coreCategories.map((item) => (
+            <article className="category-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.summary}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section process-section" id="how-it-starts">
         <div className="section-heading">
           <p className="section-label">How it starts</p>
-          <h2>Low-friction starter work with a real next step.</h2>
+          <h2>Send the messy version first.</h2>
+          <p>
+            No polished brief required. A screenshot, rough offer, caption, link, or half-broken
+            lead flow is enough to find the smallest useful fix.
+          </p>
         </div>
         <div className="process-strip">
-          {processSteps.map((step, index) => (
-            <article className="process-pill" key={step}>
-              <span className="step-number">0{index + 1}</span>
-              <p>{step}</p>
+          {processSteps.map((step) => (
+            <article className="process-pill" key={step.title}>
+              <span className="step-number">{step.number}</span>
+              <h3>{step.title}</h3>
+              <p>{step.summary}</p>
             </article>
           ))}
         </div>
@@ -131,19 +118,26 @@ export default function Home() {
         <div className="section-heading split-heading">
           <div>
             <p className="section-label">Field Notes</p>
-            <h2>Simple insights. Useful clarity.</h2>
+            <h2>Field notes from small useful fixes.</h2>
             <p>
-              A running shelf of practical observations, starter builds, and intake fixes from the
-              work.
+              Short observations from small coded tools, intake repairs, visual systems, and
+              practical signals.
             </p>
           </div>
           <a className="button tertiary" href="/field-notes">
             Browse all field notes
           </a>
         </div>
-        <div className="notes-grid">
-          {fieldNotes.slice(0, 3).map((note) => (
-            <FieldNoteCard note={note} key={note.slug} />
+        <div className="field-note-ledger">
+          {fieldNotes.slice(0, 4).map((note) => (
+            <a className="ledger-row" href={`/field-notes#${note.slug}`} key={note.slug}>
+              <div className="ledger-meta">
+                <span>{note.category}</span>
+                <span>{note.date}</span>
+              </div>
+              <h3>{note.title}</h3>
+              <p>{note.excerpt}</p>
+            </a>
           ))}
         </div>
       </section>
@@ -151,11 +145,8 @@ export default function Home() {
       <section className="section contact-section" id="contact">
         <div className="section-heading">
           <p className="section-label">Send me the messy version</p>
-          <h2>Send a screenshot, post, caption, rough offer, or half-broken lead flow.</h2>
-          <p>
-            I&apos;ll trace the bottleneck, suggest the smallest useful build, and keep the first move
-            grounded.
-          </p>
+          <h2>Messy is okay. Send the thing.</h2>
+          <p>I&apos;ll help find the first useful move and keep the starting scope practical.</p>
         </div>
         <div className="contact-grid">
           <div className="contact-copy">
@@ -166,7 +157,7 @@ export default function Home() {
               <li>I quote the smallest useful fix before anything gets overbuilt.</li>
             </ol>
             <p className="contact-note">
-              Starter fixes from $10-$35. Small useful builds before giant projects.
+              Start with the smallest useful move before turning it into a larger project.
             </p>
           </div>
           <LeadForm />

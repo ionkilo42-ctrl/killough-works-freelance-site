@@ -8,7 +8,7 @@ export default function FieldNotesPage() {
         <div className="topline">
           <div>
             <p className="eyebrow">Killough Works</p>
-            <p className="identity-note">Field Notes archive for small coded tools and practical clarity.</p>
+            <p className="identity-note">A working archive for practical clarity.</p>
           </div>
           <nav className="route-nav" aria-label="Field Notes links">
             <a href="/">Home</a>
@@ -23,8 +23,8 @@ export default function FieldNotesPage() {
           <p className="section-label">Field Notes</p>
           <h1>Field Notes</h1>
           <p>
-            A working shelf of small coded tools, intake repairs, and practical signals. Three
-            notes are illustrated now; the rest still hold as blueprint proofs.
+            A working archive of small coded tools, intake repairs, visual systems, and practical
+            signals for messy business moments.
           </p>
         </div>
 

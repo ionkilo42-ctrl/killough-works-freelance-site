@@ -50,7 +50,10 @@ export function LeadForm() {
     <form className="lead-form" onSubmit={onSubmit}>
       <div className="form-intro">
         <p className="panel-label">Send it to Jonathan</p>
-        <p className="form-note">Messy is fine. Links, screenshots, rough offers, and half-formed ideas all work.</p>
+        <p className="form-note">
+          Messy is fine. Links, screenshots, rough offers, and half-formed ideas all work.
+        </p>
+        <p className="required-note">Required: name, email, business or idea, starter budget, and what needs fixing.</p>
       </div>
 
       <div className="field-grid">

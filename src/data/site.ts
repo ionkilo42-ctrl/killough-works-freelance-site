@@ -15,27 +15,33 @@ export type FieldNote = {
   title: string;
   category: string;
   excerpt: string;
-  imagePath: string;
+  imagePath?: string;
   date: string;
   slug: string;
 };
 
+export type ProcessStep = {
+  number: string;
+  title: string;
+  summary: string;
+};
+
 export const coreCategories: CoreCategory[] = [
   {
-    title: "Field Notes",
-    summary: "Simple insights. Useful clarity.",
+    title: "Unclear offers",
+    summary: "Turn the rough pitch into a clear next step.",
   },
   {
-    title: "Tiny Builds",
-    summary: "Small tools. Big relief.",
+    title: "Messy intake",
+    summary: "Make it easier for people to send the right details.",
   },
   {
-    title: "Intake Repair",
-    summary: "Clear intake. Better results.",
+    title: "Quote back-and-forth",
+    summary: "Collect context once instead of chasing it in messages.",
   },
   {
-    title: "Signal Maps",
-    summary: "Find the real call. Follow the signal.",
+    title: "Simple pages, forms, and tools",
+    summary: "Ship a small useful version before it becomes a giant project.",
   },
 ];
 
@@ -44,21 +50,19 @@ export const featuredVisuals: FeaturedVisual[] = [
     category: "Field Notes",
     imagePath: "/images/field-notes/clarity-is-a-service.jpg",
     title: "Clarity is a service.",
-    excerpt: "A clearer offer, page, or intake path is often the smallest build that changes the whole conversation.",
-    cta: "See what I build",
+    excerpt: "A clear frame can make the next useful move easier to see.",
   },
   {
     category: "Tiny Builds",
     imagePath: "/images/field-notes/tiny-build-back-and-forth.jpg",
     title: "A small tool that saves a back-and-forth.",
-    excerpt: "One tiny request form or quote helper can remove five messy follow-up messages from every lead.",
-    cta: "Send me the messy version",
+    excerpt: "The smallest working tool can remove the same repeated question.",
   },
   {
     category: "Signal Maps",
     imagePath: "/images/field-notes/follow-the-signal.jpg",
     title: "Follow the signal, not the noise.",
-    excerpt: "The useful move is usually smaller than the client first imagines and more practical than a giant rebuild.",
+    excerpt: "A messy flow usually has one real bottleneck worth fixing first.",
   },
 ];
 
@@ -66,7 +70,7 @@ export const fieldNotes: FieldNote[] = [
   {
     title: "Clarity is a service.",
     category: "Field Notes",
-    excerpt: "Useful clarity can be delivered through a headline, a form, a card, or a single page that makes the right next step obvious.",
+    excerpt: "Useful clarity can live in a headline, a form, a card, or a single page that makes the right next step obvious.",
     imagePath: "/images/field-notes/clarity-is-a-service.jpg",
     date: "May 2026",
     slug: "clarity-is-a-service",
@@ -90,44 +94,40 @@ export const fieldNotes: FieldNote[] = [
   {
     title: "Starter fixes create proof before giant projects.",
     category: "Intake Repair",
-    excerpt: "Small useful builds before giant projects means you get trust, screenshots, and working evidence before anyone talks about a large scope.",
-    imagePath: "/images/field-notes/starter-fixes-create-proof.jpg",
+    excerpt: "A small working version creates proof before anyone turns the problem into a large scope.",
     date: "May 2026",
     slug: "starter-fixes-create-proof",
   },
   {
     title: "Send a screenshot, not a polished brief.",
     category: "Field Notes",
-    excerpt: "A rough caption, a busted lead form, or a screenshot of a messy inbox is enough to start shaping the smallest useful fix.",
-    imagePath: "/images/field-notes/send-a-screenshot.jpg",
+    excerpt: "A rough caption, a busted lead form, or a screenshot of a messy inbox is enough to start.",
     date: "May 2026",
     slug: "send-a-screenshot-not-a-polished-brief",
   },
   {
     title: "Better intake makes better work possible.",
     category: "Intake Repair",
-    excerpt: "When people know what to send and where to send it, the whole project gets easier to price, build, and deliver.",
-    imagePath: "/images/field-notes/better-intake-better-work.jpg",
+    excerpt: "When people know what to send and where to send it, the whole project gets easier to price and deliver.",
     date: "May 2026",
     slug: "better-intake-makes-better-work-possible",
   },
 ];
 
-export const starterPricing = [
-  "Starter fixes from $10-$35",
-  "Small useful builds before giant projects",
-  "Send a screenshot, post, caption, rough offer, or half-broken lead flow.",
-];
-
-export const processSteps = [
-  "You send the messy version.",
-  "I find the bottleneck and the smallest useful fix.",
-  "We ship the first practical version before the giant project talk.",
-];
-
-export const practicalSignals = [
-  "Useful first",
-  "Practical magic",
-  "Low-friction starts",
-  "Built for real people",
+export const processSteps: ProcessStep[] = [
+  {
+    number: "01",
+    title: "Send what exists",
+    summary: "A screenshot, post, form, page, or rough idea is enough to start.",
+  },
+  {
+    number: "02",
+    title: "Find the bottleneck",
+    summary: "I map the real friction point and identify the smallest useful fix.",
+  },
+  {
+    number: "03",
+    title: "Ship the first version",
+    summary: "We build something practical before turning it into a giant project.",
+  },
 ];
