@@ -12,9 +12,14 @@ describe("Home page", () => {
 
     render(<Home />);
 
-    expect(screen.getByText("Small useful builds for messy business problems.")).toBeInTheDocument();
-    expect(screen.getAllByText("Field notes").length).toBeGreaterThan(0);
-    expect(screen.getByText("Starter prices")).toBeInTheDocument();
+    expect(screen.getByText("Small coded tools for messy business moments.")).toBeInTheDocument();
+    expect(screen.getByText("Starter fixes from $10-$35")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "See what I build" })).toHaveAttribute("href", "#categories");
+    expect(screen.getByRole("link", { name: "Browse all field notes" })).toHaveAttribute(
+      "href",
+      "/field-notes",
+    );
+    expect(screen.getByRole("link", { name: "Pay / Start" })).toHaveAttribute("href", "/pay");
     expect(screen.queryByRole("link", { name: "Book a quick call" })).not.toBeInTheDocument();
   });
 });

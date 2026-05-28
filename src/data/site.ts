@@ -1,115 +1,133 @@
-export const buildCards = [
+export type CoreCategory = {
+  title: string;
+  summary: string;
+};
+
+export type FeaturedVisual = {
+  category: string;
+  imagePath: string;
+  title: string;
+  excerpt: string;
+  cta?: string;
+};
+
+export type FieldNote = {
+  title: string;
+  category: string;
+  excerpt: string;
+  imagePath: string;
+  date: string;
+  slug: string;
+};
+
+export const coreCategories: CoreCategory[] = [
   {
-    tag: "DM-ready",
-    title: "DM Pitch Images / Offer Cards",
-    summary:
-      "Quick visuals for Facebook, Instagram, text threads, or DMs that make an offer easier to understand and easier to trust.",
+    title: "Field Notes",
+    summary: "Simple insights. Useful clarity.",
   },
   {
-    tag: "One-page fix",
-    title: "Mini Lead Capture Pages",
-    summary:
-      "Tight pages for one offer, one service, or one promo when the current link in bio or homepage is doing too much.",
+    title: "Tiny Builds",
+    summary: "Small tools. Big relief.",
   },
   {
-    tag: "Send details once",
-    title: "Quote / Intake Flows",
-    summary:
-      "Simple request forms that help people send the right details the first time instead of bouncing between screenshots and messages.",
+    title: "Intake Repair",
+    summary: "Clear intake. Better results.",
   },
   {
-    tag: "Tiny build",
-    title: "Simple Business Tools",
-    summary:
-      "Small coded helpers for quoting, booking, routing, or organizing incoming jobs without turning the business into software theater.",
+    title: "Signal Maps",
+    summary: "Find the real call. Follow the signal.",
+  },
+];
+
+export const featuredVisuals: FeaturedVisual[] = [
+  {
+    category: "Field Notes",
+    imagePath: "/images/field-notes/clarity-is-a-service.jpg",
+    title: "Clarity is a service.",
+    excerpt: "A clearer offer, page, or intake path is often the smallest build that changes the whole conversation.",
+    cta: "See what I build",
   },
   {
-    tag: "Starter automation",
-    title: "AI Workflow Starters",
-    summary:
-      "Small useful AI setups for repetitive writing, sorting, follow-up, or research tasks that already exist in the business.",
+    category: "Tiny Builds",
+    imagePath: "/images/field-notes/tiny-build-back-and-forth.jpg",
+    title: "A small tool that saves a back-and-forth.",
+    excerpt: "One tiny request form or quote helper can remove five messy follow-up messages from every lead.",
+    cta: "Send me the messy version",
   },
   {
-    tag: "Cleanup pass",
-    title: "Landing Page / Profile Cleanup",
-    summary:
-      "Sharper headlines, cleaner calls to action, and better structure for pages and profiles that feel vague, noisy, or unfinished.",
+    category: "Signal Maps",
+    imagePath: "/images/field-notes/follow-the-signal.jpg",
+    title: "Follow the signal, not the noise.",
+    excerpt: "The useful move is usually smaller than the client first imagines and more practical than a giant rebuild.",
+  },
+];
+
+export const fieldNotes: FieldNote[] = [
+  {
+    title: "Clarity is a service.",
+    category: "Field Notes",
+    excerpt: "Useful clarity can be delivered through a headline, a form, a card, or a single page that makes the right next step obvious.",
+    imagePath: "/images/field-notes/clarity-is-a-service.jpg",
+    date: "May 2026",
+    slug: "clarity-is-a-service",
+  },
+  {
+    title: "A small tool that saves a back-and-forth.",
+    category: "Tiny Builds",
+    excerpt: "The fastest win is often a tiny system that collects the right details once instead of asking for them three different ways.",
+    imagePath: "/images/field-notes/tiny-build-back-and-forth.jpg",
+    date: "May 2026",
+    slug: "small-tool-saves-back-and-forth",
+  },
+  {
+    title: "Follow the signal, not the noise.",
+    category: "Signal Maps",
+    excerpt: "If the page, post, or inbox feels noisy, the work is to find the real decision point and build around that.",
+    imagePath: "/images/field-notes/follow-the-signal.jpg",
+    date: "May 2026",
+    slug: "follow-the-signal-not-the-noise",
+  },
+  {
+    title: "Starter fixes create proof before giant projects.",
+    category: "Intake Repair",
+    excerpt: "Small useful builds before giant projects means you get trust, screenshots, and working evidence before anyone talks about a large scope.",
+    imagePath: "/images/field-notes/starter-fixes-create-proof.jpg",
+    date: "May 2026",
+    slug: "starter-fixes-create-proof",
+  },
+  {
+    title: "Send a screenshot, not a polished brief.",
+    category: "Field Notes",
+    excerpt: "A rough caption, a busted lead form, or a screenshot of a messy inbox is enough to start shaping the smallest useful fix.",
+    imagePath: "/images/field-notes/send-a-screenshot.jpg",
+    date: "May 2026",
+    slug: "send-a-screenshot-not-a-polished-brief",
+  },
+  {
+    title: "Better intake makes better work possible.",
+    category: "Intake Repair",
+    excerpt: "When people know what to send and where to send it, the whole project gets easier to price, build, and deliver.",
+    imagePath: "/images/field-notes/better-intake-better-work.jpg",
+    date: "May 2026",
+    slug: "better-intake-makes-better-work-possible",
   },
 ];
 
 export const starterPricing = [
-  {
-    note: "fast clarity",
-    title: "Pitch image / offer card",
-    range: "$10-$25",
-    detail: "Best for turning a rough idea, screenshot, or post into something clearer and more usable fast.",
-  },
-  {
-    note: "offer tune-up",
-    title: "Copy / CTA cleanup",
-    range: "$15-$35",
-    detail: "Best for tightening an offer, profile, caption, service section, or call to action that is almost working.",
-  },
-  {
-    note: "small coded fix",
-    title: "Tiny coded page or form",
-    range: "$35-$75",
-    detail: "Best for a focused page, quote form, QR hub, or other small build that solves one real bottleneck.",
-  },
-  {
-    note: "build outward",
-    title: "Deeper custom build",
-    range: "$150+",
-    detail: "Best for when the first small win clearly points to a broader flow, tool, or custom system worth building next.",
-  },
+  "Starter fixes from $10-$35",
+  "Small useful builds before giant projects",
+  "Send a screenshot, post, caption, rough offer, or half-broken lead flow.",
 ];
 
 export const processSteps = [
-  "Send a business, post, screenshot, site, or idea.",
-  "I map the bottleneck.",
-  "I suggest the smallest useful thing to build.",
-  "You approve the price.",
-  "I ship the first version.",
+  "You send the messy version.",
+  "I find the bottleneck and the smallest useful fix.",
+  "We ship the first practical version before the giant project talk.",
 ];
 
-export const bestFit = [
-  "Local service businesses",
-  "Creators",
-  "Restaurants",
-  "Side hustlers",
-  "People selling through Facebook, Instagram, or texts",
-  "People who need clarity before they need complexity",
-];
-
-export const examples = [
-  {
-    tag: "Send photos",
-    title: "Pressure washing quote request page",
-  },
-  {
-    tag: "Booking helper",
-    title: "Pet/farm sitting booking helper",
-  },
-  {
-    tag: "Table promo",
-    title: "Restaurant discount QR hub",
-  },
-  {
-    tag: "Job details first",
-    title: "Handyman job request form",
-  },
-  {
-    tag: "Quote from pictures",
-    title: "Tree service photo quote flow",
-  },
-  {
-    tag: "Offer clarity",
-    title: "Creator offer landing page",
-  },
-];
-
-export const signalPoints = [
-  "Cheap first builds are intentional.",
-  "They create trust, screenshots, proof, testimonials, and momentum.",
-  "If the first small thing works, the next build gets easier to justify.",
+export const practicalSignals = [
+  "Useful first",
+  "Practical magic",
+  "Low-friction starts",
+  "Built for real people",
 ];
