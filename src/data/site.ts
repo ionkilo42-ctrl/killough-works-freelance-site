@@ -14,9 +14,10 @@ export type FeaturedVisual = {
 export type FieldNote = {
   title: string;
   category: string;
-  excerpt: string;
-  imagePath?: string;
-  date: string;
+  label: string;
+  before: string;
+  after: string;
+  why: string;
   slug: string;
 };
 
@@ -75,49 +76,58 @@ export const featuredVisuals: FeaturedVisual[] = [
 
 export const fieldNotes: FieldNote[] = [
   {
-    title: "Clarity is a service.",
-    category: "Field Notes",
-    excerpt: "Useful clarity can live in a headline, a form, a card, or a single page that makes the right next step obvious.",
-    imagePath: "/images/field-notes/clarity-is-a-service.jpg",
-    date: "May 2026",
-    slug: "clarity-is-a-service",
-  },
-  {
-    title: "A small tool that saves a back-and-forth.",
-    category: "Tiny Builds",
-    excerpt: "The fastest win is often a tiny system that collects the right details once instead of asking for them three different ways.",
-    imagePath: "/images/field-notes/tiny-build-back-and-forth.jpg",
-    date: "May 2026",
-    slug: "small-tool-saves-back-and-forth",
-  },
-  {
-    title: "Follow the signal, not the noise.",
-    category: "Signal Maps",
-    excerpt: "If the page, post, or inbox feels noisy, the work is to find the real decision point and build around that.",
-    imagePath: "/images/field-notes/follow-the-signal.jpg",
-    date: "May 2026",
-    slug: "follow-the-signal-not-the-noise",
-  },
-  {
-    title: "Starter fixes create proof before giant projects.",
+    title: "Quote request cleanup",
     category: "Intake Repair",
-    excerpt: "A small working version creates proof before anyone turns the problem into a large scope.",
-    date: "May 2026",
-    slug: "starter-fixes-create-proof",
+    label: "Common starter fix",
+    before: "DM me for a quote.",
+    after: "A short intake path that collects service type, location, photos/link, and urgency.",
+    why: "Less back-and-forth before the first reply.",
+    slug: "quote-request-cleanup",
   },
   {
-    title: "Send a screenshot, not a polished brief.",
-    category: "Field Notes",
-    excerpt: "A rough caption, a busted lead form, or a screenshot of a messy inbox is enough to start.",
-    date: "May 2026",
-    slug: "send-a-screenshot-not-a-polished-brief",
+    title: "Offer page cleanup",
+    category: "Offer Cleanup",
+    label: "Example repair",
+    before: "A good idea buried inside a social post.",
+    after: "A simple page with the offer, price range, next step, and contact/payment path.",
+    why: "The next action becomes obvious.",
+    slug: "offer-page-cleanup",
   },
   {
-    title: "Better intake makes better work possible.",
+    title: "Lead flow repair",
+    category: "Lead Flow",
+    label: "Common starter fix",
+    before: "Messages arrive with missing details.",
+    after: "A cleaner form asks the right questions once.",
+    why: "Fewer follow-up messages and cleaner quote context.",
+    slug: "lead-flow-repair",
+  },
+  {
+    title: "Form friction audit",
     category: "Intake Repair",
-    excerpt: "When people know what to send and where to send it, the whole project gets easier to price and deliver.",
-    date: "May 2026",
-    slug: "better-intake-makes-better-work-possible",
+    label: "Example repair",
+    before: "A long form asks too much too soon.",
+    after: "The first step collects only the details needed to qualify the request.",
+    why: "Less drop-off and less confusion.",
+    slug: "form-friction-audit",
+  },
+  {
+    title: "Small page/tool",
+    category: "Tiny Build",
+    label: "Common starter fix",
+    before: "A repeated manual explanation happens in every DM.",
+    after: "A small page or helper tool explains the options once.",
+    why: "The owner stops retyping the same answer.",
+    slug: "small-page-tool",
+  },
+  {
+    title: "Payment/contact path cleanup",
+    category: "Conversion Path",
+    label: "Example repair",
+    before: "A visitor does not know whether to message, book, or pay.",
+    after: "The page separates submit-first, quote-next, and payment-after-agreement.",
+    why: "Fewer trust leaks.",
+    slug: "payment-contact-path-cleanup",
   },
 ];
 
