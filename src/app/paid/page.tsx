@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+
+import { BrandLockup } from "@/components/brand-lockup";
 
 const followUpLinks = {
   intake: "#",
@@ -24,17 +27,12 @@ export default function PaidPage() {
     <main className="shell inner-page">
       <section className="subpage-hero">
         <div className="identity-strip utility-strip">
-          <div>
-            <p className="eyebrow">Killough Works</p>
-            <p className="identity-note">
-              Confirmation page for starter payments and scoped small-build deposits.
-            </p>
-          </div>
+          <BrandLockup note="Confirmation page for starter payments and scoped small-build deposits." />
           <nav className="route-nav" aria-label="Confirmation page links">
             <span className="route-nav-label">Route</span>
             <div className="route-nav-links">
-              <a href={followUpLinks.home}>Back home</a>
-              <a href={followUpLinks.payHub}>Back to pay</a>
+              <Link href={followUpLinks.home}>Back home</Link>
+              <Link href={followUpLinks.payHub}>Back to pay</Link>
               <a className="route-nav-cta" href={followUpLinks.intake}>
                 Send intake details
               </a>

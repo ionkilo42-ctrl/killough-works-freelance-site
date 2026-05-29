@@ -3,14 +3,6 @@ export type CoreCategory = {
   summary: string;
 };
 
-export type FeaturedVisual = {
-  category: string;
-  imagePath: string;
-  title: string;
-  excerpt: string;
-  cta?: string;
-};
-
 export type FieldNote = {
   title: string;
   category: string;
@@ -50,27 +42,6 @@ export const coreCategories: CoreCategory[] = [
   {
     title: "Simple pages, forms, and tools",
     summary: "Ship a small useful version before it becomes a giant project.",
-  },
-];
-
-export const featuredVisuals: FeaturedVisual[] = [
-  {
-    category: "Field Notes",
-    imagePath: "/images/field-notes/clarity-is-a-service.jpg",
-    title: "Clarity is a service.",
-    excerpt: "A clear frame can make the next useful move easier to see.",
-  },
-  {
-    category: "Tiny Builds",
-    imagePath: "/images/field-notes/tiny-build-back-and-forth.jpg",
-    title: "A small tool that saves a back-and-forth.",
-    excerpt: "The smallest working tool can remove the same repeated question.",
-  },
-  {
-    category: "Signal Maps",
-    imagePath: "/images/field-notes/follow-the-signal.jpg",
-    title: "Follow the signal, not the noise.",
-    excerpt: "A messy flow usually has one real bottleneck worth fixing first.",
   },
 ];
 

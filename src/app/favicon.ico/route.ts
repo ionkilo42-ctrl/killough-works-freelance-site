@@ -1,9 +1,16 @@
 const faviconSvg = `<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="56" height="56" rx="12" fill="#071521" />
-  <rect x="8.5" y="8.5" width="47" height="47" rx="9.5" stroke="#C9A96A" stroke-width="1.5" />
-  <path d="M16 20.5H22L28 31.5L22 43.5H16L22.4 31.7L16 20.5Z" fill="#F4EEDF" />
-  <path d="M24.5 20.5H30.1L35 30.1L39.9 20.5H45.5V43.5H40.8V28.9L35.8 38.3H34L29.1 28.9V43.5H24.5V20.5Z" fill="#F4EEDF" />
-  <path d="M48.5 17.5L49.7 21L53.3 21.1L50.4 23.3L51.4 26.8L48.5 24.7L45.6 26.8L46.6 23.3L43.7 21.1L47.3 21L48.5 17.5Z" fill="#9CCDC4" />
+  <rect width="64" height="64" rx="12" fill="#081A2A"/>
+  <rect x="4" y="4" width="56" height="56" rx="10" stroke="rgba(223,204,170,0.26)" stroke-width="1"/>
+  <circle cx="32" cy="32" r="22.5" stroke="#DFCCAA" stroke-width="1.8"/>
+  <circle cx="32" cy="32" r="17.5" stroke="rgba(156,205,196,0.22)" stroke-width="1" stroke-dasharray="2.6 2.6"/>
+  <path d="M32 8.5V16.5" stroke="#DFCCAA" stroke-width="1.2"/>
+  <path d="M8.5 32H15.5" stroke="#DFCCAA" stroke-width="1.2"/>
+  <path d="M48.5 32H55.5" stroke="#DFCCAA" stroke-width="1.2"/>
+  <path d="M32 49V55.5" stroke="rgba(223,204,170,0.6)" stroke-width="1"/>
+  <text x="22" y="31" fill="#F2E7D4" font-size="25" font-family="Georgia, 'Times New Roman', serif" font-weight="700">K</text>
+  <text x="28" y="44" fill="#F2E7D4" font-size="21" font-family="Georgia, 'Times New Roman', serif" font-weight="700">W</text>
+  <path d="M32 10V15.5" stroke="#F2E7D4" stroke-width="1"/>
+  <path d="M29.25 12.75H34.75" stroke="#F2E7D4" stroke-width="1"/>
 </svg>`;
 
 export function GET() {

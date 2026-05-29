@@ -18,11 +18,14 @@ const display = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Killough Works | Small coded tools for messy business moments",
   description:
-    "Killough Works builds small coded tools, visual systems, and intake fixes for messy business moments.",
+    "Killough Works builds small practical web fixes, intake flows, and lightweight tools for messy business moments.",
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    icon: [
+      { url: "/icon", type: "image/png", sizes: "512x512" },
+      { url: "/favicon.ico", type: "image/svg+xml", sizes: "64x64" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-icon", type: "image/png", sizes: "180x180" }],
   },
 };
 

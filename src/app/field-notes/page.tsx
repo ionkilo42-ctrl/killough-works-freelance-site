@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+import { BrandLockup } from "@/components/brand-lockup";
 import { FieldNoteCard } from "@/components/field-note-card";
 import { fieldNotes } from "@/data/site";
 
@@ -6,16 +9,13 @@ export default function FieldNotesPage() {
     <main className="shell innovation-shell">
       <section className="section section-tray field-notes-page field-notes-archive">
         <div className="topline">
-          <div>
-            <p className="eyebrow">Killough Works</p>
-            <p className="identity-note">Practical workshop notes for messy business problems.</p>
-          </div>
+          <BrandLockup note="Practical workshop notes for messy business problems." />
           <nav className="route-nav" aria-label="Field Notes links">
-            <a href="/">Home</a>
-            <a href="/#contact">Send it</a>
-            <a className="route-nav-cta" href="/pay">
+            <Link href="/">Home</Link>
+            <Link href="/#contact">Send it</Link>
+            <Link className="route-nav-cta" href="/pay">
               Start Here
-            </a>
+            </Link>
           </nav>
         </div>
 
@@ -44,12 +44,12 @@ export default function FieldNotesPage() {
             </p>
           </div>
           <div className="field-notes-cta-actions">
-            <a className="button primary" href="/#contact">
+            <Link className="button primary" href="/#contact">
               Submit a fix
-            </a>
-            <a className="button tertiary" href="/">
+            </Link>
+            <Link className="button tertiary" href="/">
               Back to homepage
-            </a>
+            </Link>
           </div>
         </div>
       </section>

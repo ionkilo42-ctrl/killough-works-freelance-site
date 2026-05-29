@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+import { BrandLockup } from "@/components/brand-lockup";
 import { LeadForm } from "@/components/lead-form";
 import {
   coreCategories,
@@ -14,18 +17,15 @@ export default function Home() {
     <main className="shell innovation-shell">
       <section className="hero-section section-tray hero-tray" id="top">
         <div className="topline">
-          <div>
-            <p className="eyebrow">Killough Works</p>
-            <p className="identity-note">Small digital fixes for rough, real business moments.</p>
-          </div>
+          <BrandLockup note="Small digital fixes for rough, real business moments." />
           <nav className="route-nav" aria-label="Section links">
             <a href="#what-i-fix">What I fix</a>
             <a href="#how-it-starts">How it starts</a>
             <a href="#field-notes">Starter fixes</a>
             <a href="#contact">Send it</a>
-            <a className="route-nav-cta" href="/pay">
+            <Link className="route-nav-cta" href="/pay">
               Start Here
-            </a>
+            </Link>
           </nav>
         </div>
 
@@ -37,6 +37,11 @@ export default function Home() {
               I fix unclear offers, messy intake, rough quote flows, and small web problems that
               block the next sale or reply.
             </p>
+            <div className="hero-diagnostic-line" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
             <div className="hero-actions">
               <a className="button primary" href="#contact">
                 Send me the messy version
@@ -112,9 +117,9 @@ export default function Home() {
             <h2>Raw field notes: common starter fixes</h2>
             <p>Most first moves look like one of these before anything bigger needs to happen.</p>
           </div>
-          <a className="button tertiary" href="/field-notes">
+          <Link className="button tertiary" href="/field-notes">
             Browse all field notes
-          </a>
+          </Link>
         </div>
         <div className="category-grid">
           {starterFixes.map((item) => (
@@ -131,7 +136,7 @@ export default function Home() {
           ))}
         </div>
         <p className="contact-note">
-          The deeper archive lives on <a href="/field-notes">/field-notes</a>.
+          The deeper archive lives on <Link href="/field-notes">/field-notes</Link>.
         </p>
       </section>
 
