@@ -26,6 +26,13 @@ export type ProcessStep = {
   summary: string;
 };
 
+export type StarterFix = {
+  title: string;
+  label: string;
+  before: string;
+  after: string;
+};
+
 export const coreCategories: CoreCategory[] = [
   {
     title: "Unclear offers",
@@ -129,5 +136,26 @@ export const processSteps: ProcessStep[] = [
     number: "03",
     title: "Ship the first version",
     summary: "We build something practical before turning it into a giant project.",
+  },
+];
+
+export const starterFixes: StarterFix[] = [
+  {
+    title: "Quote request cleanup",
+    label: "Common starter fix",
+    before: "DM me for a quote.",
+    after: "A short intake path that collects service type, location, photos/link, and urgency.",
+  },
+  {
+    title: "Offer page cleanup",
+    label: "Example fix",
+    before: "A good idea buried in a social post.",
+    after: "A simple page with the offer, price range, next step, and payment/contact link.",
+  },
+  {
+    title: "Lead flow repair",
+    label: "Common starter fix",
+    before: "Back-and-forth messages with missing details.",
+    after: "A cleaner form that asks the right questions once.",
   },
 ];

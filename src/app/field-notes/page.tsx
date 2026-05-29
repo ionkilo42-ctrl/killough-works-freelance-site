@@ -14,7 +14,7 @@ export default function FieldNotesPage() {
             <a href="/">Home</a>
             <a href="/#contact">Send it</a>
             <a className="route-nav-cta" href="/pay">
-              Pay / Start
+              Start Here
             </a>
           </nav>
         </div>

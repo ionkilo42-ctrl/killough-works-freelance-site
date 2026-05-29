@@ -47,12 +47,13 @@ export function LeadForm() {
   }
 
   return (
-    <form className="lead-form" onSubmit={onSubmit}>
+    <form className="lead-form console-form" onSubmit={onSubmit}>
       <div className="form-intro">
         <p className="panel-label">Send it to Jonathan</p>
         <p className="form-note">
           Messy is fine. Links, screenshots, rough offers, and half-formed ideas all work.
         </p>
+        <p className="form-note">Submit first. I&apos;ll review it and send the smallest useful next step.</p>
         <p className="required-note">Required: name, email, business or idea, starter budget, and what needs fixing.</p>
       </div>
 
@@ -86,12 +87,16 @@ export function LeadForm() {
           />
         </label>
         <label>
-          Link, screenshot, Instagram, Facebook, or website
+          Where is the problem?
           <input
-            placeholder="Drop whatever gives me context"
+            placeholder="Paste a link or describe what you have"
             value={form.website}
             onChange={(event) => setForm((current) => ({ ...current, website: event.target.value }))}
           />
+          <span className="field-help">
+            Paste a website link, social page, shared screenshot link, or describe what you have.
+            Have screenshots? Mention them here or paste a shared link for now.
+          </span>
         </label>
         <label>
           Starter budget
@@ -101,12 +106,14 @@ export function LeadForm() {
             onChange={(event) => setForm((current) => ({ ...current, budget: event.target.value }))}
           >
             <option value="">Select one</option>
-            <option>$10-$25</option>
-            <option>$25-$50</option>
-            <option>$50-$100</option>
-            <option>$150+</option>
+            <option>$10-$35 — Starter fix</option>
+            <option>$35-$100 — Larger fix</option>
+            <option>$150+ — Multi-step build</option>
             <option>Not sure yet</option>
           </select>
+          <span className="field-help">
+            Starter fixes are for one clear friction point, not an entire business rebuild.
+          </span>
         </label>
       </div>
 
@@ -123,7 +130,7 @@ export function LeadForm() {
 
       <div className="form-actions">
         <button type="submit" disabled={status === "loading"}>
-          {status === "loading" ? "Sending..." : "Send it to Jonathan"}
+          <span className="console-form-submit">{status === "loading" ? "Sending..." : "Send it to Jonathan"}</span>
         </button>
         <a className="text-link" href="mailto:ionkilo42ai@gmail.com?subject=Freelance%20Project%20Inquiry">
           Or email directly

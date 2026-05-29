@@ -73,12 +73,12 @@ img {
 .shell {
   width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
-  padding: 1.35rem 0 5rem;
+  padding: 1.5rem 0 5.75rem;
 }
 
 .innovation-shell {
   display: grid;
-  gap: 2.3rem;
+  gap: 3rem;
 }
 
 .inner-page,
@@ -112,7 +112,57 @@ img {
 .hero-section,
 .section {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.7rem;
+}
+
+.section-tray {
+  padding: 1.55rem;
+  border: 1px solid rgba(156, 205, 196, 0.11);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(14, 26, 36, 0.42), rgba(8, 17, 26, 0.26)),
+    rgba(5, 13, 21, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(244, 238, 223, 0.04),
+    0 24px 80px rgba(0, 0, 0, 0.14);
+}
+
+.section-tray::before,
+.section-tray::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.section-tray::before {
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(201, 169, 106, 0.12), transparent 14%, transparent 86%, rgba(156, 205, 196, 0.1)),
+    linear-gradient(180deg, rgba(244, 238, 223, 0.04), transparent 18%);
+  opacity: 0.9;
+}
+
+.section-tray::after {
+  inset: 0.72rem;
+  border: 1px solid rgba(244, 238, 223, 0.07);
+}
+
+.hero-tray {
+  overflow: hidden;
+}
+
+.hero-tray::before {
+  background:
+    radial-gradient(700px 340px at 18% 16%, rgba(214, 168, 88, 0.22), transparent 58%),
+    radial-gradient(520px 260px at 82% 24%, rgba(156, 205, 196, 0.14), transparent 60%),
+    linear-gradient(90deg, rgba(201, 169, 106, 0.1), transparent 14%, transparent 84%, rgba(156, 205, 196, 0.09)),
+    linear-gradient(180deg, rgba(244, 238, 223, 0.04), transparent 18%);
+}
+
+.hero-tray::after {
+  inset: 0.8rem;
+  border-color: rgba(244, 238, 223, 0.08);
 }
 
 .topline,
@@ -208,10 +258,15 @@ img {
 }
 
 .route-nav-cta {
-  padding: 0.55rem 0.8rem;
-  border: 1px solid var(--line-strong);
+  padding: 0.7rem 0.95rem;
+  border: 1px solid rgba(231, 201, 136, 0.54);
   border-radius: 6px;
-  background: rgba(244, 238, 223, 0.08);
+  background:
+    linear-gradient(135deg, rgba(214, 174, 95, 0.26), rgba(242, 223, 184, 0.1) 72%),
+    rgba(244, 238, 223, 0.08);
+  box-shadow:
+    0 14px 28px rgba(201, 169, 106, 0.14),
+    inset 0 1px 0 rgba(255, 246, 223, 0.18);
 }
 
 .hero-grid {
@@ -249,7 +304,10 @@ img {
     linear-gradient(145deg, rgba(33, 50, 58, 0.9), rgba(8, 22, 33, 0.96) 72%),
     linear-gradient(180deg, rgba(244, 238, 223, 0.08), transparent 34%),
     var(--card);
-  box-shadow: var(--shadow);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.28),
+    0 1px 0 rgba(255, 245, 228, 0.05) inset,
+    0 0 0 1px rgba(255, 245, 228, 0.02);
 }
 
 .hero-card::before,
@@ -320,6 +378,9 @@ img {
   background:
     linear-gradient(160deg, rgba(241, 228, 200, 0.14), rgba(9, 22, 33, 0.9) 46%),
     rgba(12, 28, 40, 0.9);
+  box-shadow:
+    0 22px 56px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(156, 205, 196, 0.05);
 }
 
 .maker-stamp {
@@ -365,6 +426,10 @@ img {
   align-content: center;
   gap: 1.15rem;
   padding: 2rem;
+  background:
+    radial-gradient(520px 220px at 18% 6%, rgba(214, 168, 88, 0.12), transparent 62%),
+    linear-gradient(145deg, rgba(33, 50, 58, 0.92), rgba(8, 22, 33, 0.97) 72%),
+    var(--card);
 }
 
 .hero-essay {
@@ -469,10 +534,14 @@ h3 {
 button {
   border: 1px solid transparent;
   border-radius: 7px;
-  padding: 0.95rem 1.2rem;
+  padding: 1rem 1.25rem;
   font: inherit;
   cursor: pointer;
-  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .button:hover,
@@ -485,14 +554,37 @@ button {
   color: #06111a;
   font-weight: 700;
   background: linear-gradient(135deg, #d9b66f, #f2dfb8 72%);
-  box-shadow: 0 14px 34px rgba(201, 169, 106, 0.18);
+  box-shadow:
+    0 18px 40px rgba(201, 169, 106, 0.24),
+    0 0 0 1px rgba(255, 244, 216, 0.16);
 }
 
 .button.secondary,
 .button.tertiary {
   color: var(--text);
   border-color: var(--line-strong);
-  background: rgba(244, 238, 223, 0.08);
+  background:
+    linear-gradient(180deg, rgba(244, 238, 223, 0.09), rgba(244, 238, 223, 0.04)),
+    rgba(244, 238, 223, 0.06);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+}
+
+.hero-actions .button.primary,
+.console-form button,
+.route-nav-cta {
+  position: relative;
+}
+
+.hero-actions .button.primary::after,
+.console-form button::after,
+.route-nav-cta::after {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(201, 169, 106, 0.18), transparent 68%);
+  pointer-events: none;
 }
 
 .signal-row span,
@@ -518,7 +610,7 @@ button {
 
 .section-heading {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.68rem;
 }
 
 .section-heading p {
@@ -566,8 +658,11 @@ button {
   min-height: 170px;
   align-content: start;
   background:
-    linear-gradient(150deg, rgba(241, 228, 200, 0.13), rgba(10, 26, 38, 0.92) 52%),
+    linear-gradient(160deg, rgba(241, 228, 200, 0.14), rgba(10, 26, 38, 0.9) 38%, rgba(6, 18, 28, 0.98) 100%),
     var(--card);
+  box-shadow:
+    0 16px 34px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 245, 228, 0.04);
 }
 
 .category-card p,
@@ -726,8 +821,12 @@ button {
   padding: 1.1rem 1.15rem;
   align-content: start;
   background:
-    linear-gradient(150deg, rgba(241, 228, 200, 0.12), rgba(8, 22, 33, 0.96) 58%),
+    linear-gradient(165deg, rgba(11, 27, 38, 0.96), rgba(8, 22, 33, 0.98) 62%),
+    radial-gradient(260px 140px at 12% 8%, rgba(214, 168, 88, 0.09), transparent 72%),
     var(--card);
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 245, 228, 0.04);
 }
 
 .process-pill h3,
@@ -815,16 +914,88 @@ button {
   gap: 1.25rem;
 }
 
+.contact-console {
+  position: relative;
+  padding: 1.1rem;
+  border: 1px solid rgba(201, 169, 106, 0.3);
+  border-radius: 12px;
+  background:
+    radial-gradient(680px 240px at 14% 6%, rgba(214, 168, 88, 0.13), transparent 60%),
+    radial-gradient(520px 220px at 92% 72%, rgba(156, 205, 196, 0.1), transparent 58%),
+    linear-gradient(180deg, rgba(13, 23, 34, 0.98), rgba(6, 17, 26, 0.98)),
+    rgba(6, 17, 26, 0.98);
+  box-shadow:
+    0 30px 72px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(241, 228, 200, 0.05);
+}
+
+.contact-console::before {
+  content: "";
+  position: absolute;
+  inset: 0.7rem;
+  border: 1px solid rgba(156, 205, 196, 0.18);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.contact-console::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(201, 169, 106, 0.16), transparent 18%, transparent 82%, rgba(156, 205, 196, 0.14)),
+    linear-gradient(180deg, rgba(241, 228, 200, 0.05), transparent 22%);
+}
+
 .contact-copy,
 .lead-form {
   display: grid;
   gap: 1.1rem;
 }
 
+.console-sidebar,
+.console-form {
+  min-height: 100%;
+}
+
 .contact-copy {
   background:
-    linear-gradient(160deg, rgba(241, 228, 200, 0.13), rgba(9, 22, 33, 0.94) 54%),
+    linear-gradient(162deg, rgba(241, 228, 200, 0.14), rgba(9, 22, 33, 0.92) 44%, rgba(6, 18, 28, 0.98) 100%),
     var(--card);
+}
+
+.console-sidebar {
+  background:
+    linear-gradient(180deg, rgba(9, 22, 33, 0.96), rgba(7, 17, 27, 0.98)),
+    rgba(7, 17, 27, 0.96);
+  border-color: rgba(156, 205, 196, 0.18);
+}
+
+.console-form {
+  gap: 1rem;
+  padding: 1.4rem;
+  background:
+    radial-gradient(420px 200px at 10% 4%, rgba(214, 168, 88, 0.12), transparent 56%),
+    linear-gradient(180deg, rgba(8, 18, 28, 0.98), rgba(7, 15, 24, 0.99)),
+    rgba(7, 15, 24, 0.98);
+  border-color: rgba(201, 169, 106, 0.22);
+  box-shadow:
+    0 22px 52px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(241, 228, 200, 0.04);
+}
+
+.console-form::before {
+  background:
+    linear-gradient(90deg, transparent 0, transparent calc(100% - 1px), rgba(156, 205, 196, 0.08) 100%),
+    linear-gradient(rgba(201, 169, 106, 0.07) 1px, transparent 1px);
+  background-size: auto, 100% 26px;
+}
+
+.console-form::after {
+  inset: 0.55rem;
+  border-color: rgba(241, 228, 200, 0.1);
 }
 
 .contact-copy ol {
@@ -836,11 +1007,54 @@ button {
   font-size: 1.02rem;
 }
 
+.human-anchor {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: start;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(201, 169, 106, 0.14);
+}
+
+.stamp-mark {
+  margin: 0;
+  display: inline-grid;
+  place-items: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  border: 1px solid rgba(201, 169, 106, 0.44);
+  border-radius: 7px;
+  color: var(--parchment);
+  background:
+    linear-gradient(145deg, rgba(214, 168, 88, 0.14), rgba(7, 19, 29, 0.94)),
+    rgba(7, 19, 29, 0.92);
+  font-family: var(--font-display), serif;
+  font-size: 1rem;
+  line-height: 1;
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 244, 216, 0.08);
+}
+
+.human-anchor-title {
+  margin: 0 0 0.35rem;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .form-intro,
 .field-grid,
 .form-actions {
   display: grid;
   gap: 0.85rem;
+}
+
+.form-intro {
+  gap: 0.65rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(201, 169, 106, 0.16);
 }
 
 .field-grid {
@@ -849,9 +1063,10 @@ button {
 
 .lead-form label {
   display: grid;
-  gap: 0.5rem;
-  color: var(--text);
-  font-size: 1.03rem;
+  gap: 0.55rem;
+  color: #f8eedb;
+  font-size: 1.01rem;
+  font-weight: 600;
   line-height: 1.4;
 }
 
@@ -859,19 +1074,34 @@ button {
 .lead-form select,
 .lead-form textarea {
   width: 100%;
-  border: 1px solid rgba(156, 205, 196, 0.22);
-  border-radius: 6px;
-  padding: 0.98rem 1rem;
+  border: 1px solid rgba(156, 205, 196, 0.2);
+  border-radius: 7px;
+  padding: 1.05rem 1rem;
   color: var(--text);
   font: inherit;
   font-size: 1.03rem;
-  background: rgba(5, 17, 27, 0.78);
-  box-shadow: 0 1px 0 rgba(244, 238, 223, 0.05) inset;
+  background:
+    linear-gradient(180deg, rgba(18, 30, 42, 0.98), rgba(8, 18, 28, 0.98)),
+    rgba(8, 18, 28, 0.96);
+  box-shadow:
+    inset 0 1px 0 rgba(241, 228, 200, 0.04),
+    inset 0 0 0 1px rgba(4, 10, 16, 0.25);
+  appearance: none;
 }
 
 .lead-form textarea {
-  min-height: 180px;
+  min-height: 190px;
   resize: vertical;
+}
+
+.lead-form input:focus,
+.lead-form select:focus,
+.lead-form textarea:focus {
+  outline: none;
+  border-color: rgba(201, 169, 106, 0.62);
+  box-shadow:
+    inset 0 1px 0 rgba(241, 228, 200, 0.05),
+    0 0 0 3px rgba(201, 169, 106, 0.12);
 }
 
 .lead-form input::placeholder,
@@ -879,9 +1109,17 @@ button {
   color: rgba(222, 228, 222, 0.82);
 }
 
+.field-help {
+  color: rgba(214, 223, 217, 0.92);
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
 .form-actions {
   grid-template-columns: auto 1fr;
   align-items: center;
+  gap: 1rem;
 }
 
 .text-link {
@@ -890,9 +1128,27 @@ button {
 
 .required-note {
   margin: 0;
-  color: rgba(241, 228, 200, 0.84);
-  font-size: 0.96rem;
+  color: rgba(241, 228, 200, 0.92);
+  font-size: 0.92rem;
+  font-weight: 600;
   line-height: 1.55;
+}
+
+.console-form button {
+  min-width: 220px;
+  justify-self: start;
+  padding: 1rem 1.3rem;
+  border-color: rgba(255, 239, 199, 0.2);
+  box-shadow:
+    0 18px 38px rgba(201, 169, 106, 0.22),
+    inset 0 1px 0 rgba(255, 247, 223, 0.35);
+}
+
+.console-form-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.5rem;
 }
 
 .form-message.success {
@@ -906,6 +1162,10 @@ button {
 .quiet-cta {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
+  background:
+    radial-gradient(320px 140px at 90% 48%, rgba(156, 205, 196, 0.08), transparent 64%),
+    linear-gradient(145deg, rgba(18, 34, 45, 0.92), rgba(8, 19, 29, 0.98) 72%),
+    var(--card);
 }
 
 .page-heading h1 {
@@ -937,6 +1197,10 @@ button {
   .shell {
     width: min(100% - 1rem, 100%);
     padding: 0.8rem 0 3rem;
+  }
+
+  .innovation-shell {
+    gap: 2.2rem;
   }
 
   .topline,
@@ -982,6 +1246,28 @@ button {
     padding: 1rem;
   }
 
+  .section-tray {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .section-tray::after {
+    inset: 0.5rem;
+  }
+
+  .contact-console {
+    padding: 0.7rem;
+  }
+
+  .human-anchor {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .console-form {
+    padding: 1rem;
+  }
+
   .category-card {
     min-height: auto;
   }
@@ -1015,5 +1301,18 @@ button {
 
   .form-actions {
     grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .lead-form label {
+    font-size: 0.98rem;
+  }
+
+  .lead-form input,
+  .lead-form select,
+  .lead-form textarea,
+  .console-form button {
+    font-size: 1rem;
+    min-height: 3.2rem;
   }
 }

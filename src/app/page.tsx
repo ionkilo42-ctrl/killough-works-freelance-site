@@ -1,10 +1,8 @@
 import { LeadForm } from "@/components/lead-form";
-import { FeaturedVisualCard } from "@/components/featured-visual-card";
 import {
   coreCategories,
-  featuredVisuals,
-  fieldNotes,
   processSteps,
+  starterFixes,
 } from "@/data/site";
 
 const rawBookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL?.trim();
@@ -14,7 +12,7 @@ const hasBookingUrl = Boolean(rawBookingUrl);
 export default function Home() {
   return (
     <main className="shell innovation-shell">
-      <section className="hero-section" id="top">
+      <section className="hero-section section-tray hero-tray" id="top">
         <div className="topline">
           <div>
             <p className="eyebrow">Killough Works</p>
@@ -23,10 +21,10 @@ export default function Home() {
           <nav className="route-nav" aria-label="Section links">
             <a href="#what-i-fix">What I fix</a>
             <a href="#how-it-starts">How it starts</a>
-            <a href="#field-notes">Field Notes</a>
+            <a href="#field-notes">Starter fixes</a>
             <a href="#contact">Send it</a>
             <a className="route-nav-cta" href="/pay">
-              Pay / Start
+              Start Here
             </a>
           </nav>
         </div>
@@ -36,8 +34,8 @@ export default function Home() {
             <p className="micro-note">Send the messy version</p>
             <h1>Small coded tools for messy business moments.</h1>
             <p className="lede">
-              Send a screenshot, rough offer, post, form, or messy lead flow. I&apos;ll find the
-              smallest useful fix.
+              I fix unclear offers, messy intake, rough quote flows, and small web problems that
+              block the next sale or reply.
             </p>
             <div className="hero-actions">
               <a className="button primary" href="#contact">
@@ -53,8 +51,8 @@ export default function Home() {
             <p className="panel-label">Messy is okay</p>
             <p className="side-panel-title">Send the thing before it is polished.</p>
             <ul className="messy-list">
-              <li>A screenshot of the current page</li>
-              <li>A rough caption, offer, or promo idea</li>
+              <li>A website link or shared screenshot link</li>
+              <li>A rough offer, caption, or promo idea</li>
               <li>A form, inbox, DM thread, or lead path that keeps getting stuck</li>
             </ul>
             <p className="contact-note">Starter fixes from $10-$35. Bigger builds start only after the first useful move is clear.</p>
@@ -62,27 +60,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section visual-section">
-        <div className="section-heading">
-          <p className="section-label">Featured visuals</p>
-          <h2>A visual system for practical clarity.</h2>
-          <p>
-            Image, language, and layout work together here, not as decoration, but as a way to make
-            messy business problems easier to see.
-          </p>
-        </div>
-        <div className="visual-grid">
-          {featuredVisuals.map((item) => (
-            <FeaturedVisualCard item={item} key={item.title} />
-          ))}
-        </div>
-      </section>
-
-      <section className="section" id="what-i-fix">
+      <section className="section section-tray" id="what-i-fix">
         <div className="section-heading">
           <p className="section-label">What I fix</p>
-          <h2>Small fixes for the places business gets stuck.</h2>
-          <p>Most projects do not need a giant plan to begin. They need one clear first move.</p>
+          <h2>What I fix first</h2>
+          <p>These are the practical problems that usually make a small starter fix worth doing.</p>
+          <p className="contact-note">
+            Best fit: custom HTML/CSS/JS, React/Tailwind pages, simple forms, embedded tools,
+            Webflow-style page tweaks, Zapier-style handoffs, and lightweight website cleanup.
+          </p>
         </div>
         <div className="category-grid">
           {coreCategories.map((item) => (
@@ -94,13 +80,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section process-section" id="how-it-starts">
+      <section className="section section-tray process-section" id="how-it-starts">
         <div className="section-heading">
           <p className="section-label">How it starts</p>
-          <h2>Send the messy version first.</h2>
+          <h2>How it starts</h2>
           <p>
-            No polished brief required. A screenshot, rough offer, caption, link, or half-broken
-            lead flow is enough to find the smallest useful fix.
+            Send what you already have. I review the real friction point, then reply with the
+            smallest useful next step.
+          </p>
+          <p>Submit first. I&apos;ll review it and send the smallest useful next step.</p>
+          <p className="contact-note">
+            I usually send a first read within 24 hours. Small starter fixes often ship in 1-2
+            business days once the path is clear.
           </p>
         </div>
         <div className="process-strip">
@@ -114,58 +105,100 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section" id="field-notes">
+      <section className="section section-tray" id="field-notes">
         <div className="section-heading split-heading">
           <div>
-            <p className="section-label">Field Notes</p>
-            <h2>Field notes from small useful fixes.</h2>
-            <p>
-              Short observations from small coded tools, intake repairs, visual systems, and
-              practical signals.
-            </p>
+            <p className="section-label">Raw field notes</p>
+            <h2>Raw field notes: common starter fixes</h2>
+            <p>Most first moves look like one of these before anything bigger needs to happen.</p>
           </div>
           <a className="button tertiary" href="/field-notes">
             Browse all field notes
           </a>
         </div>
-        <div className="field-note-ledger">
-          {fieldNotes.slice(0, 4).map((note) => (
-            <a className="ledger-row" href={`/field-notes#${note.slug}`} key={note.slug}>
-              <div className="ledger-meta">
-                <span>{note.category}</span>
-                <span>{note.date}</span>
-              </div>
-              <h3>{note.title}</h3>
-              <p>{note.excerpt}</p>
-            </a>
+        <div className="category-grid">
+          {starterFixes.map((item) => (
+            <article className="category-card" key={item.title}>
+              <p className="panel-label">{item.label}</p>
+              <h3>{item.title}</h3>
+              <p>
+                <strong>Before:</strong> {item.before}
+              </p>
+              <p>
+                <strong>After:</strong> {item.after}
+              </p>
+            </article>
           ))}
         </div>
+        <p className="contact-note">
+          The deeper archive lives on <a href="/field-notes">/field-notes</a>.
+        </p>
       </section>
 
-      <section className="section contact-section" id="contact">
+      <section className="section section-tray contact-section" id="contact">
         <div className="section-heading">
           <p className="section-label">Send me the messy version</p>
           <h2>Messy is okay. Send the thing.</h2>
           <p>I&apos;ll help find the first useful move and keep the starting scope practical.</p>
         </div>
-        <div className="contact-grid">
-          <div className="contact-copy">
-            <p className="panel-label">What happens next</p>
-            <ol>
-              <li>You send what already exists.</li>
-              <li>I map the real friction point.</li>
-              <li>I quote the smallest useful fix before anything gets overbuilt.</li>
-            </ol>
-            <p className="contact-note">
-              Start with the smallest useful move before turning it into a larger project.
-            </p>
+        <div className="contact-console">
+          <div className="contact-grid">
+            <div className="contact-copy console-sidebar">
+              <p className="panel-label">What happens next</p>
+              <ol>
+                <li>You send what already exists.</li>
+                <li>I map the real friction point.</li>
+                <li>I quote the smallest useful fix before anything gets overbuilt.</li>
+              </ol>
+              <p className="panel-label">Good fit:</p>
+              <ul>
+                <li>one confusing offer</li>
+                <li>one intake form</li>
+                <li>one quote flow</li>
+                <li>one small page/tool</li>
+              </ul>
+              <p className="panel-label">Not a starter fix:</p>
+              <ul>
+                <li>full SaaS app</li>
+                <li>full branding package</li>
+                <li>database-heavy backend</li>
+                <li>full e-commerce rebuild</li>
+              </ul>
+              <p className="contact-note">
+                Submit first. I&apos;ll review it and send the smallest useful next step.
+              </p>
+              <p className="contact-note">
+                If it needs a bigger rebuild instead of a starter fix, I&apos;ll tell you straight
+                up before anything gets overbuilt.
+              </p>
+              <p className="contact-note">
+                Start with the smallest useful move before turning it into a larger project.
+              </p>
+              <div className="human-anchor" aria-label="Jonathan note">
+                <p className="stamp-mark" aria-hidden="true">
+                  KW
+                </p>
+                <div>
+                  <p className="human-anchor-title">Jonathan note</p>
+                  <p className="contact-note">
+                    Jonathan Killough builds small practical web fixes, intake flows, and
+                    lightweight tools for people who have a messy business problem but not a
+                    polished project brief.
+                  </p>
+                  <p className="contact-note">
+                    You do not need to know the technical name for the problem. Send what you have
+                    and I&apos;ll help name the bottleneck.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <LeadForm />
           </div>
-          <LeadForm />
         </div>
       </section>
 
       {hasBookingUrl ? (
-        <section className="section quiet-cta-section">
+        <section className="section section-tray quiet-cta-section">
           <div className="quiet-cta">
             <div>
               <p className="section-label">Bigger projects</p>
