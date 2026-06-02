@@ -18,3 +18,4 @@ data/studio/*-shm
 data/studio/*-wal
 playwright-report
 test-results
+.playwright-cli
