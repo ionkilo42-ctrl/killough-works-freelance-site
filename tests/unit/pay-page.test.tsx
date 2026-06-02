@@ -7,11 +7,10 @@ describe("/pay page", () => {
 
     render(<PayPage />);
 
-    expect(screen.getByRole("heading", { name: "Start Small. Build Something Useful." })).toBeInTheDocument();
-    expect(screen.getByText("$10 Quick Lead / Offer Audit")).toBeInTheDocument();
-    expect(screen.getByText("$25 Pitch Image / Social Graphic")).toBeInTheDocument();
-    expect(screen.getByText("$35 Starter Build Deposit")).toBeInTheDocument();
-    expect(screen.getByText("Custom Project Deposit")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "One clear step. Then the next." })).toBeInTheDocument();
+    expect(screen.getByText("$35 — Friction Check")).toBeInTheDocument();
+    expect(screen.getByText("$75 — First Fix")).toBeInTheDocument();
+    expect(screen.getByText("$150+ — Mini Build")).toBeInTheDocument();
     expect(screen.getByText("Best place to start")).toBeInTheDocument();
     expect(
       screen
@@ -60,9 +59,24 @@ describe("/pay page", () => {
       screen.getByText("Larger work is scoped separately before any additional charges are sent."),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/The \$35 starter deposit is the best default/i),
+      screen.getByText(/The \$35 friction check is the best default/i),
     ).toBeInTheDocument();
     expect(screen.getByText(/After payment, use the confirmation page to send the details/i)).toBeInTheDocument();
     expect(screen.getByText(/If you are unsure, contact me first/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "I look at the messy spot and tell you what is actually broken, what matters, and what the first useful fix should be.",
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "I make one small practical improvement: form cleanup, intake flow, payment link, copy rewrite, button fix, customer message, or simple page section.",
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "For multi-step flows, dashboards, branded pages, automation, lead capture, or anything that needs more structure.",
+      ),
+    ).toBeInTheDocument();
   });
 });

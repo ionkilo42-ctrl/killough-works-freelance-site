@@ -4,17 +4,14 @@ import Link from "next/link";
 import { BrandLockup } from "@/components/brand-lockup";
 
 const followUpLinks = {
-  intake: "#",
+  intake: "/#start",
   payHub: "/pay",
   home: "/",
 } as const;
 
 const nextSteps = [
-  "Business name.",
-  "Website, booking link, or social page.",
-  "What you want help with right now.",
-  "Any screenshots, photos, files, or references.",
-  "Best contact method for the follow-up.",
+  "What is your website, Facebook, Instagram, or page link?",
+  "What is the #1 thing that feels broken, confusing, or annoying right now?",
 ] as const;
 
 export const metadata: Metadata = {
@@ -27,7 +24,7 @@ export default function PaidPage() {
     <main className="shell inner-page">
       <section className="subpage-hero">
         <div className="identity-strip utility-strip">
-          <BrandLockup note="Confirmation page for starter payments and scoped small-build deposits." />
+          <BrandLockup note="Friction Check handoff for small business systems, fixed one clear step at a time." />
           <nav className="route-nav" aria-label="Confirmation page links">
             <span className="route-nav-label">Route</span>
             <div className="route-nav-links">
@@ -42,18 +39,21 @@ export default function PaidPage() {
 
         <div className="hero-ledger pay-ledger">
           <article className="hero-essay pay-essay">
-            <p className="micro-note">Payment confirmation / intake handoff / next-step clarity</p>
+            <p className="micro-note">Payment received / Friction Check handoff / real intake next step</p>
             <div className="hero-poster">
               <p className="headline-note">No extra maze after payment.</p>
-              <div className="headline-stack">
+            <div className="headline-stack">
                 <span className="poster-mark">KW-PAID</span>
-                <h1>Payment received. Next step is simple.</h1>
+                <h1>Payment received. Next, answer 2 quick questions so I can review the first useful move.</h1>
               </div>
             </div>
             <p className="lede">
-              You are not stuck guessing what happens next. Send the key details so I can shape the
-              smallest useful version first. The clearer the business name, link, files,
-              screenshots, and contact method, the faster I can start cleanly.
+              For a $35 Friction Check, the next move is simple. Send your page link and the #1
+              thing that feels broken, confusing, or annoying right now.
+            </p>
+            <p className="contact-note">
+              Messy is okay. A website, Facebook page, Instagram profile, or rough page link is
+              enough to start.
             </p>
             <div className="hero-actions">
               <a className="button primary" href={followUpLinks.intake}>
@@ -76,8 +76,8 @@ export default function PaidPage() {
               ))}
             </div>
             <p className="panel-note">
-              Send the intake details and I will review what you sent, shape the smallest useful
-              next step, and follow up using your preferred contact method.
+              Send those 2 answers and I&apos;ll review the Friction Check cleanly, identify what is
+              actually broken, and reply with the first useful move.
             </p>
           </aside>
         </div>

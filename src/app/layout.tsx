@@ -16,9 +16,9 @@ const display = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Killough Works | Small coded tools for messy business moments",
+  title: "Killough Works | Website Handyman for Local Businesses",
   description:
-    "Killough Works builds small practical web fixes, intake flows, and lightweight tools for messy business moments.",
+    "Small, fast web fixes for local businesses tired of losing leads.",
   icons: {
     icon: [
       { url: "/icon", type: "image/png", sizes: "512x512" },

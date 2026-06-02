@@ -12,110 +12,159 @@ describe("Home page", () => {
 
     render(<Home />);
 
-    expect(screen.getByText("Small coded tools for messy business moments.")).toBeInTheDocument();
-    expect(screen.getByText(/Starter fixes from \$10-\$35/)).toBeInTheDocument();
     expect(
-      screen.getAllByText(/Submit first\.\s*I['’]ll review it and send the smallest useful next step\./)
+      screen.getByText("Small, fast web fixes for local businesses tired of losing leads."),
+    ).toBeInTheDocument();
+    expect(screen.getAllByText("Based in South Jersey. Fixing websites nationwide.").length).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText(/Hi, I['’]m Jonathan/i).length,
+    ).toBeGreaterThan(0);
+    expect(screen.getByText(/I fix the annoying website problems big agencies overcharge for/i)).toBeInTheDocument();
+    expect(screen.getByText(/Starts at \$35\. Pay for a Friction Check, then answer 2 quick questions on the next page\./i)).toBeInTheDocument();
+    expect(screen.getByText(/After payment: send your website URL and the #1 thing driving you crazy right now\./i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Messy is okay\. Send the site, page, or social profile\./i),
+    ).toBeInTheDocument();
+    expect(screen.getAllByRole("link", { name: "Get a $35 Friction Check" })[0]).toHaveAttribute(
+      "href",
+      "https://buy.stripe.com/7sY7sLba91fgaTwb0I1ZS02",
+    );
+    expect(screen.getByRole("link", { name: "See sample fixes" })).toHaveAttribute(
+      "href",
+      "#sample-fixes",
+    );
+    expect(
+      screen.getByRole("link", { name: "Plan a mini build" }),
+    ).toHaveAttribute("href", "#start");
+    expect(
+      screen.getAllByText(/If the slots are full, I['’]ll tell you before you pay for anything larger than a Friction Check\./i)
         .length,
     ).toBeGreaterThan(0);
-    expect(screen.getByRole("link", { name: "Start small" })).toHaveAttribute("href", "#how-it-starts");
-    expect(screen.getByRole("link", { name: "Browse all field notes" })).toHaveAttribute(
-      "href",
-      "/field-notes",
-    );
-    expect(screen.getByRole("link", { name: "Start Here" })).toHaveAttribute("href", "/pay");
+    expect(screen.getByRole("link", { name: "What I Fix" })).toHaveAttribute("href", "#what-i-fix");
+    expect(screen.getByRole("link", { name: "Pricing" })).toHaveAttribute("href", "#pricing");
+    expect(screen.getByRole("link", { name: "Sample Fixes" })).toHaveAttribute("href", "#sample-fixes");
+    expect(screen.getByRole("link", { name: "FAQ" })).toHaveAttribute("href", "#faq");
+    expect(screen.getByRole("link", { name: "Start" })).toHaveAttribute("href", "#start");
     expect(screen.queryByRole("link", { name: "Book a quick call" })).not.toBeInTheDocument();
   });
 
-  it("puts practical service sections first and removes abstract homepage copy", async () => {
+  it("puts the local-business offer sections in the new conversion order", async () => {
     delete process.env.NEXT_PUBLIC_BOOKING_URL;
     const { default: Home } = await import("@/app/page");
 
     render(<Home />);
 
-    const heroHeading = screen.getAllByRole("heading", { level: 1, name: "Small coded tools for messy business moments." })[0];
-    const whatIFixHeading = screen.getAllByRole("heading", { level: 2, name: "What I fix first" })[0];
-    const howItStartsHeading = screen.getAllByRole("heading", { level: 2, name: "How it starts" })[0];
-    const starterFixesHeading = screen.getAllByRole("heading", { level: 2, name: "Raw field notes: common starter fixes" })[0];
-    const contactHeading = screen.getAllByRole("heading", { level: 2, name: "Messy is okay. Send the thing." })[0];
+    const heroHeading = screen.getAllByRole("heading", {
+      level: 1,
+      name: "Small, fast web fixes for local businesses tired of losing leads.",
+    })[0];
+    const whatIFixHeading = screen.getAllByRole("heading", {
+      level: 2,
+      name: "The small problems that quietly lose customers",
+    })[0];
+    const pricingHeading = screen.getAllByRole("heading", {
+      level: 2,
+      name: "No giant agency proposal. Pick the size of fix you need.",
+    })[0];
+    const sampleFixesHeading = screen.getAllByRole("heading", {
+      level: 2,
+      name: "Sample fixes: before and after",
+    })[0];
+    const faqHeading = screen.getAllByRole("heading", {
+      level: 2,
+      name: "Simple answers before you start",
+    })[0];
+    const contactHeading = screen.getAllByRole("heading", {
+      level: 2,
+      name: "Start with the messy version",
+    })[0];
 
     expect(heroHeading.compareDocumentPosition(whatIFixHeading)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
-    expect(whatIFixHeading.compareDocumentPosition(howItStartsHeading)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
-    expect(howItStartsHeading.compareDocumentPosition(starterFixesHeading)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
-    expect(starterFixesHeading.compareDocumentPosition(contactHeading)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(whatIFixHeading.compareDocumentPosition(pricingHeading)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(pricingHeading.compareDocumentPosition(sampleFixesHeading)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(sampleFixesHeading.compareDocumentPosition(faqHeading)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(faqHeading.compareDocumentPosition(contactHeading)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
 
     expect(screen.queryByText("Featured visuals")).not.toBeInTheDocument();
-    expect(screen.queryByText("A visual system for practical clarity.")).not.toBeInTheDocument();
-    expect(screen.queryByText("Follow the signal, not the noise.")).not.toBeInTheDocument();
-    expect(
-      screen.queryByText("A clear frame can make the next useful move easier to see."),
-    ).not.toBeInTheDocument();
+    expect(screen.queryByText("Small business systems, fixed one clear step at a time.")).not.toBeInTheDocument();
+    expect(screen.queryByText("Messy is okay. Send the thing.")).not.toBeInTheDocument();
+    expect(screen.queryByText("Send me the broken business moment.")).not.toBeInTheDocument();
   });
 
-  it("shows compact before-and-after starter-fix examples", async () => {
-    delete process.env.NEXT_PUBLIC_BOOKING_URL;
-    const { default: Home } = await import("@/app/page");
-
-    render(<Home />);
-
-    expect(screen.getAllByText("Common starter fix").length).toBeGreaterThan(0);
-    expect(screen.getAllByRole("heading", { level: 3, name: "Quote request cleanup" }).length).toBeGreaterThan(0);
-    expect(
-      screen.getAllByText((_, element) => element?.textContent === "Before: DM me for a quote.").length,
-    ).toBeGreaterThan(0);
-    expect(
-      screen.getAllByText(
-        (_, element) =>
-          element?.textContent ===
-          "After: A short intake path that collects service type, location, photos/link, and urgency.",
-      ).length,
-    ).toBeGreaterThan(0);
-    expect(screen.getAllByRole("heading", { level: 3, name: "Offer page cleanup" }).length).toBeGreaterThan(0);
-    expect(
-      screen.getAllByText((_, element) => element?.textContent === "Before: A good idea buried in a social post.").length,
-    ).toBeGreaterThan(0);
-    expect(
-      screen.getAllByText(
-        (_, element) =>
-          element?.textContent ===
-          "After: A simple page with the offer, price range, next step, and payment/contact link.",
-      ).length,
-    ).toBeGreaterThan(0);
-    expect(
-      screen.getAllByRole("heading", { level: 3, name: "Lead flow repair" }).length,
-    ).toBeGreaterThan(0);
-    expect(
-      screen.getAllByText((_, element) => element?.textContent === "Before: Back-and-forth messages with missing details.").length,
-    ).toBeGreaterThan(0);
-    expect(
-      screen.getAllByText((_, element) => element?.textContent === "After: A cleaner form that asks the right questions once.").length,
-    ).toBeGreaterThan(0);
-  });
-
-  it("shows compact trust guardrails around timing, fit, and scope", async () => {
+  it("shows plain before-and-after sample fixes for local service businesses", async () => {
     delete process.env.NEXT_PUBLIC_BOOKING_URL;
     const { default: Home } = await import("@/app/page");
 
     render(<Home />);
 
     expect(
-      screen.getAllByText(
-        /I usually send a first read within 24 hours\. Small starter fixes often ship in 1-2 business days once the path is clear\./,
-      ).length,
+      screen.getAllByText("These are sample scenarios based on common problems I see on local business websites.").length,
+    ).toBeGreaterThan(0);
+    expect(screen.getAllByRole("heading", { level: 3, name: "Quote request link" }).length).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText((_, element) => element?.textContent === "Before: Message us for a quote.").length,
     ).toBeGreaterThan(0);
     expect(
       screen.getAllByText(
-        /Best fit: custom HTML\/CSS\/JS, React\/Tailwind pages, simple forms, embedded tools, Webflow-style page tweaks, Zapier-style handoffs, and lightweight website cleanup\./,
+        (_, element) =>
+          element?.textContent ===
+          "After: Get a fast quote — send your name, service needed, photos, location, and preferred time in one simple form.",
       ).length,
     ).toBeGreaterThan(0);
-    expect(screen.getAllByText("Good fit:").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("Not a starter fix:").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("one confusing offer").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("full SaaS app").length).toBeGreaterThan(0);
+    expect(screen.getAllByRole("heading", { level: 3, name: "DM cleanup" }).length).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText((_, element) => element?.textContent === "Before: A Facebook post sends people to comments, DMs, phone calls, and scattered screenshots.").length,
+    ).toBeGreaterThan(0);
     expect(
       screen.getAllByText(
-        /If it needs a bigger rebuild instead of a starter fix, I'll tell you straight up before anything gets overbuilt\./,
+        (_, element) =>
+          element?.textContent ===
+          "After: One clean link collects the job details and sends the owner everything needed to respond faster.",
       ).length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByRole("heading", { level: 3, name: "Mobile quote button" }).length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText((_, element) => element?.textContent === "Before: A mobile page has a button that blends in, leads nowhere, or appears too low on the page.").length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText((_, element) => element?.textContent === "After: A clear Request a Quote button appears above the fold and sends customers to the right form.").length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByRole("heading", { level: 3, name: "Service page next step" }).length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText((_, element) => element?.textContent === "Before: A service page lists everything the business does but gives no obvious next step.").length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText((_, element) => element?.textContent === "After: A simple service page with one clear action: call, request a quote, book, or pay.").length,
+    ).toBeGreaterThan(0);
+  });
+
+  it("shows the pricing ladder, platform trust, and availability guardrails", async () => {
+    delete process.env.NEXT_PUBLIC_BOOKING_URL;
+    const { default: Home } = await import("@/app/page");
+
+    render(<Home />);
+
+    expect(screen.getAllByText("What I can fix this week").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("3 Friction Checks").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("2 First Fixes").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("1 Mini Build").length).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText(/If the slots are full, I['’]ll tell you before you pay for anything larger than a Friction Check\./)
+        .length,
+    ).toBeGreaterThan(0);
+    expect(screen.getAllByText("$35 — Friction Check").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("$75 — First Fix").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("$150+ — Mini Build").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Platforms I can usually help with").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("WordPress").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Squarespace").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Facebook / Instagram business pages").length).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText(/If your setup is unusual, start with a \$35 Friction Check\./i).length,
     ).toBeGreaterThan(0);
   });
 
@@ -130,7 +179,7 @@ describe("Home page", () => {
     expect(container.querySelector(".contact-copy.console-sidebar")).not.toBeNull();
   });
 
-  it("adds a compact human trust anchor near the form", async () => {
+  it("adds a clear Jonathan trust anchor and footer contact details", async () => {
     delete process.env.NEXT_PUBLIC_BOOKING_URL;
     const { default: Home } = await import("@/app/page");
 
@@ -140,10 +189,31 @@ describe("Home page", () => {
 
     expect(anchor).not.toBeNull();
     expect(anchor?.textContent).toContain(
-      "Jonathan Killough builds small practical web fixes, intake flows, and lightweight tools for people who have a messy business problem but not a polished project brief.",
+      "Hi, I’m Jonathan",
     );
     expect(anchor?.textContent).toContain(
-      "You do not need to know the technical name for the problem. Send what you have and I'll help name the bottleneck.",
+      "website handyman based in South Jersey",
     );
+    expect(screen.getAllByText("Killough Works").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Website handyman for local businesses.").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Based in South Jersey. Fixing websites nationwide.").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("ionkilo42@gmail.com").length).toBeGreaterThan(0);
+  });
+
+  it("surfaces the featured friction check and the plain-language FAQ", async () => {
+    delete process.env.NEXT_PUBLIC_BOOKING_URL;
+    const { default: Home } = await import("@/app/page");
+
+    render(<Home />);
+
+    expect(screen.getAllByText("Delivered within 48 hours.").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Most popular for known problems").length).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText(/Pay the \$35 first\. Right after payment, you land on a short handoff page/i).length,
+    ).toBeGreaterThan(0);
+    expect(screen.getAllByText("Do I need to give you my password?").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("What if you can’t fix it?").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Is this a full website redesign?").length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Start with the \$35 Friction Check\./).length).toBeGreaterThan(0);
   });
 });

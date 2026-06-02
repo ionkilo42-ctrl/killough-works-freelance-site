@@ -11,7 +11,7 @@ describe("validateIntake", () => {
         business: "Tree service quote flow",
         website: "instagram.com/treecrew",
         summary: "Need a better form for photo quotes.",
-        budget: "$10-$35 — Starter fix",
+        budget: "$35 — Friction Check",
       }),
     ).not.toThrow();
   });

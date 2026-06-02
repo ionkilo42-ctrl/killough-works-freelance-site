@@ -7,18 +7,34 @@ describe("/paid page", () => {
 
     render(<PaidPage />);
 
-    expect(screen.getByRole("heading", { name: "Payment received. Next step is simple." })).toBeInTheDocument();
-    expect(screen.getByText("Business name.")).toBeInTheDocument();
-    expect(screen.getByText("Website, booking link, or social page.")).toBeInTheDocument();
-    expect(screen.getByText("What you want help with right now.")).toBeInTheDocument();
-    expect(screen.getByText("Any screenshots, photos, files, or references.")).toBeInTheDocument();
-    expect(screen.getByText("Best contact method for the follow-up.")).toBeInTheDocument();
-    expect(screen.getByText(/You are not stuck guessing what happens next/i)).toBeInTheDocument();
-    expect(screen.getByText(/Send the intake details and I will review what you sent/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", {
+        name: "Payment received. Next, answer 2 quick questions so I can review the first useful move.",
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /For a \$35 Friction Check, the next move is simple\. Send your page link and the #1 thing that feels broken, confusing, or annoying right now\./i,
+      ),
+    ).toBeInTheDocument();
+    expect(screen.getByText("What is your website, Facebook, Instagram, or page link?")).toBeInTheDocument();
+    expect(
+      screen.getByText("What is the #1 thing that feels broken, confusing, or annoying right now?"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Messy is okay\. A website, Facebook page, Instagram profile, or rough page link is enough to start\./i,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Send those 2 answers and I.ll review the Friction Check cleanly, identify what is actually broken, and reply with the first useful move\./i,
+      ),
+    ).toBeInTheDocument();
     expect(
       screen
         .getAllByRole("link", { name: "Send intake details" })
-        .some((link) => link.getAttribute("href") === "#"),
+        .some((link) => link.getAttribute("href") === "/#start"),
     ).toBe(true);
   });
 });
