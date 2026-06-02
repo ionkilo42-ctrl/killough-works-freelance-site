@@ -18,79 +18,39 @@ export default function AppleIcon() {
           alignItems: "center",
           justifyContent: "center",
           position: "relative",
-          background: "#081a2a",
-          color: "#f2e7d4",
-          fontFamily: "Georgia, Times New Roman, serif",
+          background: "#9a3412",
+          color: "#fff7ed",
+          fontFamily: "Georgia, 'Times New Roman', serif",
         }}
       >
         <div
           style={{
-            width: 142,
-            height: 142,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            position: "absolute",
+            inset: 8,
+            background: "#c2410c",
+            borderRadius: 32,
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 20,
+            border: "1.5px solid rgba(255, 247, 237, 0.3)",
+            borderRadius: 24,
+          }}
+        />
+        <span
+          style={{
             position: "relative",
-            border: "2px solid #dfccaa",
-            borderRadius: 999,
-            boxShadow: "inset 0 0 0 1px rgba(223, 204, 170, 0.24)",
+            fontSize: 88,
+            fontWeight: 700,
+            letterSpacing: -3,
+            lineHeight: 0.86,
+            color: "#fff7ed",
           }}
         >
-          <div
-            style={{
-              position: "absolute",
-              top: 6,
-              left: "50%",
-              width: 14,
-              height: 14,
-              transform: "translateX(-50%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                width: 1.5,
-                height: 12,
-                background: "#f2e7d4",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                width: 12,
-                height: 1.5,
-                background: "#f2e7d4",
-              }}
-            />
-          </div>
-          <span
-            style={{
-              position: "absolute",
-              left: 30,
-              top: 20,
-              fontSize: 78,
-              fontWeight: 700,
-              lineHeight: 0.86,
-            }}
-          >
-            K
-          </span>
-          <span
-            style={{
-              position: "absolute",
-              left: 62,
-              top: 62,
-              fontSize: 62,
-              fontWeight: 700,
-              lineHeight: 0.86,
-            }}
-          >
-            W
-          </span>
-        </div>
+          KW
+        </span>
       </div>
     ),
     size,

@@ -144,7 +144,7 @@ export default function Home() {
                 className={`pricing-card payment-card${tier.featured ? " payment-card-featured" : ""}`}
                 key={tier.title}
               >
-                <p className="pricing-note">{tier.featured ? "featured starting point" : "simple flat starter price"}</p>
+                <p className="pricing-note">{tier.featured ? "Start here" : "simple flat starter price"}</p>
                 {tier.badge ? <p className="payment-badge">{tier.badge}</p> : null}
                 <h3>{tier.title}</h3>
                 <p>
@@ -208,7 +208,7 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="section section-tray dark-accent-section" id="sample-fixes">
+      <section className="section section-tray sample-fixes-section" id="sample-fixes">
         <div className="section-heading">
           <p className="section-label">Sample Fixes</p>
           <h2>Sample fixes: before and after</h2>
@@ -216,13 +216,13 @@ export default function Home() {
         </div>
         <div className="category-grid sample-fix-grid">
           {starterFixes.map((item) => (
-            <article className="category-card" key={item.title}>
+            <article className="category-card sample-fix-card" key={item.title}>
               <p className="panel-label">{item.label}</p>
               <h3>{item.title}</h3>
-              <p>
+              <p className="sample-fix-before">
                 <strong>Before:</strong> {item.before}
               </p>
-              <p>
+              <p className="sample-fix-after">
                 <strong>After:</strong> {item.after}
               </p>
             </article>
