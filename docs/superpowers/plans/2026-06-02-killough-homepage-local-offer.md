@@ -136,7 +136,7 @@ Expected: PASS
 - [ ] **Step 2: Update direct email copy to the public contact address**
 
 ```ts
-"Thanks. Your project details are in, but email delivery is not configured yet. Please email ionkilo42@gmail.com directly so nothing gets missed."
+"Thanks. Your project details are in, but email delivery is not configured yet. Please email jonathan@killough.works directly so nothing gets missed."
 ```
 
 - [ ] **Step 3: Add small CSS support for featured pricing, availability cards, FAQ cards, and footer**

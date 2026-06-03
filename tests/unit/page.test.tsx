@@ -20,8 +20,16 @@ describe("Home page", () => {
       screen.getAllByText(/Hi, I['’]m Jonathan/i).length,
     ).toBeGreaterThan(0);
     expect(screen.getByText(/I fix the annoying website problems big agencies overcharge for/i)).toBeInTheDocument();
-    expect(screen.getByText(/Starts at \$35\. Pay for a Friction Check, then answer 2 quick questions on the next page\./i)).toBeInTheDocument();
-    expect(screen.getByText(/After payment: send your website URL and the #1 thing driving you crazy right now\./i)).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Starts at \$35\. Secure a Friction Check, then use the handoff page to send the links, screenshots, or notes I need to review the right thing\./i,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Secure checkout first\. Then send your website URL, screenshots, and the issue you want reviewed\./i,
+      ),
+    ).toBeInTheDocument();
     expect(
       screen.getByText(/Messy is okay\. Send the site, page, or social profile\./i),
     ).toBeInTheDocument();
@@ -68,7 +76,7 @@ describe("Home page", () => {
     })[0];
     const sampleFixesHeading = screen.getAllByRole("heading", {
       level: 2,
-      name: "Sample fixes: before and after",
+      name: "Example fixes, shown as simple mockups",
     })[0];
     const faqHeading = screen.getAllByRole("heading", {
       level: 2,
@@ -98,47 +106,80 @@ describe("Home page", () => {
     render(<Home />);
 
     expect(
-      screen.getAllByText("These are sample scenarios based on common problems I see on local business websites.").length,
+      screen.getAllByText(
+        "These examples show the kind of practical improvements Killough Works can make. Real client examples will be added as the portfolio grows.",
+      ).length,
     ).toBeGreaterThan(0);
-    expect(screen.getAllByRole("heading", { level: 3, name: "Quote request link" }).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole("heading", { level: 3, name: "Missing quote button" }).length).toBeGreaterThan(0);
     expect(
-      screen.getAllByText((_, element) => element?.textContent === "Before: Message us for a quote.").length,
+      screen.getAllByText(
+        (_, element) =>
+          element?.textContent ===
+          "Before problem: A service page says Call us today but has no clear quote button above the fold.",
+      ).length,
     ).toBeGreaterThan(0);
     expect(
       screen.getAllByText(
         (_, element) =>
           element?.textContent ===
-          "After: Get a fast quote — send your name, service needed, photos, location, and preferred time in one simple form.",
+          "After fix: A clear Request a Quote button appears high on the page and leads to the right intake form.",
       ).length,
     ).toBeGreaterThan(0);
-    expect(screen.getAllByRole("heading", { level: 3, name: "DM cleanup" }).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole("heading", { level: 3, name: "Messy intake process" }).length).toBeGreaterThan(0);
     expect(
-      screen.getAllByText((_, element) => element?.textContent === "Before: A Facebook post sends people to comments, DMs, phone calls, and scattered screenshots.").length,
+      screen.getAllByText(
+        (_, element) =>
+          element?.textContent ===
+          "Before problem: Customers bounce between texts, screenshots, and half-complete messages before you even know the job.",
+      ).length,
     ).toBeGreaterThan(0);
     expect(
       screen.getAllByText(
         (_, element) =>
           element?.textContent ===
-          "After: One clean link collects the job details and sends the owner everything needed to respond faster.",
+          "After fix: One clean intake form collects service, location, photos, and the key job details in one place.",
       ).length,
     ).toBeGreaterThan(0);
     expect(
-      screen.getAllByRole("heading", { level: 3, name: "Mobile quote button" }).length,
+      screen.getAllByRole("heading", { level: 3, name: "Scattered Facebook info" }).length,
     ).toBeGreaterThan(0);
     expect(
-      screen.getAllByText((_, element) => element?.textContent === "Before: A mobile page has a button that blends in, leads nowhere, or appears too low on the page.").length,
+      screen.getAllByText(
+        (_, element) =>
+          element?.textContent ===
+          "Before problem: Business info lives across posts, captions, and comments, so people have to piece together what you do.",
+      ).length,
     ).toBeGreaterThan(0);
     expect(
-      screen.getAllByText((_, element) => element?.textContent === "After: A clear Request a Quote button appears above the fold and sends customers to the right form.").length,
+      screen.getAllByText(
+        (_, element) =>
+          element?.textContent ===
+          "After fix: A simple service page pulls the offer, service area, pricing cues, and contact step into one organized page.",
+      ).length,
     ).toBeGreaterThan(0);
     expect(
-      screen.getAllByRole("heading", { level: 3, name: "Service page next step" }).length,
+      screen.getAllByRole("heading", { level: 3, name: "No next step after payment" }).length,
     ).toBeGreaterThan(0);
     expect(
-      screen.getAllByText((_, element) => element?.textContent === "Before: A service page lists everything the business does but gives no obvious next step.").length,
+      screen.getAllByText(
+        (_, element) =>
+          element?.textContent ===
+          "Before problem: Checkout ends on a generic success state that does not tell the customer what to send next.",
+      ).length,
     ).toBeGreaterThan(0);
     expect(
-      screen.getAllByText((_, element) => element?.textContent === "After: A simple service page with one clear action: call, request a quote, book, or pay.").length,
+      screen.getAllByText(
+        (_, element) =>
+          element?.textContent ===
+          "After fix: A calm handoff page confirms payment, explains the review process, and points to one Send Project Details action.",
+      ).length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText(
+        (_, element) =>
+          element?.textContent ===
+          "Why it matters: The buyer feels reassured instead of wondering whether the payment disappeared into a void.",
+      ).length,
     ).toBeGreaterThan(0);
   });
 
@@ -148,7 +189,7 @@ describe("Home page", () => {
 
     render(<Home />);
 
-    expect(screen.getAllByText("What I can fix this week").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Limited weekly intake, kept intentional").length).toBeGreaterThan(0);
     expect(screen.getAllByText("3 Friction Checks").length).toBeGreaterThan(0);
     expect(screen.getAllByText("2 First Fixes").length).toBeGreaterThan(0);
     expect(screen.getAllByText("1 Mini Build").length).toBeGreaterThan(0);
@@ -197,7 +238,9 @@ describe("Home page", () => {
     expect(screen.getAllByText("Killough Works").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Website handyman for local businesses.").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Based in South Jersey. Fixing websites nationwide.").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("ionkilo42@gmail.com").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Built by Jonathan in South Jersey").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Direct contact:").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("jonathan@killough.works").length).toBeGreaterThan(0);
   });
 
   it("surfaces the featured friction check and the plain-language FAQ", async () => {
@@ -209,7 +252,7 @@ describe("Home page", () => {
     expect(screen.getAllByText("Delivered within 48 hours.").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Most popular for known problems").length).toBeGreaterThan(0);
     expect(
-      screen.getAllByText(/Pay the \$35 first\. Right after payment, you land on a short handoff page/i).length,
+      screen.getAllByText(/Secure your Friction Check\. After checkout, you land on a short handoff page/i).length,
     ).toBeGreaterThan(0);
     expect(screen.getAllByText("Do I need to give you my password?").length).toBeGreaterThan(0);
     expect(screen.getAllByText("What if you can’t fix it?").length).toBeGreaterThan(0);

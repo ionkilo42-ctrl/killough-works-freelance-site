@@ -43,12 +43,23 @@ export type StarterFix = {
   label: string;
   before: string;
   after: string;
+  why: string;
 };
 
 export type FaqItem = {
   question: string;
   answer: string;
 };
+
+export const contactDetails = {
+  name: "Jonathan",
+  email: "jonathan@killough.works",
+  directLabel: "Direct contact",
+  mailtoHref: "mailto:jonathan@killough.works?subject=Killough%20Works%20Inquiry",
+  location: "South Jersey",
+  trustBlurb:
+    "Killough Works is run by Jonathan, helping local service businesses turn messy websites, forms, profiles, and customer handoffs into clearer digital systems.",
+} as const;
 
 export const coreCategories: CoreCategory[] = [
   {
@@ -137,18 +148,23 @@ export const fieldNotes: FieldNote[] = [
 export const processSteps: ProcessStep[] = [
   {
     number: "01",
-    title: "Send the messy version",
-    summary: "A website, form, Facebook page, Instagram profile, or rough page is enough to start.",
+    title: "Choose the right starting option",
+    summary: "Pick Friction Check, First Fix, or Mini Build based on how clear the problem already is.",
   },
   {
     number: "02",
-    title: "Get the first fix",
-    summary: "I point out where customers are getting stuck and what to clean up first.",
+    title: "Complete secure checkout",
+    summary: "For Friction Check, checkout is live now. For larger work, I confirm scope before charging more.",
   },
   {
     number: "03",
-    title: "Keep it practical",
-    summary: "If it needs a bigger rebuild, I will tell you plainly instead of overselling a patch.",
+    title: "Send the messy version",
+    summary: "Share your link, screenshots, or notes on the handoff page so I can review the right thing.",
+  },
+  {
+    number: "04",
+    title: "Get the clearest next move",
+    summary: "I show what customers see, what is getting in the way, and the first practical fix.",
   },
 ];
 
@@ -161,7 +177,7 @@ export const pricingTiers: PricingTier[] = [
       "I review your website, landing page, form, or social profile and send you a short video showing where customers are getting stuck.",
     deliverable: "A 3-minute Loom-style video teardown plus a 3-bullet takeaway email.",
     handoff:
-      "Pay the $35 first. Right after payment, you land on a short handoff page and send me your website URL plus the #1 thing driving you crazy.",
+      "Secure your Friction Check. After checkout, you land on a short handoff page where you can send your link, screenshots, and the issue you want reviewed.",
     includes: [
       "Website, form, or social profile review",
       "Lead-loss and trust-friction notes",
@@ -210,42 +226,46 @@ export const pricingTiers: PricingTier[] = [
 export const availabilitySlots: AvailabilitySlot[] = [
   {
     title: "3 Friction Checks",
-    note: "Best for owners who want a fast outside look before touching the site.",
+    note: "Weekly intake is limited so each Friction Check gets focused attention.",
   },
   {
     title: "2 First Fixes",
-    note: "Best for one known problem that needs a practical cleanup.",
+    note: "Best for one known problem that needs a practical cleanup without bloating the scope.",
   },
   {
     title: "1 Mini Build",
-    note: "Best for a small landing page, intake flow, or payment/start setup.",
+    note: "I only take a small number of builds at a time so the work stays fast, clear, and useful.",
   },
 ];
 
 export const starterFixes: StarterFix[] = [
   {
-    title: "Quote request link",
-    label: "Sample scenario",
-    before: "Message us for a quote.",
-    after: "Get a fast quote — send your name, service needed, photos, location, and preferred time in one simple form.",
+    title: "Missing quote button",
+    label: "Simple mockup",
+    before: "A service page says Call us today but has no clear quote button above the fold.",
+    after: "A clear Request a Quote button appears high on the page and leads to the right intake form.",
+    why: "The next step becomes obvious before the visitor drifts into DMs or leaves the page.",
   },
   {
-    title: "DM cleanup",
-    label: "Sample scenario",
-    before: "A Facebook post sends people to comments, DMs, phone calls, and scattered screenshots.",
-    after: "One clean link collects the job details and sends the owner everything needed to respond faster.",
+    title: "Messy intake process",
+    label: "Simple mockup",
+    before: "Customers bounce between texts, screenshots, and half-complete messages before you even know the job.",
+    after: "One clean intake form collects service, location, photos, and the key job details in one place.",
+    why: "You spend less time chasing basics and reply with cleaner quotes faster.",
   },
   {
-    title: "Mobile quote button",
-    label: "Sample scenario",
-    before: "A mobile page has a button that blends in, leads nowhere, or appears too low on the page.",
-    after: "A clear Request a Quote button appears above the fold and sends customers to the right form.",
+    title: "Scattered Facebook info",
+    label: "Simple mockup",
+    before: "Business info lives across posts, captions, and comments, so people have to piece together what you do.",
+    after: "A simple service page pulls the offer, service area, pricing cues, and contact step into one organized page.",
+    why: "Visitors stop guessing and start taking the next step with more confidence.",
   },
   {
-    title: "Service page next step",
-    label: "Sample scenario",
-    before: "A service page lists everything the business does but gives no obvious next step.",
-    after: "A simple service page with one clear action: call, request a quote, book, or pay.",
+    title: "No next step after payment",
+    label: "Simple mockup",
+    before: "Checkout ends on a generic success state that does not tell the customer what to send next.",
+    after: "A calm handoff page confirms payment, explains the review process, and points to one Send Project Details action.",
+    why: "The buyer feels reassured instead of wondering whether the payment disappeared into a void.",
   },
 ];
 
