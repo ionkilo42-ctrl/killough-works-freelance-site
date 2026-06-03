@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type BrandLockupProps = {
   note?: string;
 };
@@ -5,15 +7,27 @@ type BrandLockupProps = {
 export function BrandLockup({ note }: BrandLockupProps) {
   return (
     <div className="brand-lockup" aria-label="Killough Works brand">
-      <div className="brand-seal" aria-hidden="true">
-        <span className="brand-seal-star" />
-        <span className="brand-seal-k">K</span>
-        <span className="brand-seal-w">W</span>
+      <div className="brand-lockup-head">
+        <span className="brand-mark-frame brand-mark-frame-desktop" aria-hidden="true">
+          <Image
+            className="brand-mark-image"
+            src="/brand/killough-works-mark.png"
+            alt=""
+            width={1254}
+            height={1254}
+            sizes="48px"
+          />
+        </span>
+        <Image
+          className="brand-logo-desktop"
+          src="/brand/killough-works-logo-full.png"
+          alt="Killough Works logo"
+          width={2019}
+          height={205}
+          sizes="(max-width: 760px) 220px, 360px"
+        />
       </div>
-      <div className="brand-lockup-copy">
-        <p className="eyebrow">Killough Works</p>
-        <p className="identity-note">{note ?? "Design with intent. Build with purpose."}</p>
-      </div>
+      <p className="identity-note">{note ?? "Design with intent. Build with purpose."}</p>
     </div>
   );
 }

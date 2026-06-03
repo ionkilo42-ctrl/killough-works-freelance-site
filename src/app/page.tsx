@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { BrandLockup } from "@/components/brand-lockup";
 import { LeadForm } from "@/components/lead-form";
 import {
@@ -81,9 +83,16 @@ export default function Home() {
           <aside className="hero-side-panel">
             <p className="panel-label">Local trust</p>
             <div className="human-anchor hero-human-anchor" aria-label="Jonathan note">
-              <p className="stamp-mark" aria-hidden="true">
-                JW
-              </p>
+              <span className="stamp-mark" aria-hidden="true">
+                <Image
+                  className="stamp-mark-image"
+                  src="/brand/killough-works-mark.png"
+                  alt=""
+                  width={1254}
+                  height={1254}
+                  sizes="44px"
+                />
+              </span>
               <div>
                 <p className="human-anchor-title">Hi, I’m Jonathan</p>
                 <p className="contact-note">
@@ -235,44 +244,27 @@ export default function Home() {
           <p className="section-label">Sample Fixes</p>
           <h2>Example fixes, shown as simple mockups</h2>
           <p>
-            These examples show the kind of practical improvements Killough Works can make. Real
-            client examples will be added as the portfolio grows.
+            These examples show the kind of practical improvements Killough Works can make. They
+            are illustrative mockups, not client case studies. Real client examples will be added
+            as the portfolio grows.
           </p>
         </div>
         <div className="category-grid sample-fix-grid">
           {starterFixes.map((item) => (
             <article className="category-card sample-fix-card" key={item.title}>
+              <div className="sample-fix-image-wrap">
+                <Image
+                  src={item.imageSrc}
+                  alt={item.imageAlt}
+                  width={1448}
+                  height={1086}
+                  className="sample-fix-image"
+                  sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 540px"
+                />
+              </div>
               <p className="panel-label">{item.label}</p>
               <h3>{item.title}</h3>
-              <div className="sample-fix-visuals" aria-hidden="true">
-                <div className="sample-visual sample-visual-before">
-                  <span className="sample-visual-label">Before</span>
-                  <div className="sample-visual-frame sample-visual-frame-before">
-                    <span className="sample-bar short" />
-                    <span className="sample-bar medium muted" />
-                    <span className="sample-bar long muted" />
-                    <span className="sample-chip weak">No clear next step</span>
-                  </div>
-                </div>
-                <div className="sample-visual sample-visual-after">
-                  <span className="sample-visual-label">After</span>
-                  <div className="sample-visual-frame sample-visual-frame-after">
-                    <span className="sample-bar short strong" />
-                    <span className="sample-bar medium" />
-                    <span className="sample-bar long" />
-                    <span className="sample-chip strong">Clear action</span>
-                  </div>
-                </div>
-              </div>
-              <p className="sample-fix-before">
-                <strong>Before problem:</strong> {item.before}
-              </p>
-              <p className="sample-fix-after">
-                <strong>After fix:</strong> {item.after}
-              </p>
-              <p className="sample-fix-why">
-                <strong>Why it matters:</strong> {item.why}
-              </p>
+              <p className="sample-fix-explainer">{item.explanation}</p>
             </article>
           ))}
         </div>

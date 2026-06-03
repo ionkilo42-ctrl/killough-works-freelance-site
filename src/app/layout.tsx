@@ -20,12 +20,9 @@ export const metadata: Metadata = {
   description:
     "Small, fast web fixes for local businesses tired of losing leads.",
   icons: {
-    icon: [
-      { url: "/icon", type: "image/png", sizes: "512x512" },
-      { url: "/favicon.ico", type: "image/svg+xml", sizes: "64x64" },
-    ],
+    icon: [{ url: "/brand/killough-works-mark.png", type: "image/png", sizes: "512x512" }],
     shortcut: "/favicon.ico",
-    apple: [{ url: "/apple-icon", type: "image/png", sizes: "180x180" }],
+    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
   },
 };
 

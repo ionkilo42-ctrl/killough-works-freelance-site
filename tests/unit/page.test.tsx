@@ -99,7 +99,7 @@ describe("Home page", () => {
     expect(screen.queryByText("Send me the broken business moment.")).not.toBeInTheDocument();
   });
 
-  it("shows plain before-and-after sample fixes for local service businesses", async () => {
+  it("shows image-backed example fixes for local service businesses", async () => {
     delete process.env.NEXT_PUBLIC_BOOKING_URL;
     const { default: Home } = await import("@/app/page");
 
@@ -107,78 +107,70 @@ describe("Home page", () => {
 
     expect(
       screen.getAllByText(
-        "These examples show the kind of practical improvements Killough Works can make. Real client examples will be added as the portfolio grows.",
+        "These examples show the kind of practical improvements Killough Works can make. They are illustrative mockups, not client case studies. Real client examples will be added as the portfolio grows.",
       ).length,
     ).toBeGreaterThan(0);
+    expect(screen.getAllByText("Illustrative mockup").length).toBeGreaterThan(0);
     expect(screen.getAllByRole("heading", { level: 3, name: "Missing quote button" }).length).toBeGreaterThan(0);
     expect(
-      screen.getAllByText(
-        (_, element) =>
-          element?.textContent ===
-          "Before problem: A service page says Call us today but has no clear quote button above the fold.",
-      ).length,
+      screen.getAllByText("Turns buried contact details into a clear quote path.").length,
     ).toBeGreaterThan(0);
     expect(
-      screen.getAllByText(
-        (_, element) =>
-          element?.textContent ===
-          "After fix: A clear Request a Quote button appears high on the page and leads to the right intake form.",
-      ).length,
+      screen.getAllByAltText(/no quote button transformed into a page with a prominent request a quote path/i)
+        .length,
     ).toBeGreaterThan(0);
     expect(screen.getAllByRole("heading", { level: 3, name: "Messy intake process" }).length).toBeGreaterThan(0);
     expect(
       screen.getAllByText(
-        (_, element) =>
-          element?.textContent ===
-          "Before problem: Customers bounce between texts, screenshots, and half-complete messages before you even know the job.",
+        "Turns scattered messages into one simple form with the details needed to quote faster.",
       ).length,
     ).toBeGreaterThan(0);
     expect(
-      screen.getAllByText(
-        (_, element) =>
-          element?.textContent ===
-          "After fix: One clean intake form collects service, location, photos, and the key job details in one place.",
-      ).length,
+      screen.getAllByAltText(/quote details scattered across messages replaced by a clean pressure washing quote form/i)
+        .length,
     ).toBeGreaterThan(0);
     expect(
       screen.getAllByRole("heading", { level: 3, name: "Scattered Facebook info" }).length,
     ).toBeGreaterThan(0);
     expect(
-      screen.getAllByText(
-        (_, element) =>
-          element?.textContent ===
-          "Before problem: Business info lives across posts, captions, and comments, so people have to piece together what you do.",
-      ).length,
-    ).toBeGreaterThan(0);
-    expect(
-      screen.getAllByText(
-        (_, element) =>
-          element?.textContent ===
-          "After fix: A simple service page pulls the offer, service area, pricing cues, and contact step into one organized page.",
-      ).length,
+      screen.getAllByText("Turns posts, captions, and comments into one organized service page.").length,
     ).toBeGreaterThan(0);
     expect(
       screen.getAllByRole("heading", { level: 3, name: "No next step after payment" }).length,
     ).toBeGreaterThan(0);
     expect(
       screen.getAllByText(
-        (_, element) =>
-          element?.textContent ===
-          "Before problem: Checkout ends on a generic success state that does not tell the customer what to send next.",
+        "Turns a generic success screen into a reassuring handoff page with clear next steps.",
       ).length,
     ).toBeGreaterThan(0);
     expect(
-      screen.getAllByText(
-        (_, element) =>
-          element?.textContent ===
-          "After fix: A calm handoff page confirms payment, explains the review process, and points to one Send Project Details action.",
-      ).length,
+      screen.getAllByRole("heading", { level: 3, name: "Missed review opportunity" }).length,
     ).toBeGreaterThan(0);
     expect(
       screen.getAllByText(
-        (_, element) =>
-          element?.textContent ===
-          "Why it matters: The buyer feels reassured instead of wondering whether the payment disappeared into a void.",
+        "Turns happy customers into easier review requests and stronger local proof.",
+      ).length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByRole("heading", { level: 3, name: "Leads lost in Messenger" }).length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText("Turns buried chats into a simple lead tracker with visible follow-up.").length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByRole("heading", { level: 3, name: "Realtor lead capture" }).length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText(
+        "Turns listing traffic into actual buyer, seller, or showing inquiries.",
+      ).length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByRole("heading", { level: 3, name: "Contractor inspection request" }).length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText(
+        "Turns call-only intake into an inspection request form with photos and scheduling details.",
       ).length,
     ).toBeGreaterThan(0);
   });
@@ -236,11 +228,13 @@ describe("Home page", () => {
       "website handyman based in South Jersey",
     );
     expect(screen.getAllByText("Killough Works").length).toBeGreaterThan(0);
+    expect(screen.getAllByAltText("Killough Works logo").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Website handyman for local businesses.").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Based in South Jersey. Fixing websites nationwide.").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Built by Jonathan in South Jersey").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Direct contact:").length).toBeGreaterThan(0);
     expect(screen.getAllByText("jonathan@killough.works").length).toBeGreaterThan(0);
+    expect(screen.queryByText("JW")).not.toBeInTheDocument();
   });
 
   it("surfaces the featured friction check and the plain-language FAQ", async () => {
