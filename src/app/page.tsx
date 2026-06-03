@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { BrandLockup } from "@/components/brand-lockup";
 import { LeadForm } from "@/components/lead-form";
+import { SampleFixGallery } from "@/components/sample-fix-gallery";
 import {
   availabilitySlots,
   contactDetails,
@@ -51,7 +52,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Get a $35 Friction Check
+                Start with Friction Check — $35
               </a>
               <a className="button tertiary" href="#sample-fixes">
                 See sample fixes
@@ -153,7 +154,23 @@ export default function Home() {
                 className={`pricing-card payment-card${tier.featured ? " payment-card-featured" : ""}`}
                 key={tier.title}
               >
-                <p className="pricing-note">{tier.featured ? "Start here" : "simple flat starter price"}</p>
+                <div className="payment-card-image-wrap">
+                  <Image
+                    src={tier.imageSrc}
+                    alt={tier.imageAlt}
+                    width={1254}
+                    height={1254}
+                    className="payment-card-image"
+                    sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 320px"
+                  />
+                </div>
+                <p className="pricing-note">
+                  {tier.checkoutMode === "live"
+                    ? "Start here"
+                    : tier.checkoutMode === "starting-payment"
+                      ? "starter build payment"
+                      : "scope first"}
+                </p>
                 {tier.badge ? <p className="payment-badge">{tier.badge}</p> : null}
                 <h3>{tier.title}</h3>
                 <p>
@@ -249,25 +266,7 @@ export default function Home() {
             as the portfolio grows.
           </p>
         </div>
-        <div className="category-grid sample-fix-grid">
-          {starterFixes.map((item) => (
-            <article className="category-card sample-fix-card" key={item.title}>
-              <div className="sample-fix-image-wrap">
-                <Image
-                  src={item.imageSrc}
-                  alt={item.imageAlt}
-                  width={1448}
-                  height={1086}
-                  className="sample-fix-image"
-                  sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 540px"
-                />
-              </div>
-              <p className="panel-label">{item.label}</p>
-              <h3>{item.title}</h3>
-              <p className="sample-fix-explainer">{item.explanation}</p>
-            </article>
-          ))}
-        </div>
+        <SampleFixGallery items={starterFixes} />
       </section>
 
       <section className="section section-tray" id="platforms">

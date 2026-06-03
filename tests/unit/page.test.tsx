@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it } from "vitest";
 
 describe("Home page", () => {
@@ -178,6 +179,35 @@ describe("Home page", () => {
         "Turns call-only intake into an inspection request form with photos and scheduling details.",
       ).length,
     ).toBeGreaterThan(0);
+    expect(screen.getAllByText("Click to expand").length).toBeGreaterThan(0);
+  });
+
+  it("opens and closes a full-screen mockup view", async () => {
+    delete process.env.NEXT_PUBLIC_BOOKING_URL;
+    const { default: Home } = await import("@/app/page");
+    const user = userEvent.setup();
+
+    render(<Home />);
+
+    await user.click(
+      screen.getAllByRole("button", { name: "View full image for Scattered Facebook info" })[0],
+    );
+
+    expect(
+      screen.getByRole("dialog", { name: "Expanded image for Scattered Facebook info" }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Close full-screen image" })).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "Before and after mockup showing a Facebook business page replaced by a focused service website with one clear quote action.",
+      ),
+    ).toBeInTheDocument();
+
+    await user.keyboard("{Escape}");
+
+    expect(
+      screen.queryByRole("dialog", { name: "Expanded image for Scattered Facebook info" }),
+    ).not.toBeInTheDocument();
   });
 
   it("shows the pricing ladder, platform trust, and availability guardrails", async () => {
