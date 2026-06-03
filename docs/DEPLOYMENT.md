@@ -8,6 +8,9 @@ Deploy on Vercel or Netlify. This project is a small Next.js site with one API r
 
 - `NEXT_PUBLIC_SITE_URL`
 - `NEXT_PUBLIC_BOOKING_URL`
+- `NEXT_PUBLIC_STRIPE_FRICTION_CHECK_URL`
+- `NEXT_PUBLIC_STRIPE_FIRST_FIX_URL`
+- `NEXT_PUBLIC_STRIPE_MINI_BUILD_URL`
 - `RESEND_API_KEY`
 - `INTAKE_TO_EMAIL`
 - `INTAKE_FROM_EMAIL`
@@ -17,6 +20,9 @@ Deploy on Vercel or Netlify. This project is a small Next.js site with one API r
 1. Push the repo to GitHub.
 2. Import the repo into Vercel.
 3. Add the environment variables.
+   `NEXT_PUBLIC_STRIPE_FRICTION_CHECK_URL=https://buy.stripe.com/28E4gz2DDf66bXA0m41ZS04`
+   `NEXT_PUBLIC_STRIPE_FIRST_FIX_URL=https://buy.stripe.com/5kQbJ11zzaPQ9Ps7Ow1ZS05`
+   `NEXT_PUBLIC_STRIPE_MINI_BUILD_URL=https://buy.stripe.com/aFa4gz6TTaPQ4v81q81ZS03`
 4. Deploy.
 5. Submit the intake form on the live site to verify delivery.
 

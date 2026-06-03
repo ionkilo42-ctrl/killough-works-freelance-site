@@ -20,6 +20,7 @@ export type ProcessStep = {
 };
 
 export type PricingTier = {
+  name?: string;
   title: string;
   badge?: string;
   bestFor: string;
@@ -30,6 +31,9 @@ export type PricingTier = {
   timeline?: string;
   cta: string;
   href: string;
+  imageSrc: string;
+  imageAlt: string;
+  checkoutMode?: "live" | "scoped" | "starting-payment";
   featured?: boolean;
 };
 
@@ -41,9 +45,9 @@ export type AvailabilitySlot = {
 export type StarterFix = {
   title: string;
   label: string;
-  before: string;
-  after: string;
-  why: string;
+  explanation: string;
+  imageSrc: string;
+  imageAlt: string;
 };
 
 export type FaqItem = {
@@ -59,6 +63,37 @@ export const contactDetails = {
   location: "South Jersey",
   trustBlurb:
     "Killough Works is run by Jonathan, helping local service businesses turn messy websites, forms, profiles, and customer handoffs into clearer digital systems.",
+} as const;
+
+const stripeLinkDefaults = {
+  frictionCheck: "https://buy.stripe.com/28E4gz2DDf66bXA0m41ZS04",
+  firstFix: "https://buy.stripe.com/5kQbJ11zzaPQ9Ps7Ow1ZS05",
+  miniBuild: "https://buy.stripe.com/aFa4gz6TTaPQ4v81q81ZS03",
+} as const;
+
+const envStripeFrictionCheckUrl = process.env.NEXT_PUBLIC_STRIPE_FRICTION_CHECK_URL?.trim();
+const envStripeFirstFixUrl = process.env.NEXT_PUBLIC_STRIPE_FIRST_FIX_URL?.trim();
+const envStripeMiniBuildUrl = process.env.NEXT_PUBLIC_STRIPE_MINI_BUILD_URL?.trim();
+
+export const stripePaymentLinks = {
+  frictionCheck: envStripeFrictionCheckUrl || stripeLinkDefaults.frictionCheck,
+  firstFix: envStripeFirstFixUrl || stripeLinkDefaults.firstFix,
+  miniBuild: envStripeMiniBuildUrl || stripeLinkDefaults.miniBuild,
+} as const;
+
+export const stripeBrandingSettings = {
+  primaryColor: "#0f172a",
+  accentColor: "#c2410c",
+  surfaceColor: "#f7f9fa",
+  logoPath: "/public/brand/killough-works-logo-full.png",
+  markPath: "/public/brand/killough-works-mark.png",
+} as const;
+
+export const paymentFollowUpContact = {
+  label: "Payment follow-up",
+  email: "ionkilo42@gmail.com",
+  mailtoHref:
+    "mailto:ionkilo42@gmail.com?subject=Killough%20Works%20Payment%20Follow-Up",
 } as const;
 
 export const coreCategories: CoreCategory[] = [
@@ -154,7 +189,7 @@ export const processSteps: ProcessStep[] = [
   {
     number: "02",
     title: "Complete secure checkout",
-    summary: "For Friction Check, checkout is live now. For larger work, I confirm scope before charging more.",
+    summary: "Use the live Stripe checkout for Friction Check, First Fix, or the Mini Build starter payment.",
   },
   {
     number: "03",
@@ -170,56 +205,70 @@ export const processSteps: ProcessStep[] = [
 
 export const pricingTiers: PricingTier[] = [
   {
+    name: "Friction Check",
     title: "$35 — Friction Check",
     badge: "Best place to start",
     bestFor: "I know something feels off, but I’m not sure what.",
     description:
-      "I review your website, landing page, form, or social profile and send you a short video showing where customers are getting stuck.",
+      "A focused review of your page, post, link, offer, or lead flow. I’ll identify what is confusing, missing, or costing you responses and give you the clearest first fix.",
     deliverable: "A 3-minute Loom-style video teardown plus a 3-bullet takeaway email.",
     handoff:
       "Secure your Friction Check. After checkout, you land on a short handoff page where you can send your link, screenshots, and the issue you want reviewed.",
     includes: [
-      "Website, form, or social profile review",
-      "Lead-loss and trust-friction notes",
-      "Clear first-fix recommendation",
-      "Simple next step if you want help fixing it",
+      "Focused review of one page, post, link, or lead path",
+      "What is confusing, missing, or slowing responses",
+      "One practical first step based on what customers actually see",
+      "Clear notes you can act on or build from proof",
     ],
     timeline: "Delivered within 48 hours.",
-    cta: "Get a $35 Friction Check",
-    href: "https://buy.stripe.com/7sY7sLba91fgaTwb0I1ZS02",
+    cta: "Start with Friction Check — $35",
+    href: stripePaymentLinks.frictionCheck,
+    imageSrc: "/images/offers/friction-check.png",
+    imageAlt: "Killough Works Friction Check offer graphic with blueprint styling and $35 price.",
+    checkoutMode: "live",
     featured: true,
   },
   {
+    name: "First Fix",
     title: "$75 — First Fix",
-    badge: "Most popular for known problems",
+    badge: "One useful improvement",
     bestFor: "I already know the problem and want one thing fixed.",
     description:
-      "I clean up one specific issue: a broken button, weak contact section, messy mobile layout, form cleanup, CTA rewrite, payment link, or simple page fix.",
-    handoff: "Message first. I confirm the exact problem and scope before you pay for anything bigger.",
+      "One practical improvement completed for you, such as offer cleanup, a DM pitch, landing page section, intake form, payment/start link, CTA rewrite, or small lead-flow improvement.",
+    handoff:
+      "Pick the closest starting point. After payment, send the page, post, screenshot, or idea you want fixed. If the job needs more than this tier, I’ll say so before doing extra work.",
     includes: [
-      "One focused website or workflow fix",
-      "Cleaner wording or layout",
-      "Better next step for customers",
-      "Simple handoff when complete",
+      "One first useful fix completed for you",
+      "Offer, CTA, intake, message, or payment-path cleanup",
+      "Clearer next step for customers",
+      "Build from proof before doing anything bigger",
     ],
     timeline: "Usually handled quickly once access is shared.",
-    cta: "Get one fix",
-    href: "#start",
+    cta: "Get a First Fix — $75",
+    href: stripePaymentLinks.firstFix,
+    imageSrc: "/images/offers/first-fix.png",
+    imageAlt: "Killough Works First Fix offer graphic showing one useful improvement and $75 price.",
+    checkoutMode: "live",
   },
   {
+    name: "Mini Build",
     title: "$150+ — Mini Build",
     bestFor: "I need a small system, not just a tweak.",
     description:
-      "I build a simple landing page, intake form, quote request flow, review request system, booking helper, or lead-capture setup.",
-    handoff: "Message first. This stays small on purpose: a practical page or workflow, not a giant agency project.",
+      "A small custom build around your actual business, such as a quote flow, booking page, QR hub, intake system, simple dashboard, partner page, landing page, or lightweight automation.",
+    handoff:
+      "Use the starter payment to begin a small custom build. After payment, send the workflow, page, or problem you want built first, and I confirm the exact scope before building beyond the starter step.",
     includes: [
-      "Small landing page or workflow",
-      "Intake or quote form setup",
-      "Payment/start link integration if needed",
+      "Small starter build around one real business workflow",
+      "Quote, booking, intake, QR, landing page, or dashboard setup",
       "Lightweight automation where useful",
+      "Clear scope before the build expands",
     ],
-    cta: "Plan a mini build",
-    href: "#start",
+    cta: "Request a Mini Build — $150+",
+    href: stripePaymentLinks.miniBuild,
+    imageSrc: "/images/offers/mini-build.png",
+    imageAlt: "Killough Works Mini Build offer graphic with blueprint workflow styling and $150+ starting point.",
+    checkoutMode: "starting-payment",
   },
 ];
 
@@ -241,31 +290,64 @@ export const availabilitySlots: AvailabilitySlot[] = [
 export const starterFixes: StarterFix[] = [
   {
     title: "Missing quote button",
-    label: "Simple mockup",
-    before: "A service page says Call us today but has no clear quote button above the fold.",
-    after: "A clear Request a Quote button appears high on the page and leads to the right intake form.",
-    why: "The next step becomes obvious before the visitor drifts into DMs or leaves the page.",
+    label: "Illustrative mockup",
+    explanation: "Turns buried contact details into a clear quote path.",
+    imageSrc: "/examples/missing-quote-button.png",
+    imageAlt: "Before and after mockup showing a landscaping website with no quote button transformed into a page with a prominent request a quote path.",
   },
   {
     title: "Messy intake process",
-    label: "Simple mockup",
-    before: "Customers bounce between texts, screenshots, and half-complete messages before you even know the job.",
-    after: "One clean intake form collects service, location, photos, and the key job details in one place.",
-    why: "You spend less time chasing basics and reply with cleaner quotes faster.",
+    label: "Illustrative mockup",
+    explanation:
+      "Turns scattered messages into one simple form with the details needed to quote faster.",
+    imageSrc: "/examples/messy-intake-process.png",
+    imageAlt: "Before and after mockup showing quote details scattered across messages replaced by a clean pressure washing quote form.",
   },
   {
     title: "Scattered Facebook info",
-    label: "Simple mockup",
-    before: "Business info lives across posts, captions, and comments, so people have to piece together what you do.",
-    after: "A simple service page pulls the offer, service area, pricing cues, and contact step into one organized page.",
-    why: "Visitors stop guessing and start taking the next step with more confidence.",
+    label: "Illustrative mockup",
+    explanation: "Turns posts, captions, and comments into one organized service page.",
+    imageSrc: "/examples/scattered-facebook-info.png",
+    imageAlt: "Before and after mockup showing a Facebook business page replaced by a focused service website with one clear quote action.",
   },
   {
     title: "No next step after payment",
-    label: "Simple mockup",
-    before: "Checkout ends on a generic success state that does not tell the customer what to send next.",
-    after: "A calm handoff page confirms payment, explains the review process, and points to one Send Project Details action.",
-    why: "The buyer feels reassured instead of wondering whether the payment disappeared into a void.",
+    label: "Illustrative mockup",
+    explanation:
+      "Turns a generic success screen into a reassuring handoff page with clear next steps.",
+    imageSrc: "/examples/no-next-step-after-payment.png",
+    imageAlt: "Before and after mockup showing a generic payment confirmation replaced by a clear handoff page with next steps and a send project details button.",
+  },
+  {
+    title: "Missed review opportunity",
+    label: "Illustrative mockup",
+    explanation:
+      "Turns happy customers into easier review requests and stronger local proof.",
+    imageSrc: "/examples/missed-review-opportunity.png",
+    imageAlt: "Before and after mockup showing a completed job screen upgraded into a review request flow with visible social proof.",
+  },
+  {
+    title: "Leads lost in Messenger",
+    label: "Illustrative mockup",
+    explanation: "Turns buried chats into a simple lead tracker with visible follow-up.",
+    imageSrc: "/examples/leads-lost-in-messenger.png",
+    imageAlt: "Before and after mockup showing Messenger leads scattered across chats replaced by an organized lead tracking dashboard.",
+  },
+  {
+    title: "Realtor lead capture",
+    label: "Illustrative mockup",
+    explanation:
+      "Turns listing traffic into actual buyer, seller, or showing inquiries.",
+    imageSrc: "/examples/realtor-lead-capture.png",
+    imageAlt: "Before and after mockup showing a realtor listing profile upgraded into a dedicated lead capture page with inquiry forms.",
+  },
+  {
+    title: "Contractor inspection request",
+    label: "Illustrative mockup",
+    explanation:
+      "Turns call-only intake into an inspection request form with photos and scheduling details.",
+    imageSrc: "/examples/contractor-inspection-request.png",
+    imageAlt: "Before and after mockup showing a contractor site with call-only intake replaced by a structured inspection request form.",
   },
 ];
 

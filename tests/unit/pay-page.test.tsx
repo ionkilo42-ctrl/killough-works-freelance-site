@@ -2,84 +2,57 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 describe("/pay page", () => {
-  it("shows starter payment options and alternative payment methods", async () => {
+  it("shows only the current offer ladder with clear starter guidance", async () => {
     const { default: PayPage } = await import("@/app/pay/page");
 
     render(<PayPage />);
 
-    expect(screen.getByRole("heading", { name: "One clear step. Then the next." })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Pick the closest starting point." })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Current offers" })).toBeInTheDocument();
     expect(screen.getByText("$35 — Friction Check")).toBeInTheDocument();
     expect(screen.getByText("$75 — First Fix")).toBeInTheDocument();
     expect(screen.getByText("$150+ — Mini Build")).toBeInTheDocument();
     expect(screen.getByText("Best place to start")).toBeInTheDocument();
-    expect(
-      screen
-        .getAllByRole("link", { name: "Other ways to pay" })
-        .some((link) => link.getAttribute("href") === "#other-ways-to-pay"),
-    ).toBe(true);
-    expect(screen.getByText("Venmo")).toBeInTheDocument();
-    expect(screen.getByText("Cash App")).toBeInTheDocument();
-    expect(screen.getByText("PayPal")).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Other ways to pay" })).toBeInTheDocument();
+    expect(screen.getByText("One useful improvement")).toBeInTheDocument();
     expect(
       screen.getByText(
-        "Stripe is the main checkout option, but you can also use Venmo, Cash App, or PayPal if that is easier.",
+        "A focused review of your page, post, link, offer, or lead flow. I’ll identify what is confusing, missing, or costing you responses and give you the clearest first fix.",
       ),
-    ).toBeInTheDocument();
-    expect(screen.getByText("@ionkilo42")).toBeInTheDocument();
-    expect(screen.getByText("$ionkilo42")).toBeInTheDocument();
-    expect(screen.getByText("paypal.me/ionkilo42")).toBeInTheDocument();
-    expect(
-      screen.getByText("Send payment through Venmo using @ionkilo42."),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText("Send payment through Cash App using $ionkilo42."),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText("Send payment through PayPal using paypal.me/ionkilo42."),
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        "After using Venmo, Cash App, or PayPal, please message me with what you paid for and the details for the project so I can match the payment to your request.",
+        "One practical improvement completed for you, such as offer cleanup, a DM pitch, landing page section, intake form, payment/start link, CTA rewrite, or small lead-flow improvement.",
       ),
     ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Open Venmo" })).toHaveAttribute(
+    expect(
+      screen.getByText(
+        "A small custom build around your actual business, such as a quote flow, booking page, QR hub, intake system, simple dashboard, partner page, landing page, or lightweight automation.",
+      ),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Start with Friction Check — $35" })).toHaveAttribute(
       "href",
-      "https://venmo.com/u/ionkilo42",
+      "https://buy.stripe.com/28E4gz2DDf66bXA0m41ZS04",
     );
-    expect(screen.getByRole("link", { name: "Open Cash App" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Get a First Fix — $75" })).toHaveAttribute(
       "href",
-      "https://cash.app/$ionkilo42",
+      "https://buy.stripe.com/5kQbJ11zzaPQ9Ps7Ow1ZS05",
     );
-    expect(screen.getByRole("link", { name: "Open PayPal" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Request a Mini Build — $150+" })).toHaveAttribute(
       "href",
-      "https://paypal.me/ionkilo42",
+      "https://buy.stripe.com/aFa4gz6TTaPQ4v81q81ZS03",
     );
     expect(
-      screen.getByText("Larger work is scoped separately before any additional charges are sent."),
-    ).toBeInTheDocument();
+      screen.getAllByText(/After payment, send the page, post, screenshot, or idea you want fixed\./i)
+        .length,
+    ).toBeGreaterThan(0);
     expect(
-      screen.getByText(/The \$35 friction check is the best default/i),
+      screen.getByText(/If the job needs more than the selected tier, I’ll say so before doing extra work\./i),
     ).toBeInTheDocument();
-    expect(
-      screen.getByText(/Complete secure checkout, then use the handoff page to send links, screenshots, or notes\./i),
-    ).toBeInTheDocument();
-    expect(screen.getByText(/If you are unsure, contact me first/i)).toBeInTheDocument();
-    expect(screen.getByText(/After checkout, use the confirmation page to send the links, screenshots, or notes that let me start cleanly\./i)).toBeInTheDocument();
-    expect(
-      screen.getByText(
-        "I look at the messy spot and tell you what is actually broken, what matters, and what the first useful fix should be.",
-      ),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(
-        "I make one small practical improvement: form cleanup, intake flow, payment link, copy rewrite, button fix, customer message, or simple page section.",
-      ),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(
-        "For multi-step flows, dashboards, branded pages, automation, lead capture, or anything that needs more structure.",
-      ),
-    ).toBeInTheDocument();
+    expect(screen.getByText("Direct contact:")).toBeInTheDocument();
+    expect(screen.getByText("jonathan@killough.works")).toBeInTheDocument();
+    expect(screen.getAllByAltText(/Killough Works .* offer graphic/i).length).toBeGreaterThanOrEqual(3);
+    expect(screen.queryByText("Venmo")).not.toBeInTheDocument();
+    expect(screen.queryByText("Cash App")).not.toBeInTheDocument();
+    expect(screen.queryByText("PayPal")).not.toBeInTheDocument();
   });
 });

@@ -33,17 +33,22 @@ describe("Home page", () => {
     expect(
       screen.getByText(/Messy is okay\. Send the site, page, or social profile\./i),
     ).toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: "Get a $35 Friction Check" })[0]).toHaveAttribute(
+    expect(screen.getAllByRole("link", { name: "Start with Friction Check — $35" })[0]).toHaveAttribute(
       "href",
-      "https://buy.stripe.com/7sY7sLba91fgaTwb0I1ZS02",
+      "https://buy.stripe.com/28E4gz2DDf66bXA0m41ZS04",
     );
     expect(screen.getByRole("link", { name: "See sample fixes" })).toHaveAttribute(
       "href",
       "#sample-fixes",
     );
-    expect(
-      screen.getByRole("link", { name: "Plan a mini build" }),
-    ).toHaveAttribute("href", "#start");
+    expect(screen.getByRole("link", { name: "Get a First Fix — $75" })).toHaveAttribute(
+      "href",
+      "https://buy.stripe.com/5kQbJ11zzaPQ9Ps7Ow1ZS05",
+    );
+    expect(screen.getByRole("link", { name: "Request a Mini Build — $150+" })).toHaveAttribute(
+      "href",
+      "https://buy.stripe.com/aFa4gz6TTaPQ4v81q81ZS03",
+    );
     expect(
       screen.getAllByText(/If the slots are full, I['’]ll tell you before you pay for anything larger than a Friction Check\./i)
         .length,
@@ -244,7 +249,7 @@ describe("Home page", () => {
     render(<Home />);
 
     expect(screen.getAllByText("Delivered within 48 hours.").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("Most popular for known problems").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("One useful improvement").length).toBeGreaterThan(0);
     expect(
       screen.getAllByText(/Secure your Friction Check\. After checkout, you land on a short handoff page/i).length,
     ).toBeGreaterThan(0);
