@@ -61,8 +61,11 @@ describe("/pay page", () => {
     expect(
       screen.getByText(/The \$35 friction check is the best default/i),
     ).toBeInTheDocument();
-    expect(screen.getByText(/After payment, use the confirmation page to send the details/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Complete secure checkout, then use the handoff page to send links, screenshots, or notes\./i),
+    ).toBeInTheDocument();
     expect(screen.getByText(/If you are unsure, contact me first/i)).toBeInTheDocument();
+    expect(screen.getByText(/After checkout, use the confirmation page to send the links, screenshots, or notes that let me start cleanly\./i)).toBeInTheDocument();
     expect(
       screen.getByText(
         "I look at the messy spot and tell you what is actually broken, what matters, and what the first useful fix should be.",

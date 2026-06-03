@@ -9,31 +9,41 @@ describe("/paid page", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: "Payment received. Next, answer 2 quick questions so I can review the first useful move.",
+        name: "Payment received — let’s get to work.",
       }),
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /For a \$35 Friction Check, the next move is simple\. Send your page link and the #1 thing that feels broken, confusing, or annoying right now\./i,
-      ),
-    ).toBeInTheDocument();
-    expect(screen.getByText("What is your website, Facebook, Instagram, or page link?")).toBeInTheDocument();
-    expect(
-      screen.getByText("What is the #1 thing that feels broken, confusing, or annoying right now?"),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(
-        /Messy is okay\. A website, Facebook page, Instagram profile, or rough page link is enough to start\./i,
+        /Your Killough Works request is in\. The next step is to send the links, screenshots, or notes I need to review the right thing\./i,
       ),
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /Send those 2 answers and I.ll review the Friction Check cleanly, identify what is actually broken, and reply with the first useful move\./i,
+        "Your payment was received. I'll review your request and use the details you send next to figure out the clearest first fix.",
       ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("I review your payment and request."),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("I look at the website, page, form, or profile you send."),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "I send back the first practical fix, teardown, draft, or recommendation based on the option you selected.",
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Have extra context\? Send links, screenshots, or notes to Jonathan\./i,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Return Home" }),
     ).toBeInTheDocument();
     expect(
       screen
-        .getAllByRole("link", { name: "Send intake details" })
+        .getAllByRole("link", { name: "Send Project Details" })
         .some((link) => link.getAttribute("href") === "/#start"),
     ).toBe(true);
   });

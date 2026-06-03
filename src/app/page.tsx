@@ -1,9 +1,8 @@
-import Link from "next/link";
-
 import { BrandLockup } from "@/components/brand-lockup";
 import { LeadForm } from "@/components/lead-form";
 import {
   availabilitySlots,
+  contactDetails,
   coreCategories,
   faqs,
   pricingTiers,
@@ -40,8 +39,8 @@ export default function Home() {
             <p className="micro-note">Website Handyman for Local Businesses</p>
             <h1>Small, fast web fixes for local businesses tired of losing leads.</h1>
             <p className="hero-quick-note">
-              Starts at $35. Pay for a Friction Check, then answer 2 quick questions on the next
-              page.
+              Starts at $35. Secure a Friction Check, then use the handoff page to send the links,
+              screenshots, or notes I need to review the right thing.
             </p>
             <div className="hero-actions">
               <a
@@ -57,7 +56,8 @@ export default function Home() {
               </a>
             </div>
             <p className="hero-payment-note">
-              After payment: send your website URL and the #1 thing driving you crazy right now.
+              Secure checkout first. Then send your website URL, screenshots, and the issue you
+              want reviewed.
             </p>
             <p className="lede">
               I fix the annoying website problems big agencies overcharge for: broken contact
@@ -188,11 +188,33 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section section-tray identity-section" id="about-jonathan">
+        <div className="section-heading">
+          <p className="section-label">Built by Jonathan</p>
+          <h2>Built by Jonathan in South Jersey</h2>
+          <p>{contactDetails.trustBlurb}</p>
+        </div>
+        <div className="category-grid identity-grid">
+          <article className="category-card identity-card">
+            <h3>Based in New Jersey</h3>
+            <p>Local-business mindset, plain language, and a practical first step instead of a bloated process.</p>
+          </article>
+          <article className="category-card identity-card">
+            <h3>Focused on useful fixes</h3>
+            <p>Websites, forms, lead capture, quote systems, branding polish, and small automations that clarify the next step.</p>
+          </article>
+          <article className="category-card identity-card">
+            <h3>No fake agency layer</h3>
+            <p>You get direct contact with the person doing the review and the work, including a clear scope before anything gets bigger.</p>
+          </article>
+        </div>
+      </section>
+
       <section className="section section-tray warm-section" id="weekly-slots">
         <div className="section-heading">
           <p className="section-label">This Week</p>
-          <h2>What I can fix this week</h2>
-          <p>I keep this small on purpose so the work stays personal and useful.</p>
+          <h2>Limited weekly intake, kept intentional</h2>
+          <p>I only take a small number of fixes at a time so the work stays fast, clear, and useful.</p>
         </div>
         <div className="category-grid availability-grid">
           {availabilitySlots.map((slot) => (
@@ -211,19 +233,45 @@ export default function Home() {
       <section className="section section-tray sample-fixes-section" id="sample-fixes">
         <div className="section-heading">
           <p className="section-label">Sample Fixes</p>
-          <h2>Sample fixes: before and after</h2>
-          <p>These are sample scenarios based on common problems I see on local business websites.</p>
+          <h2>Example fixes, shown as simple mockups</h2>
+          <p>
+            These examples show the kind of practical improvements Killough Works can make. Real
+            client examples will be added as the portfolio grows.
+          </p>
         </div>
         <div className="category-grid sample-fix-grid">
           {starterFixes.map((item) => (
             <article className="category-card sample-fix-card" key={item.title}>
               <p className="panel-label">{item.label}</p>
               <h3>{item.title}</h3>
+              <div className="sample-fix-visuals" aria-hidden="true">
+                <div className="sample-visual sample-visual-before">
+                  <span className="sample-visual-label">Before</span>
+                  <div className="sample-visual-frame sample-visual-frame-before">
+                    <span className="sample-bar short" />
+                    <span className="sample-bar medium muted" />
+                    <span className="sample-bar long muted" />
+                    <span className="sample-chip weak">No clear next step</span>
+                  </div>
+                </div>
+                <div className="sample-visual sample-visual-after">
+                  <span className="sample-visual-label">After</span>
+                  <div className="sample-visual-frame sample-visual-frame-after">
+                    <span className="sample-bar short strong" />
+                    <span className="sample-bar medium" />
+                    <span className="sample-bar long" />
+                    <span className="sample-chip strong">Clear action</span>
+                  </div>
+                </div>
+              </div>
               <p className="sample-fix-before">
-                <strong>Before:</strong> {item.before}
+                <strong>Before problem:</strong> {item.before}
               </p>
               <p className="sample-fix-after">
-                <strong>After:</strong> {item.after}
+                <strong>After fix:</strong> {item.after}
+              </p>
+              <p className="sample-fix-why">
+                <strong>Why it matters:</strong> {item.why}
               </p>
             </article>
           ))}
@@ -266,8 +314,8 @@ export default function Home() {
           <p className="section-label">Start</p>
           <h2>Start with the messy version</h2>
           <p>
-            Drop your website, Facebook page, Instagram, or the thing that feels broken.
-            I&apos;ll look at it and tell you the first practical fix.
+            Drop your website, Facebook page, Instagram, or the thing that feels broken. I&apos;ll
+            look at it and tell you the first practical fix.
           </p>
         </div>
         <div className="contact-console">
@@ -275,9 +323,10 @@ export default function Home() {
             <div className="contact-copy console-sidebar">
               <p className="panel-label">What happens next</p>
               <ol>
-                <li>You send the page, profile, or problem.</li>
-                <li>I find where customers are getting stuck.</li>
-                <li>I recommend the first practical fix before anything gets bigger.</li>
+                <li>Choose the option that fits the size of the fix.</li>
+                <li>Complete secure checkout or send your request for scoped work.</li>
+                <li>Use the handoff page or form to send your links, screenshots, or notes.</li>
+                <li>I review what your customers see and send back the clearest next move.</li>
               </ol>
               <p className="panel-label">Good fit</p>
               <ul className="messy-list">
@@ -290,6 +339,9 @@ export default function Home() {
               <p className="contact-note">
                 If the problem needs a bigger rebuild, I&apos;ll tell you clearly instead of
                 pretending a quick patch will solve everything.
+              </p>
+              <p className="contact-note">
+                {contactDetails.directLabel}: <a className="text-link" href={contactDetails.mailtoHref}>{contactDetails.email}</a>
               </p>
               <div className="human-anchor" aria-label="Jonathan note">
                 <p className="stamp-mark" aria-hidden="true">
@@ -329,15 +381,18 @@ export default function Home() {
         </section>
       ) : null}
 
-      <footer className="section section-tray site-footer dark-footer">
+      <footer className="section section-tray site-footer">
         <div>
           <p className="section-label">Killough Works</p>
           <p className="footer-line">Website handyman for local businesses.</p>
           <p className="footer-line">Based in South Jersey. Fixing websites nationwide.</p>
         </div>
-        <a className="text-link" href="mailto:ionkilo42@gmail.com">
-          ionkilo42@gmail.com
-        </a>
+        <p className="footer-contact">
+          {contactDetails.directLabel}:{" "}
+          <a className="text-link" href={contactDetails.mailtoHref}>
+            {contactDetails.email}
+          </a>
+        </p>
       </footer>
     </main>
   );

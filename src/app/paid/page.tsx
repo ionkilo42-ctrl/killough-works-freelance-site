@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { BrandLockup } from "@/components/brand-lockup";
+import { contactDetails } from "@/data/site";
 
 const followUpLinks = {
   intake: "/#start",
@@ -10,8 +11,9 @@ const followUpLinks = {
 } as const;
 
 const nextSteps = [
-  "What is your website, Facebook, Instagram, or page link?",
-  "What is the #1 thing that feels broken, confusing, or annoying right now?",
+  "I review your payment and request.",
+  "I look at the website, page, form, or profile you send.",
+  "I send back the first practical fix, teardown, draft, or recommendation based on the option you selected.",
 ] as const;
 
 export const metadata: Metadata = {
@@ -21,65 +23,70 @@ export const metadata: Metadata = {
 
 export default function PaidPage() {
   return (
-    <main className="shell inner-page">
-      <section className="subpage-hero">
-        <div className="identity-strip utility-strip">
-          <BrandLockup note="Friction Check handoff for small business systems, fixed one clear step at a time." />
+    <main className="shell inner-page paid-page-shell">
+      <section className="section section-tray paid-confirmation-shell">
+        <div className="identity-strip utility-strip paid-confirmation-top">
+          <BrandLockup note="Payment confirmed and ready for the next practical step." />
           <nav className="route-nav" aria-label="Confirmation page links">
             <span className="route-nav-label">Route</span>
             <div className="route-nav-links">
-              <Link href={followUpLinks.home}>Back home</Link>
-              <Link href={followUpLinks.payHub}>Back to pay</Link>
-              <a className="route-nav-cta" href={followUpLinks.intake}>
-                Send intake details
-              </a>
+              <Link href={followUpLinks.home}>Return home</Link>
+              <Link href={followUpLinks.payHub}>Payment hub</Link>
             </div>
           </nav>
         </div>
 
-        <div className="hero-ledger pay-ledger">
-          <article className="hero-essay pay-essay">
-            <p className="micro-note">Payment received / Friction Check handoff / real intake next step</p>
-            <div className="hero-poster">
-              <p className="headline-note">No extra maze after payment.</p>
-            <div className="headline-stack">
-                <span className="poster-mark">KW-PAID</span>
-                <h1>Payment received. Next, answer 2 quick questions so I can review the first useful move.</h1>
-              </div>
-            </div>
-            <p className="lede">
-              For a $35 Friction Check, the next move is simple. Send your page link and the #1
-              thing that feels broken, confusing, or annoying right now.
+        <div className="paid-confirmation-wrap">
+          <article className="paid-confirmation-card">
+            <p className="micro-note">Payment received / clear handoff / no extra maze</p>
+            <h1>Payment received — let’s get to work.</h1>
+            <p className="lede paid-confirmation-lede">
+              Your Killough Works request is in. The next step is to send the links, screenshots,
+              or notes I need to review the right thing.
             </p>
-            <p className="contact-note">
-              Messy is okay. A website, Facebook page, Instagram profile, or rough page link is
-              enough to start.
-            </p>
-            <div className="hero-actions">
-              <a className="button primary" href={followUpLinks.intake}>
-                Send intake details
-              </a>
-              <a className="button secondary" href={followUpLinks.payHub}>
-                Back to payment hub
-              </a>
-            </div>
-          </article>
 
-          <aside className="artifact-card process-board confirmation-card">
-            <p className="panel-label">Next steps</p>
-            <div className="mini-steps">
-              {nextSteps.map((step, index) => (
-                <p key={step}>
-                  <span>0{index + 1}</span>
-                  {step}
+            <div className="paid-card-sections">
+              <section className="paid-info-block">
+                <p className="panel-label">Confirmation</p>
+                <p>
+                  Your payment was received. I&apos;ll review your request and use the details you
+                  send next to figure out the clearest first fix.
                 </p>
-              ))}
+              </section>
+
+              <section className="paid-info-block">
+                <p className="panel-label">What happens next</p>
+                <ol className="paid-step-list">
+                  {nextSteps.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+              </section>
+
+              <section className="paid-info-block">
+                <p className="panel-label">Send project details</p>
+                <p>
+                  Have extra context? Send links, screenshots, or notes to {contactDetails.name}.
+                </p>
+              </section>
             </div>
-            <p className="panel-note">
-              Send those 2 answers and I&apos;ll review the Friction Check cleanly, identify what is
-              actually broken, and reply with the first useful move.
+
+            <div className="hero-actions paid-confirmation-actions">
+              <a className="button primary" href={followUpLinks.intake}>
+                Send Project Details
+              </a>
+              <Link className="button secondary" href={followUpLinks.home}>
+                Return Home
+              </Link>
+            </div>
+
+            <p className="contact-note paid-support-copy">
+              {contactDetails.directLabel}:{" "}
+              <a className="text-link" href={contactDetails.mailtoHref}>
+                {contactDetails.email}
+              </a>
             </p>
-          </aside>
+          </article>
         </div>
       </section>
     </main>

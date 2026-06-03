@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { BrandLockup } from "@/components/brand-lockup";
+import { contactDetails } from "@/data/site";
 
 const paymentLinks = {
   frictionCheck: "https://buy.stripe.com/7sY7sLba91fgaTwb0I1ZS02",
@@ -106,9 +107,9 @@ export default function PayPage() {
               </div>
             </div>
             <p className="lede">
-              Send me the broken business moment. I&apos;ll make the first useful fix obvious. The
-              Friction Check has a live payment link now. First Fix and Mini Build work starts after
-              I review the real problem and confirm scope with you.
+              Start with the smallest clear next step. The Friction Check has a live payment link
+              now. First Fix and Mini Build work start after I review the real problem and confirm
+              scope with you.
             </p>
             <div className="hero-actions">
               <a className="button primary" href="#payment-options">
@@ -126,7 +127,7 @@ export default function PayPage() {
             <ul className="signal-bullets">
               <li>Choose the closest starter option.</li>
               <li>The $35 Friction Check is the best default if you want a clear first move.</li>
-              <li>After payment, use the confirmation page to send the details I need to start.</li>
+              <li>Complete secure checkout, then use the handoff page to send links, screenshots, or notes.</li>
               <li>If you are unsure, contact me first and I&apos;ll tell you the right starting point.</li>
               <li>I scope First Fix and Mini Build work before charging more.</li>
             </ul>
@@ -141,8 +142,9 @@ export default function PayPage() {
           <p>
             The $35 Friction Check is the cleanest place to start if you need clarity fast. The
             First Fix and Mini Build tiers are still the same ladder, but they start with a scoped
-            contact-first handoff instead of a blind checkout. If the work grows, I price the next
-            phase separately before any additional charges are sent.
+            contact-first handoff instead of a blind checkout. After checkout, you&apos;ll land on a
+            short handoff page where you can share the context I need. If the work grows, I price
+            the next phase separately before any additional charges are sent.
           </p>
         </div>
         <div className="payment-grid">
@@ -171,7 +173,7 @@ export default function PayPage() {
         <div className="signal-board pay-note-board">
           <p>These offers are meant to fix one clear business problem at a practical level.</p>
           <p>Larger work is scoped separately before any additional charges are sent.</p>
-          <p>Once you pay, use the confirmation page to send the context that lets me start cleanly.</p>
+          <p>After checkout, use the confirmation page to send the links, screenshots, or notes that let me start cleanly.</p>
           <p>After payment, I review what you send and use it to shape the smallest useful next step.</p>
         </div>
       </section>
@@ -200,6 +202,9 @@ export default function PayPage() {
         <p className="identity-note">
           After using Venmo, Cash App, or PayPal, please message me with what you paid for and the
           details for the project so I can match the payment to your request.
+        </p>
+        <p className="contact-note">
+          {contactDetails.directLabel}: <a className="text-link" href={contactDetails.mailtoHref}>{contactDetails.email}</a>
         </p>
       </section>
     </main>

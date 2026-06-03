@@ -2,6 +2,8 @@
 
 import { FormEvent, useState } from "react";
 
+import { contactDetails } from "@/data/site";
+
 const initialState = {
   name: "",
   email: "",
@@ -58,7 +60,8 @@ export function LeadForm() {
           first practical fix.
         </p>
         <p className="form-note">
-          You do not need a full project brief. Short and messy is fine.
+          You do not need a full project brief. Short and messy is fine. After payment, this is
+          where you send the context that helps me review the right thing.
         </p>
         <p className="required-note">
           Required: name, email, business name, a starting option, and a short note about what
@@ -139,10 +142,12 @@ export function LeadForm() {
 
       <div className="form-actions">
         <button type="submit" disabled={status === "loading"}>
-          <span className="console-form-submit">{status === "loading" ? "Sending..." : "Start here"}</span>
+          <span className="console-form-submit">
+            {status === "loading" ? "Sending..." : "Send project details"}
+          </span>
         </button>
-        <a className="text-link" href="mailto:ionkilo42@gmail.com?subject=Killough%20Works%20Inquiry">
-          Or email directly
+        <a className="text-link" href={contactDetails.mailtoHref}>
+          {contactDetails.directLabel}: {contactDetails.email}
         </a>
       </div>
 
