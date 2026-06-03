@@ -8,5 +8,14 @@ out
 .env.production
 dist
 coverage
+*.tsbuildinfo
 data/intake-submissions.json
 .vercel
+data/studio/*.db
+data/studio/*.sqlite
+data/studio/*-journal
+data/studio/*-shm
+data/studio/*-wal
+playwright-report
+test-results
+.playwright-cli

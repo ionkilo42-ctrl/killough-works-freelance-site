@@ -1,0 +1,410 @@
+<style>
+  .studio-grid {
+    display: grid;
+    gap: 18px;
+  }
+
+  .studio-shell {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr) 320px;
+    gap: 18px;
+    min-height: 720px;
+  }
+
+  .rail,
+  .main-panel,
+  .right-rail,
+  .mini-panel,
+  .table-panel,
+  .calendar-panel,
+  .gallery-panel {
+    border: 1px solid rgba(100, 194, 255, 0.22);
+    background: linear-gradient(180deg, rgba(7, 13, 22, 0.96), rgba(8, 16, 26, 0.88));
+    border-radius: 24px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.24);
+  }
+
+  .rail,
+  .main-panel,
+  .right-rail {
+    padding: 18px;
+  }
+
+  .rail {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .brand {
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(18, 35, 58, 0.95), rgba(10, 20, 34, 0.95));
+    border: 1px solid rgba(125, 201, 255, 0.26);
+  }
+
+  .brand strong {
+    display: block;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .brand span,
+  .subtle,
+  .meta {
+    color: #99b8d9;
+  }
+
+  .nav-list,
+  .status-list,
+  .mini-list,
+  .table-rows,
+  .calendar-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .nav-item,
+  .status-item,
+  .mini-item,
+  .table-row,
+  .calendar-item,
+  .gallery-card {
+    border: 1px solid rgba(100, 194, 255, 0.18);
+    border-radius: 18px;
+    padding: 12px 14px;
+    background: rgba(12, 21, 34, 0.75);
+  }
+
+  .nav-item.active {
+    background: linear-gradient(180deg, rgba(14, 39, 69, 0.92), rgba(10, 28, 49, 0.92));
+    border-color: rgba(129, 208, 255, 0.42);
+  }
+
+  .nav-item strong,
+  .panel-head strong,
+  .table-row strong,
+  .calendar-item strong,
+  .gallery-card strong {
+    display: block;
+  }
+
+  .main-panel {
+    display: grid;
+    gap: 18px;
+  }
+
+  .hero-strip {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 18px;
+  }
+
+  .hero-box,
+  .signal-box {
+    border: 1px solid rgba(100, 194, 255, 0.18);
+    border-radius: 22px;
+    padding: 18px;
+    background: rgba(9, 17, 28, 0.84);
+  }
+
+  .hero-box h3,
+  .signal-box h3,
+  .panel-head h3 {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+  }
+
+  .hero-box p,
+  .signal-box p,
+  .panel-head p,
+  .table-row p,
+  .calendar-item p,
+  .gallery-card p {
+    margin: 0;
+    color: #c6d8ef;
+    line-height: 1.45;
+  }
+
+  .signal-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .metric {
+    padding: 12px;
+    border-radius: 16px;
+    background: rgba(16, 31, 48, 0.92);
+    border: 1px solid rgba(129, 208, 255, 0.2);
+  }
+
+  .metric strong {
+    display: block;
+    font-size: 1.4rem;
+  }
+
+  .lower-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .table-panel,
+  .calendar-panel,
+  .gallery-panel {
+    padding: 16px;
+  }
+
+  .panel-head {
+    margin-bottom: 12px;
+  }
+
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .pill {
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(129, 208, 255, 0.22);
+    color: #d8ecff;
+    background: rgba(13, 25, 40, 0.9);
+    font-size: 0.82rem;
+  }
+
+  .right-rail {
+    display: grid;
+    gap: 18px;
+    align-content: start;
+  }
+
+  .mini-panel {
+    padding: 16px;
+  }
+
+  .mini-title {
+    margin: 0 0 10px;
+    font-size: 0.98rem;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: rgba(22, 42, 65, 0.92);
+    border: 1px solid rgba(129, 208, 255, 0.2);
+    color: #d8ecff;
+    font-size: 0.78rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .gallery-card {
+    min-height: 110px;
+  }
+</style>
+
+<h2>Killough Works Studio</h2>
+<p class="subtitle">Recommended direction: a single internal command center inside this repo, with its own isolated data layer and dashboard shell.</p>
+
+<div class="mockup">
+  <div class="mockup-header">Dashboard concept: mixed command center</div>
+  <div class="mockup-body">
+    <div class="studio-grid">
+      <div class="studio-shell">
+        <aside class="rail">
+          <div class="brand">
+            <strong>Killough Works</strong>
+            <span>Studio OS</span>
+          </div>
+          <div class="nav-list">
+            <div class="nav-item active">
+              <strong>Command Center</strong>
+              <span class="subtle">today, approvals, follow-ups</span>
+            </div>
+            <div class="nav-item">
+              <strong>Idea Inbox</strong>
+              <span class="subtle">raw capture and tagging</span>
+            </div>
+            <div class="nav-item">
+              <strong>Profiles + Leads</strong>
+              <span class="subtle">businesses, creators, notes</span>
+            </div>
+            <div class="nav-item">
+              <strong>Content Calendar</strong>
+              <span class="subtle">weekly board and planned posts</span>
+            </div>
+            <div class="nav-item">
+              <strong>Drafts + DMs</strong>
+              <span class="subtle">platform copy and outreach</span>
+            </div>
+            <div class="nav-item">
+              <strong>Pitch Gallery</strong>
+              <span class="subtle">shared examples and selected visuals</span>
+            </div>
+          </div>
+          <div class="status-list">
+            <div class="status-item"><strong>Status lane</strong><span class="subtle">idea</span></div>
+            <div class="status-item"><strong>Status lane</strong><span class="subtle">draft</span></div>
+            <div class="status-item"><strong>Status lane</strong><span class="subtle">approved</span></div>
+            <div class="status-item"><strong>Status lane</strong><span class="subtle">posted / followed up</span></div>
+          </div>
+        </aside>
+
+        <main class="main-panel">
+          <div class="hero-strip">
+            <div class="hero-box">
+              <h3>Today’s operating surface</h3>
+              <p>One place to see pending approvals, draft queue, hot leads, and creator/business follow-up without auto-posting anything.</p>
+              <div class="pill-row">
+                <span class="pill">Approval-first</span>
+                <span class="pill">Local-first DB</span>
+                <span class="pill">Split-ready architecture</span>
+              </div>
+            </div>
+            <div class="signal-box">
+              <h3>Signal snapshot</h3>
+              <p>Fast overview of what needs attention right now.</p>
+              <div class="signal-metrics">
+                <div class="metric"><strong>7</strong><span class="meta">drafts waiting</span></div>
+                <div class="metric"><strong>4</strong><span class="meta">follow-ups due</span></div>
+                <div class="metric"><strong>3</strong><span class="meta">visual pitches active</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lower-grid">
+            <section class="table-panel">
+              <div class="panel-head">
+                <strong>Profiles + Leads</strong>
+                <p>Shared records for creators and businesses, with notes, status, tags, and linked work.</p>
+              </div>
+              <div class="table-rows">
+                <div class="table-row">
+                  <strong>Local restaurant campaign</strong>
+                  <p>Lead warm. Needs QR offer concept and DM draft.</p>
+                  <div class="pill-row">
+                    <span class="tag">restaurant</span>
+                    <span class="tag">QR offers</span>
+                    <span class="tag">follow up Friday</span>
+                  </div>
+                </div>
+                <div class="table-row">
+                  <strong>Creator relaunch</strong>
+                  <p>Two LinkedIn ideas and one pitch example linked.</p>
+                  <div class="pill-row">
+                    <span class="tag">creator</span>
+                    <span class="tag">automation</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="calendar-panel">
+              <div class="panel-head">
+                <strong>Weekly content board</strong>
+                <p>Operational planning view, not a fake auto-publisher.</p>
+              </div>
+              <div class="calendar-list">
+                <div class="calendar-item">
+                  <strong>Mon - LinkedIn</strong>
+                  <p>“Why local businesses lose leads in DMs”</p>
+                </div>
+                <div class="calendar-item">
+                  <strong>Wed - X</strong>
+                  <p>Short operator thread about AI systems cleanup</p>
+                </div>
+                <div class="calendar-item">
+                  <strong>Fri - Instagram</strong>
+                  <p>Visual pitch example from a restaurant offer mockup</p>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <section class="gallery-panel">
+            <div class="panel-head">
+              <strong>Visual pitch gallery</strong>
+              <p>Shared example library plus visuals selected onto lead-specific pitch boards.</p>
+            </div>
+            <div class="gallery-grid">
+              <div class="gallery-card">
+                <strong>Offer landing concept</strong>
+                <p>Reusable example asset</p>
+              </div>
+              <div class="gallery-card">
+                <strong>QR promo board</strong>
+                <p>Selected for restaurant lead</p>
+              </div>
+              <div class="gallery-card">
+                <strong>Creator funnel mockup</strong>
+                <p>Reusable example asset</p>
+              </div>
+              <div class="gallery-card">
+                <strong>Service revamp board</strong>
+                <p>Selected for local business lead</p>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <aside class="right-rail">
+          <section class="mini-panel">
+            <h3 class="mini-title">Idea inbox</h3>
+            <div class="mini-list">
+              <div class="mini-item">Capture a post idea before it belongs to anyone.</div>
+              <div class="mini-item">Add tags, platform hint, or link it later.</div>
+            </div>
+          </section>
+          <section class="mini-panel">
+            <h3 class="mini-title">DM draft generator</h3>
+            <div class="mini-list">
+              <div class="mini-item">Reference notes, tags, and active offer angle.</div>
+              <div class="mini-item">Human review required before sending.</div>
+            </div>
+          </section>
+          <section class="mini-panel">
+            <h3 class="mini-title">Clipboard export</h3>
+            <div class="mini-list">
+              <div class="mini-item">Copy post text for Instagram, X, or LinkedIn without connecting APIs yet.</div>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="layout-right" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Layout feels right</h3>
+      <p>Keep this overall command-center composition and refine the details.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="layout-heavier-leads" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Push it more lead-heavy</h3>
+      <p>Make profiles, notes, and follow-ups dominate the home screen more strongly.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="layout-heavier-content" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Push it more content-heavy</h3>
+      <p>Make the calendar, idea queue, and post pipeline more dominant.</p>
+    </div>
+  </div>
+</div>

@@ -1,138 +1,124 @@
+import Link from "next/link";
+
+import { BrandLockup } from "@/components/brand-lockup";
 import { LeadForm } from "@/components/lead-form";
 import {
-  bestFit,
-  buildCards,
-  examples,
+  availabilitySlots,
+  coreCategories,
+  faqs,
+  pricingTiers,
   processSteps,
-  signalPoints,
-  starterPricing,
+  starterFixes,
+  supportedPlatforms,
 } from "@/data/site";
 
 const rawBookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL?.trim();
-const bookingUrl = rawBookingUrl || "#contact";
+const bookingUrl = rawBookingUrl || "#start";
 const hasBookingUrl = Boolean(rawBookingUrl);
 
 export default function Home() {
   return (
-    <main className="shell">
-      <section className="hero-workshop" id="top">
-        <div className="identity-strip">
-          <div>
-            <p className="eyebrow">Killough Works</p>
-            <p className="identity-note">
-              Small coded tools, offer visuals, and lead flows for local businesses and creators.
-            </p>
-          </div>
+    <main className="shell innovation-shell">
+      <section className="hero-section section-tray hero-tray light-hero-tray" id="top">
+        <div className="topline">
+          <BrandLockup note="Website handyman for local businesses." />
           <nav className="route-nav" aria-label="Section links">
-            <span className="route-nav-label">Jump</span>
-            <div className="route-nav-links">
-              <a href="#builds">What I build</a>
-              <a href="#examples">Use cases</a>
-              <a href="#pricing">Starter pricing</a>
-              <a href="#process">How it works</a>
-              <a href="#contact">Send it</a>
-            </div>
+            <a href="#what-i-fix">What I Fix</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#sample-fixes">Sample Fixes</a>
+            <a href="#faq">FAQ</a>
+            <a className="route-nav-cta" href="#start">
+              Start
+            </a>
           </nav>
         </div>
 
-        <div className="hero-ledger">
-          <aside className="artifact-card signal-card">
-            <p className="panel-label">Field notes</p>
-            <p className="signal-card-title">Most small businesses do not need a giant agency project first.</p>
-            <ul className="signal-bullets">
-              <li>One useful page.</li>
-              <li>One clearer offer.</li>
-              <li>One better intake flow.</li>
-              <li>One small tool that saves a back-and-forth.</li>
-            </ul>
-            <div className="tag-row">
-              <span>$10-$25</span>
-              <span>send screenshot</span>
-              <span>DM-ready</span>
-            </div>
-          </aside>
+        <p className="trust-marker">Based in South Jersey. Fixing websites nationwide.</p>
 
-          <article className="hero-essay">
-            <p className="micro-note">Offer workshop / intake repair / tiny build energy</p>
-            <div className="hero-poster">
-              <p className="headline-note">Not a discovery-call funnel.</p>
-              <div className="headline-stack">
-                <span className="poster-mark">KW-01</span>
-                <h1>Small useful builds for messy business problems.</h1>
-              </div>
-              <div className="hero-orbit">
-                <span>pressure wash quote page</span>
-                <span>restaurant QR hub</span>
-                <span>tree service photo flow</span>
-              </div>
-            </div>
-            <p className="lede">
-              I turn posts, screenshots, DMs, rough ideas, and broken lead flows into simple
-              pages, visuals, forms, and tools people can actually use.
+        <div className="hero-grid home-hero-grid">
+          <article className="hero-card hero-copy">
+            <p className="micro-note">Website Handyman for Local Businesses</p>
+            <h1>Small, fast web fixes for local businesses tired of losing leads.</h1>
+            <p className="hero-quick-note">
+              Starts at $35. Pay for a Friction Check, then answer 2 quick questions on the next
+              page.
             </p>
             <div className="hero-actions">
-              <a className="button primary" href="#contact">
-                Send me what you have
+              <a
+                className="button primary"
+                href={pricingTiers[0].href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Get a $35 Friction Check
               </a>
-              <a className="button secondary" href="#pricing">
-                See starter offers
+              <a className="button tertiary" href="#sample-fixes">
+                See sample fixes
               </a>
             </div>
-            <div className="signal-row">
-              <span>Useful first</span>
-              <span>Fast to ship</span>
-              <span>Taste over template</span>
-              <span>Tailored to what exists</span>
+            <p className="hero-payment-note">
+              After payment: send your website URL and the #1 thing driving you crazy right now.
+            </p>
+            <p className="lede">
+              I fix the annoying website problems big agencies overcharge for: broken contact
+              forms, confusing booking pages, weak calls-to-action, messy mobile layouts, missing
+              payment links, and quote requests stuck in DMs.
+            </p>
+            <p className="contact-note">
+              Small fixes that help customers contact, book, or pay you.
+            </p>
+            <div className="hero-diagnostic-line" aria-hidden="true">
+              <span />
+              <span />
+              <span />
             </div>
+            <p className="contact-note">
+              Messy is okay. Send the site, page, or social profile. I&apos;ll show you where
+              customers are getting stuck.
+            </p>
           </article>
 
-          <aside className="artifact-card process-board">
-            <p className="panel-label">Mini signal path</p>
-            <div className="mini-steps">
-              <p>
-                <span>01</span> send the messy version
+          <aside className="hero-side-panel">
+            <p className="panel-label">Local trust</p>
+            <div className="human-anchor hero-human-anchor" aria-label="Jonathan note">
+              <p className="stamp-mark" aria-hidden="true">
+                JW
               </p>
-              <p>
-                <span>02</span> I map the bottleneck
-              </p>
-              <p>
-                <span>03</span> I price the smallest useful fix
-              </p>
-              <p>
-                <span>04</span> first version ships
-              </p>
+              <div>
+                <p className="human-anchor-title">Hi, I’m Jonathan</p>
+                <p className="contact-note">
+                  I&apos;m a website handyman based in South Jersey. I help local service
+                  businesses clean up the small digital problems that quietly cost them leads.
+                </p>
+                <p className="contact-note">
+                  No giant agency rebrand. No vague tech pitch. Just a clear first fix when
+                  customers are getting stuck.
+                </p>
+              </div>
             </div>
-            <p className="panel-note">
-              You can start with a screenshot, a post, a caption, a rough offer, or a half-broken
-              lead flow. If the work is clearly bigger, the call comes later.
-            </p>
+            <div className="signal-board compact-signal-board">
+              {processSteps.map((step) => (
+                <p key={step.title}>
+                  <strong>{step.number}</strong> {step.title}: {step.summary}
+                </p>
+              ))}
+            </div>
           </aside>
-        </div>
-
-        <div className="example-rail" id="examples">
-          {examples.slice(0, 5).map((item, index) => (
-            <article className={`example-tile example-tile-${index + 1}`} key={item.title}>
-              <p className="panel-label">{item.tag}</p>
-              <h3>{item.title}</h3>
-            </article>
-          ))}
         </div>
       </section>
 
-      <section className="section field-section" id="builds">
+      <section className="section section-tray" id="what-i-fix">
         <div className="section-heading">
-          <p className="section-label">Field notes</p>
-          <h2>Small things that help a real person say yes faster.</h2>
+          <p className="section-label">What I Fix</p>
+          <h2>The small problems that quietly lose customers</h2>
           <p>
-            This is not positioned like a giant agency retainer. The work starts with one useful
-            thing that makes the business easier to understand, easier to contact, or easier to buy
-            from.
+            This is the work: broken forms, confusing next steps, weak mobile buttons, and pages
+            that make people leave before asking for a quote.
           </p>
         </div>
-        <div className="build-grid">
-          {buildCards.map((item, index) => (
-            <article className={`build-card build-card-${index + 1}`} key={item.title}>
-              <span className="card-index">{item.tag}</span>
+        <div className="category-grid">
+          {coreCategories.map((item) => (
+            <article className="category-card" key={item.title}>
               <h3>{item.title}</h3>
               <p>{item.summary}</p>
             </article>
@@ -140,112 +126,201 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section" id="pricing">
+      <section className="section section-tray pricing-section" id="pricing">
         <div className="section-heading">
-          <p className="section-label">Starter prices</p>
-          <h2>Low pricing on purpose.</h2>
+          <p className="section-label">Pricing</p>
+          <h2>No giant agency proposal. Pick the size of fix you need.</h2>
           <p>
-            Cheap first builds create trust, screenshots, proof, testimonials, and momentum before
-            bigger projects. The point is to start with something useful, not force a giant scope
-            too early.
+            The $35 Friction Check is the easiest way to start if you know something feels broken
+            but you do not want to get sold a full rebuild.
           </p>
         </div>
-        <div className="pricing-grid">
-          {starterPricing.map((item, index) => (
-            <article className={`pricing-card pricing-card-${index + 1}`} key={item.title}>
-              <p className="pricing-note">{item.note}</p>
-              <p className="price">{item.range}</p>
+        <div className="payment-grid homepage-pricing-grid">
+          {pricingTiers.map((tier) => {
+            const externalLink = tier.href.startsWith("http");
+
+            return (
+              <article
+                className={`pricing-card payment-card${tier.featured ? " payment-card-featured" : ""}`}
+                key={tier.title}
+              >
+                <p className="pricing-note">{tier.featured ? "Start here" : "simple flat starter price"}</p>
+                {tier.badge ? <p className="payment-badge">{tier.badge}</p> : null}
+                <h3>{tier.title}</h3>
+                <p>
+                  <strong>Best for:</strong> {tier.bestFor}
+                </p>
+                <p>{tier.description}</p>
+                {tier.deliverable ? (
+                  <p>
+                    <strong>Deliverable:</strong> {tier.deliverable}
+                  </p>
+                ) : null}
+                {tier.handoff ? (
+                  <p className="contact-note">
+                    <strong>How it starts:</strong> {tier.handoff}
+                  </p>
+                ) : null}
+                <div className="pricing-includes">
+                  <p className="panel-label">Includes</p>
+                  <ul className="messy-list">
+                    {tier.includes.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                {tier.timeline ? (
+                  <p className="contact-note">
+                    <strong>Timeline:</strong> {tier.timeline}
+                  </p>
+                ) : null}
+                <a
+                  className="button primary payment-button"
+                  href={tier.href}
+                  target={externalLink ? "_blank" : undefined}
+                  rel={externalLink ? "noreferrer" : undefined}
+                >
+                  {tier.cta}
+                </a>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="section section-tray warm-section" id="weekly-slots">
+        <div className="section-heading">
+          <p className="section-label">This Week</p>
+          <h2>What I can fix this week</h2>
+          <p>I keep this small on purpose so the work stays personal and useful.</p>
+        </div>
+        <div className="category-grid availability-grid">
+          {availabilitySlots.map((slot) => (
+            <article className="category-card availability-card" key={slot.title}>
+              <h3>{slot.title}</h3>
+              <p>{slot.note}</p>
+            </article>
+          ))}
+        </div>
+        <p className="contact-note">
+          If the slots are full, I&apos;ll tell you before you pay for anything larger than a
+          Friction Check.
+        </p>
+      </section>
+
+      <section className="section section-tray sample-fixes-section" id="sample-fixes">
+        <div className="section-heading">
+          <p className="section-label">Sample Fixes</p>
+          <h2>Sample fixes: before and after</h2>
+          <p>These are sample scenarios based on common problems I see on local business websites.</p>
+        </div>
+        <div className="category-grid sample-fix-grid">
+          {starterFixes.map((item) => (
+            <article className="category-card sample-fix-card" key={item.title}>
+              <p className="panel-label">{item.label}</p>
               <h3>{item.title}</h3>
-              <p>{item.detail}</p>
-            </article>
-          ))}
-        </div>
-        <div className="signal-board">
-          {signalPoints.map((item) => (
-            <p key={item}>{item}</p>
-          ))}
-        </div>
-      </section>
-
-      <section className="section" id="process">
-        <div className="section-heading">
-          <p className="section-label">Signal path</p>
-          <h2>Start with the smallest useful move.</h2>
-        </div>
-        <div className="process-grid">
-          {processSteps.map((step, index) => (
-            <article className={`process-card process-card-${index + 1}`} key={step}>
-              <span className="step-number">Step {index + 1}</span>
-              <p>{step}</p>
+              <p className="sample-fix-before">
+                <strong>Before:</strong> {item.before}
+              </p>
+              <p className="sample-fix-after">
+                <strong>After:</strong> {item.after}
+              </p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="section two-column-section" id="fit">
-        <div>
-          <div className="section-heading compact">
-            <p className="section-label">Best fit</p>
-            <h2>Built for people who already have something real, just not clean yet.</h2>
-          </div>
-          <div className="fit-grid">
-            {bestFit.map((item) => (
-              <article className="fit-pill" key={item}>
-                {item}
-              </article>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <div className="section-heading compact">
-            <p className="section-label">Use cases</p>
-            <h2>Useful first builds I can shape around what you already have.</h2>
-          </div>
-          <div className="examples-grid">
-            {examples.map((item, index) => (
-              <article className={`example-card example-card-${index + 1}`} key={item.title}>
-                <p className="panel-label">{item.tag}</p>
-                <h3>{item.title}</h3>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section contact-section" id="contact">
+      <section className="section section-tray" id="platforms">
         <div className="section-heading">
-          <p className="section-label">Send me the messy version</p>
-          <h2>Send a link, screenshot, post, business, or rough idea.</h2>
+          <p className="section-label">Platforms</p>
+          <h2>Platforms I can usually help with</h2>
           <p>
-            I will look at what is already there, map the bottleneck, and suggest the smallest
-            useful thing to build first.
+            If your setup is unusual, start with a $35 Friction Check. I&apos;ll tell you plainly
+            what is fixable and what is not.
           </p>
         </div>
-        <div className="contact-grid">
-          <div className="contact-copy">
-            <p className="panel-label">What happens next</p>
-            <ol>
-              <li>You send what you have.</li>
-              <li>I reply with the bottleneck and the smallest useful build.</li>
-              <li>If it is clearly bigger than a starter build, then a call makes sense.</li>
-            </ol>
-            <p className="contact-note">
-              Plainspoken scope, tailored suggestions, and no pressure to turn a small problem into
-              a giant project.
-            </p>
+        <div className="signal-board platform-grid">
+          {supportedPlatforms.map((platform) => (
+            <p key={platform}>{platform}</p>
+          ))}
+        </div>
+      </section>
+
+      <section className="section section-tray" id="faq">
+        <div className="section-heading">
+          <p className="section-label">FAQ</p>
+          <h2>Simple answers before you start</h2>
+        </div>
+        <div className="category-grid faq-grid">
+          {faqs.map((item) => (
+            <article className="category-card faq-card" key={item.question}>
+              <h3>{item.question}</h3>
+              <p>{item.answer}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section section-tray contact-section work-order-section" id="start">
+        <div className="section-heading">
+          <p className="section-label">Start</p>
+          <h2>Start with the messy version</h2>
+          <p>
+            Drop your website, Facebook page, Instagram, or the thing that feels broken.
+            I&apos;ll look at it and tell you the first practical fix.
+          </p>
+        </div>
+        <div className="contact-console">
+          <div className="contact-grid">
+            <div className="contact-copy console-sidebar">
+              <p className="panel-label">What happens next</p>
+              <ol>
+                <li>You send the page, profile, or problem.</li>
+                <li>I find where customers are getting stuck.</li>
+                <li>I recommend the first practical fix before anything gets bigger.</li>
+              </ol>
+              <p className="panel-label">Good fit</p>
+              <ul className="messy-list">
+                <li>Broken contact forms</li>
+                <li>Confusing booking pages</li>
+                <li>Quote requests lost in DMs</li>
+                <li>Missing payment or start links</li>
+              </ul>
+              <p className="panel-label">Simple scope first</p>
+              <p className="contact-note">
+                If the problem needs a bigger rebuild, I&apos;ll tell you clearly instead of
+                pretending a quick patch will solve everything.
+              </p>
+              <div className="human-anchor" aria-label="Jonathan note">
+                <p className="stamp-mark" aria-hidden="true">
+                  KW
+                </p>
+                <div>
+                  <p className="human-anchor-title">Hi, I’m Jonathan</p>
+                  <p className="contact-note">
+                    I help local service businesses fix the small website and lead-flow problems
+                    that make customers bounce, wait, or give up.
+                  </p>
+                  <p className="contact-note">
+                    You do not need a polished brief. A short message and a messy link are enough.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <LeadForm />
           </div>
-          <LeadForm />
         </div>
       </section>
 
       {hasBookingUrl ? (
-        <section className="section quiet-cta-section">
+        <section className="section section-tray quiet-cta-section">
           <div className="quiet-cta">
             <div>
-              <p className="section-label">Bigger projects</p>
-              <h2>Already have a bigger project or want to talk it through?</h2>
-              <p>Book a quick call.</p>
+              <p className="section-label">Bigger Projects</p>
+              <h2>Need to talk through a larger build?</h2>
+              <p>
+                Book a quick call if the first fix clearly opens into a larger project.
+              </p>
             </div>
             <a className="button tertiary" href={bookingUrl} target="_blank" rel="noreferrer">
               Book a quick call
@@ -253,6 +328,17 @@ export default function Home() {
           </div>
         </section>
       ) : null}
+
+      <footer className="section section-tray site-footer dark-footer">
+        <div>
+          <p className="section-label">Killough Works</p>
+          <p className="footer-line">Website handyman for local businesses.</p>
+          <p className="footer-line">Based in South Jersey. Fixing websites nationwide.</p>
+        </div>
+        <a className="text-link" href="mailto:ionkilo42@gmail.com">
+          ionkilo42@gmail.com
+        </a>
+      </footer>
     </main>
   );
 }

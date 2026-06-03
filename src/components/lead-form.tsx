@@ -21,6 +21,9 @@ export function LeadForm() {
     setStatus("loading");
     setMessage("");
     try {
+      // TODO: True file upload support would require multipart/FormData from this form,
+      // parsing multipart in src/app/api/intake/route.ts, attachment/storage support in
+      // src/lib/intake.ts, and a real email/storage path for forwarded files.
       const response = await fetch("/api/intake", {
         method: "POST",
         headers: {
@@ -47,10 +50,20 @@ export function LeadForm() {
   }
 
   return (
-    <form className="lead-form" onSubmit={onSubmit}>
+    <form className="lead-form console-form" onSubmit={onSubmit}>
       <div className="form-intro">
-        <p className="panel-label">Send it to Jonathan</p>
-        <p className="form-note">Messy is fine. Links, screenshots, rough offers, and half-formed ideas all work.</p>
+        <p className="panel-label">Start here</p>
+        <p className="form-note">
+          Drop the website, social page, or rough link that feels broken. I&apos;ll tell you the
+          first practical fix.
+        </p>
+        <p className="form-note">
+          You do not need a full project brief. Short and messy is fine.
+        </p>
+        <p className="required-note">
+          Required: name, email, business name, a starting option, and a short note about what
+          feels off.
+        </p>
       </div>
 
       <div className="field-grid">
@@ -58,7 +71,7 @@ export function LeadForm() {
           Name
           <input
             required
-            placeholder="What should I call you?"
+            placeholder="Your name"
             value={form.name}
             onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
           />
@@ -74,45 +87,51 @@ export function LeadForm() {
           />
         </label>
         <label>
-          Business / idea
+          Business name
           <input
             required
-            placeholder="Business, side hustle, or rough offer"
+            placeholder="Your business name"
             value={form.business}
             onChange={(event) => setForm((current) => ({ ...current, business: event.target.value }))}
           />
         </label>
         <label>
-          Link, screenshot, Instagram, Facebook, or website
+          Website or social link
           <input
-            placeholder="Drop whatever gives me context"
+            placeholder="Website, Facebook page, Instagram, booking page, or form link"
             value={form.website}
             onChange={(event) => setForm((current) => ({ ...current, website: event.target.value }))}
           />
+          <span className="field-help">
+            Messy is okay. A website, Facebook page, Instagram profile, or rough page link is
+            enough to start.
+          </span>
         </label>
         <label>
-          Starter budget
+          Which option are you interested in?
           <select
             required
             value={form.budget}
             onChange={(event) => setForm((current) => ({ ...current, budget: event.target.value }))}
           >
             <option value="">Select one</option>
-            <option>$10-$25</option>
-            <option>$25-$50</option>
-            <option>$50-$100</option>
-            <option>$150+</option>
+            <option>$35 — Friction Check</option>
+            <option>$75 — First Fix</option>
+            <option>$150+ — Mini Build</option>
             <option>Not sure yet</option>
           </select>
+          <span className="field-help">
+            Pick the closest fit. If you are not sure yet, I can tell you the best place to start.
+          </span>
         </label>
       </div>
 
       <label>
-        What do you want fixed or built?
+        What feels broken, confusing, or annoying?
         <textarea
           required
           rows={6}
-          placeholder="Example: people keep DMing for quotes, my offer is unclear, I need a better form, I need a simple page for this promo..."
+          placeholder="Example: our contact form is broken, people keep messaging for quotes without details, the mobile page is messy, or there is no clear payment link..."
           value={form.summary}
           onChange={(event) => setForm((current) => ({ ...current, summary: event.target.value }))}
         />
@@ -120,9 +139,9 @@ export function LeadForm() {
 
       <div className="form-actions">
         <button type="submit" disabled={status === "loading"}>
-          {status === "loading" ? "Sending..." : "Send it to Jonathan"}
+          <span className="console-form-submit">{status === "loading" ? "Sending..." : "Start here"}</span>
         </button>
-        <a className="text-link" href="mailto:ionkilo42ai@gmail.com?subject=Freelance%20Project%20Inquiry">
+        <a className="text-link" href="mailto:ionkilo42@gmail.com?subject=Killough%20Works%20Inquiry">
           Or email directly
         </a>
       </div>
