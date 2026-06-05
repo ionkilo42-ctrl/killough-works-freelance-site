@@ -1057,11 +1057,12 @@ button {
 .demo-card-grid,
 .demo-detail-grid {
   display: grid;
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
 .demo-card-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
 }
 
 .demo-detail-grid {
@@ -1089,6 +1090,11 @@ button {
   display: grid;
   gap: 0.8rem;
   align-content: start;
+}
+
+.payment-card {
+  grid-template-rows: auto auto auto auto 1fr auto;
+  min-height: 100%;
 }
 
 .payment-card-image-wrap {
@@ -1142,15 +1148,20 @@ button {
 
 .payment-button {
   width: fit-content;
+  margin-top: auto;
 }
 
 .demo-card {
-  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-height: 100%;
 }
 
 .demo-card h2 {
   margin: 0;
   font-size: clamp(1.25rem, 2.8vw, 1.55rem);
+  line-height: 1.08;
 }
 
 .demo-card-best-for {
@@ -1160,12 +1171,67 @@ button {
 }
 
 .demo-hero-ledger {
-  align-items: start;
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.62fr);
+  align-items: stretch;
+  gap: 1.15rem;
+}
+
+.demo-hero-ledger .hero-essay,
+.demo-hero-ledger .artifact-card,
+.pay-ledger .hero-essay,
+.pay-ledger .artifact-card {
+  min-height: 100%;
+}
+
+.demo-hero-ledger .hero-essay h1,
+.pay-ledger .hero-essay h1 {
+  max-width: 11ch;
+  font-size: clamp(2.25rem, 6vw, 5.5rem);
+  line-height: 0.96;
+}
+
+.demo-hero-ledger .lede,
+.pay-ledger .lede {
+  max-width: 42rem;
+}
+
+.demo-hero-ledger .hero-poster,
+.pay-ledger .hero-poster {
+  gap: 0.85rem;
+}
+
+.demo-hero-ledger .hero-orbit,
+.pay-ledger .hero-orbit {
+  gap: 0.55rem;
+}
+
+.demo-hero-ledger .hero-orbit span,
+.pay-ledger .hero-orbit span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  line-height: 1.2;
+}
+
+.demo-hero-ledger .hero-actions,
+.pay-ledger .hero-actions {
+  align-items: stretch;
+  gap: 0.85rem;
+}
+
+.demo-hero-ledger .hero-actions .button,
+.pay-ledger .hero-actions .button {
+  min-height: 3.15rem;
+}
+
+.pay-ledger {
+  grid-template-columns: minmax(0, 1.04fr) minmax(280px, 0.6fr);
+  gap: 1.15rem;
 }
 
 .demo-form-shell {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.1rem;
 }
 
 .demo-form {
@@ -1247,6 +1313,16 @@ button {
   margin: 0;
 }
 
+.demo-card .button {
+  width: 100%;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.demo-card .contact-note {
+  margin-top: 0.15rem;
+}
+
 .demo-field {
   display: grid;
   gap: 0.45rem;
@@ -1313,7 +1389,9 @@ button {
 .demo-cta-row {
   grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  padding-top: 0.4rem;
+  gap: 0.85rem;
+  padding-top: 0.1rem;
+  border-top: 1px solid rgba(203, 213, 225, 0.72);
 }
 
 .demo-detail-card {
@@ -1344,6 +1422,10 @@ button {
 
 .demo-category-section {
   scroll-margin-top: 1.5rem;
+}
+
+.demo-category-section .section-heading {
+  gap: 0.55rem;
 }
 
 .demo-landing-hero,
@@ -1463,6 +1545,29 @@ button {
 
 .demo-dashboard-action {
   width: auto;
+}
+
+.pay-options-section {
+  gap: 1.35rem;
+  padding-bottom: 1.75rem;
+}
+
+.pay-options-section .section-heading h2 {
+  max-width: 12ch;
+}
+
+.pay-note-board {
+  align-items: stretch;
+}
+
+.pay-note-board p {
+  display: grid;
+  align-content: start;
+  min-height: 100%;
+}
+
+.pay-contact-line {
+  padding: 0.15rem 0.2rem 0.35rem;
 }
 
 .demo-status-new,
@@ -2014,7 +2119,7 @@ button {
 }
 
 .paid-support-copy {
-  padding-top: 0.1rem;
+  padding-top: 0.25rem;
 }
 
 .page-heading h1 {
@@ -2045,6 +2150,15 @@ button {
 
   .demo-cta-row {
     grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .demo-hero-ledger,
+  .pay-ledger {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .demo-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .demo-preview-grid,
@@ -2099,6 +2213,12 @@ button {
     gap: 0.5rem;
   }
 
+  .hero-essay,
+  .artifact-card,
+  .pricing-card {
+    min-height: 0;
+  }
+
   .homepage-pricing-grid,
   .sample-fix-grid,
   .faq-grid,
@@ -2130,6 +2250,13 @@ button {
 
   .route-nav-links {
     justify-content: flex-start;
+  }
+
+  .demo-hero-ledger .hero-essay h1,
+  .pay-ledger .hero-essay h1 {
+    max-width: none;
+    font-size: clamp(2.25rem, 11vw, 3.3rem);
+    line-height: 0.98;
   }
 
   .trust-marker {
@@ -2184,6 +2311,37 @@ button {
 
   .console-form {
     padding: 1rem;
+  }
+
+  .demo-card {
+    min-height: 0;
+  }
+
+  .demo-card .button,
+  .demo-cta-row .button,
+  .payment-button,
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .demo-cta-row {
+    grid-template-columns: 1fr;
+  }
+
+  .demo-mobile-frame,
+  .demo-success-state {
+    width: 100%;
+    border-radius: 1.4rem;
+  }
+
+  .pay-options-section,
+  .demo-category-section,
+  .demo-form-shell {
+    gap: 1rem;
+  }
+
+  .pay-contact-line {
+    padding-bottom: 0.1rem;
   }
 
   .category-card {

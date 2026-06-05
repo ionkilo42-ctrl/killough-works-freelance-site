@@ -77,7 +77,7 @@ export default function PayPage() {
         </div>
       </section>
 
-      <section className="section" id="payment-options">
+      <section className="section section-tray pay-options-section" id="payment-options">
         <div className="section-heading">
           <p className="section-label">Payment hub</p>
           <h2>Current offers</h2>
@@ -131,7 +131,7 @@ export default function PayPage() {
           <p>Mini Build — $150+: A small custom build around your actual business.</p>
           <p>After payment, send the page, post, screenshot, or idea you want fixed first.</p>
         </div>
-        <p className="contact-note">
+        <p className="contact-note pay-contact-line">
           Direct contact:{" "}
           <a className="text-link" href={contactDetails.mailtoHref}>
             {contactDetails.email}
