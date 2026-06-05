@@ -38,10 +38,7 @@ describe("Home page", () => {
       "href",
       "https://buy.stripe.com/28E4gz2DDf66bXA0m41ZS04",
     );
-    expect(screen.getByRole("link", { name: "See sample fixes" })).toHaveAttribute(
-      "href",
-      "#sample-fixes",
-    );
+    expect(screen.getByRole("link", { name: "See Working Demos" })).toHaveAttribute("href", "/demos");
     expect(screen.getByRole("link", { name: "Get a First Fix — $75" })).toHaveAttribute(
       "href",
       "https://buy.stripe.com/5kQbJ11zzaPQ9Ps7Ow1ZS05",

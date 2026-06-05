@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { BrandLockup } from "@/components/brand-lockup";
 import { LeadForm } from "@/components/lead-form";
@@ -54,9 +55,9 @@ export default function Home() {
               >
                 Start with Friction Check — $35
               </a>
-              <a className="button tertiary" href="#sample-fixes">
-                See sample fixes
-              </a>
+              <Link className="button tertiary" href="/demos">
+                See Working Demos
+              </Link>
             </div>
             <p className="hero-payment-note">
               Secure checkout first. Then send your website URL, screenshots, and the issue you
