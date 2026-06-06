@@ -102,7 +102,7 @@ export default function DemosPage() {
         <section
           key={group.category}
           id={group.category.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-")}
-          className="section section-tray demo-category-section"
+          className={`section section-tray demo-category-section${group.demos.length === 1 ? " demo-category-section-single" : ""}`}
         >
           <div className="section-heading">
             <p className="section-label">Demo category</p>
@@ -124,7 +124,9 @@ export default function DemosPage() {
             </p>
           </div>
 
-          <div className="demo-card-grid">
+          <div
+            className={`demo-card-grid${group.demos.length === 1 ? " demo-card-grid-single" : ""}`}
+          >
             {group.demos.map((demo) => (
               <DemoCard key={demo.slug} demo={demo} />
             ))}
