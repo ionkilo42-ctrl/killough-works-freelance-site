@@ -30,16 +30,22 @@ describe("/demos page", () => {
     expect(screen.getByRole("heading", { level: 2, name: "Customer Follow-Up" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: "Business Operations" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: "Websites & Landing Pages" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: "Content & Ministry Tools" })).toBeInTheDocument();
 
     expect(screen.getByRole("heading", { level: 2, name: "Service Booking Request Flow" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: "Deposit Payment Flow" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: "Estimate Approval Flow" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: "Lead Follow-Up Dashboard" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: "Local Service Landing Page" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: "Live Bible Companion" })).toBeInTheDocument();
 
     expect(screen.getByRole("link", { name: "View Demo: Deposit Payment Flow" })).toHaveAttribute(
       "href",
       "/demos/deposit-payment-flow",
+    );
+    expect(screen.getByRole("link", { name: "View Demo: Live Bible Companion" })).toHaveAttribute(
+      "href",
+      "/demos/live-bible-companion",
     );
   });
 

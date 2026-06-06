@@ -5,7 +5,8 @@ export type DemoCategory =
   | "Reviews & Reputation"
   | "Customer Follow-Up"
   | "Business Operations"
-  | "Websites & Landing Pages";
+  | "Websites & Landing Pages"
+  | "Content & Ministry Tools";
 
 export const demoCategoryOrder: DemoCategory[] = [
   "Lead Capture & Intake",
@@ -15,6 +16,7 @@ export const demoCategoryOrder: DemoCategory[] = [
   "Customer Follow-Up",
   "Business Operations",
   "Websites & Landing Pages",
+  "Content & Ministry Tools",
 ] as const;
 
 export type DemoFieldOption = {
@@ -57,7 +59,7 @@ export type DemoField =
       help?: string;
     };
 
-export type DemoKind = "form" | "payment" | "landing" | "dashboard" | "estimate";
+export type DemoKind = "form" | "payment" | "landing" | "dashboard" | "estimate" | "companion";
 
 export type DemoLeadCard = {
   customer: string;
@@ -84,7 +86,8 @@ export type DemoDefinition = {
     | "deposit-payment-flow"
     | "local-service-landing-page"
     | "lead-follow-up-dashboard"
-    | "estimate-approval-flow";
+    | "estimate-approval-flow"
+    | "live-bible-companion";
   title: string;
   category: DemoCategory;
   demoKind: DemoKind;
@@ -769,6 +772,35 @@ export const demoDefinitions: DemoDefinition[] = [
     trustMarkers: ["Fast local replies", "Before and after project photos", "Clear pricing conversation"],
     highlightTitle: "Before and after project highlight",
     highlightCopy: "Show one recent project, one strong customer line, and one obvious request-a-quote button.",
+    fields: [],
+  },
+  {
+    slug: "live-bible-companion",
+    title: "Live Bible Companion",
+    category: "Content & Ministry Tools",
+    demoKind: "companion",
+    cardDescription:
+      "Paste or stream conversation notes and surface Bible passages when references or familiar story phrases appear.",
+    intro: "Turn a live conversation into a Scripture-aware companion feed.",
+    problem:
+      "Bible study, sermon prep, and ministry conversations can mention passages faster than someone can look them up. This demo watches transcript-style text and keeps the relevant Scripture close by.",
+    solutionLine: "Detect references and story phrases, then fetch the matching passage from the Hello AO Bible API.",
+    whatThisFixes: [
+      "Bible references getting missed during fast conversations",
+      "Story phrases that need a passage handoff",
+      "Manual lookup slowing down group discussion or prep",
+    ],
+    bestFor: [
+      "Church groups, teachers, podcasters, and ministry teams who want Scripture context beside live notes",
+      "Prototype conversations around Bible study tools, sermon prep, and transcript assistants",
+    ],
+    starterPrice: "Prototype demo",
+    ctaHref: "/start",
+    ctaLabel: "Ask about a custom companion",
+    formIntro: "A live transcript box, sample prompts, and a passage feed with API fallback states.",
+    submitLabel: "Run companion",
+    successTitle: "Companion ready.",
+    successMessage: "The real version could connect this to microphone transcription, saved sessions, or a team workspace.",
     fields: [],
   },
 ];

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { DemoLayout } from "@/components/demo-layout";
+import { LiveBibleCompanionDemo } from "@/components/live-bible-companion-demo";
 import { demoDefinitions, getDemoDefinition } from "@/data/demos";
 
 type DemoPageProps = {
@@ -34,6 +35,10 @@ export default async function DemoDetailPage({ params }: DemoPageProps) {
 
   if (!demo) {
     notFound();
+  }
+
+  if (demo.demoKind === "companion") {
+    return <LiveBibleCompanionDemo demo={demo} />;
   }
 
   return <DemoLayout demo={demo} />;

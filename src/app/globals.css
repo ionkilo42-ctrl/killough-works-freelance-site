@@ -145,6 +145,7 @@ img {
 }
 
 .section-tray {
+  position: relative;
   padding: clamp(1.2rem, 2vw, 1.65rem);
   border: 1px solid var(--border-steel);
   border-radius: 14px;
@@ -1598,6 +1599,176 @@ button {
   width: auto;
 }
 
+.live-companion-hero .hero-essay h1 {
+  max-width: 10ch;
+}
+
+.live-companion-shell {
+  scroll-margin-top: 1.5rem;
+}
+
+.live-companion-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(320px, 1.12fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.live-companion-panel {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid rgba(203, 213, 225, 0.88);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.live-companion-panel-heading,
+.live-passage-card-heading,
+.live-companion-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.live-companion-panel-heading h3,
+.live-passage-card-heading h4 {
+  margin: 0;
+}
+
+.live-companion-panel-heading p,
+.live-passage-card-heading p,
+.live-companion-empty p,
+.live-passage-loading,
+.live-passage-fallback p,
+.live-companion-note {
+  margin: 0;
+}
+
+.live-companion-count,
+.live-companion-status,
+.live-passage-card-heading span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid rgba(148, 163, 184, 0.72);
+  border-radius: 999px;
+  background: rgba(248, 250, 252, 0.95);
+  color: var(--text-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.live-companion-textarea textarea {
+  min-height: 18rem;
+  line-height: 1.55;
+}
+
+.live-companion-samples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.live-companion-samples button {
+  min-height: 2.3rem;
+  border: 1px solid rgba(148, 163, 184, 0.72);
+  border-radius: 999px;
+  padding: 0.45rem 0.72rem;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-body);
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.live-companion-actions {
+  justify-content: flex-start;
+}
+
+.live-companion-actions .button {
+  min-height: 2.85rem;
+}
+
+.live-companion-feed-list {
+  display: grid;
+  gap: 0.85rem;
+  max-height: 42rem;
+  overflow: auto;
+  padding-right: 0.15rem;
+}
+
+.live-companion-empty,
+.live-passage-card {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+  border: 1px solid rgba(203, 213, 225, 0.82);
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.95)),
+    #fff;
+}
+
+.live-passage-card-ready {
+  border-color: rgba(22, 101, 52, 0.28);
+  background:
+    linear-gradient(180deg, rgba(240, 253, 244, 0.8), rgba(255, 255, 255, 0.96)),
+    #fff;
+}
+
+.live-passage-card-fallback {
+  border-color: rgba(194, 65, 12, 0.34);
+  background:
+    linear-gradient(180deg, rgba(255, 247, 237, 0.88), rgba(255, 255, 255, 0.95)),
+    #fff;
+}
+
+.live-passage-loading,
+.live-passage-fallback {
+  color: var(--text-body);
+  line-height: 1.55;
+}
+
+.live-passage-fallback {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.live-passage-verses {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.live-passage-verses p {
+  margin: 0;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+.live-passage-verses sup {
+  margin-right: 0.35rem;
+  color: var(--stamp-orange);
+  font-weight: 800;
+}
+
+.live-passage-verses a,
+.live-passage-fallback a {
+  width: fit-content;
+  max-width: 100%;
+  color: var(--stamp-orange);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
 .pay-options-section {
   gap: 1.35rem;
   padding-bottom: 2rem;
@@ -2207,6 +2378,10 @@ button {
     align-items: stretch;
   }
 
+  .live-companion-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .route-nav {
     font-size: 0.78rem;
   }
@@ -2312,7 +2487,9 @@ button {
   .demo-filter-row,
   .demo-option-pills,
   .demo-dashboard-buttons,
-  .demo-estimate-actions {
+  .demo-estimate-actions,
+  .live-companion-actions,
+  .live-companion-samples {
     gap: 0.5rem;
   }
 
@@ -2443,6 +2620,22 @@ button {
   .demo-success-state {
     width: 100%;
     border-radius: 1.4rem;
+  }
+
+  .live-companion-panel {
+    padding: 0.85rem;
+  }
+
+  .live-companion-textarea textarea {
+    min-height: 15rem;
+  }
+
+  .live-companion-actions .button {
+    width: 100%;
+  }
+
+  .live-companion-feed-list {
+    max-height: none;
   }
 
   .pay-options-section,

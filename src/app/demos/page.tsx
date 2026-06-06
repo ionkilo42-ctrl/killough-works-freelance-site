@@ -120,7 +120,9 @@ export default function DemosPage() {
                         ? "Bring old customers back without making it complicated."
                         : group.category === "Business Operations"
                           ? "See what needs attention instead of running the whole thing from memory."
-                          : "Turn confusing homepages into focused quote or start pages."}
+                          : group.category === "Websites & Landing Pages"
+                            ? "Turn confusing homepages into focused quote or start pages."
+                            : "Build small tools that support teaching, conversation, and live notes."}
             </p>
           </div>
 
