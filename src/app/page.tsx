@@ -2,7 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { BrandLockup } from "@/components/brand-lockup";
+import { FrictionCheckCheckoutButton } from "@/components/friction-check-checkout-button";
+import { HomepagePricingClient } from "@/components/homepage-pricing-client";
 import { LeadForm } from "@/components/lead-form";
+import { SiteFooter } from "@/components/site-footer";
 import { SampleFixGallery } from "@/components/sample-fix-gallery";
 import {
   availabilitySlots,
@@ -46,15 +49,11 @@ export default function Home() {
               Starts at $35. Secure a Friction Check, then use the handoff page to send the links,
               screenshots, or notes I need to review the right thing.
             </p>
-            <div className="hero-actions">
-              <a
-                className="button primary"
-                href={pricingTiers[0].href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Start with Friction Check — $35
-              </a>
+            <div className="hero-actions hero-actions-with-gate">
+              <FrictionCheckCheckoutButton
+                stripeUrl={pricingTiers[0].href}
+                label="Start with Friction Check — $35"
+              />
               <Link className="button tertiary" href="/demos">
                 See Working Demos
               </Link>
@@ -146,73 +145,7 @@ export default function Home() {
             but you do not want to get sold a full rebuild.
           </p>
         </div>
-        <div className="payment-grid homepage-pricing-grid">
-          {pricingTiers.map((tier) => {
-            const externalLink = tier.href.startsWith("http");
-
-            return (
-              <article
-                className={`pricing-card payment-card${tier.featured ? " payment-card-featured" : ""}`}
-                key={tier.title}
-              >
-                <div className="payment-card-image-wrap">
-                  <Image
-                    src={tier.imageSrc}
-                    alt={tier.imageAlt}
-                    width={1254}
-                    height={1254}
-                    className="payment-card-image"
-                    sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 320px"
-                  />
-                </div>
-                <p className="pricing-note">
-                  {tier.checkoutMode === "live"
-                    ? "Start here"
-                    : tier.checkoutMode === "starting-payment"
-                      ? "starter build payment"
-                      : "scope first"}
-                </p>
-                {tier.badge ? <p className="payment-badge">{tier.badge}</p> : null}
-                <h3>{tier.title}</h3>
-                <p>
-                  <strong>Best for:</strong> {tier.bestFor}
-                </p>
-                <p>{tier.description}</p>
-                {tier.deliverable ? (
-                  <p>
-                    <strong>Deliverable:</strong> {tier.deliverable}
-                  </p>
-                ) : null}
-                {tier.handoff ? (
-                  <p className="contact-note">
-                    <strong>How it starts:</strong> {tier.handoff}
-                  </p>
-                ) : null}
-                <div className="pricing-includes">
-                  <p className="panel-label">Includes</p>
-                  <ul className="messy-list">
-                    {tier.includes.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                {tier.timeline ? (
-                  <p className="contact-note">
-                    <strong>Timeline:</strong> {tier.timeline}
-                  </p>
-                ) : null}
-                <a
-                  className="button primary payment-button"
-                  href={tier.href}
-                  target={externalLink ? "_blank" : undefined}
-                  rel={externalLink ? "noreferrer" : undefined}
-                >
-                  {tier.cta}
-                </a>
-              </article>
-            );
-          })}
-        </div>
+        <HomepagePricingClient tiers={pricingTiers} />
       </section>
 
       <section className="section section-tray identity-section" id="about-jonathan">
@@ -373,19 +306,7 @@ export default function Home() {
         </section>
       ) : null}
 
-      <footer className="section section-tray site-footer">
-        <div>
-          <p className="section-label">Killough Works</p>
-          <p className="footer-line">Website handyman for local businesses.</p>
-          <p className="footer-line">Based in South Jersey. Fixing websites nationwide.</p>
-        </div>
-        <p className="footer-contact">
-          {contactDetails.directLabel}:{" "}
-          <a className="text-link" href={contactDetails.mailtoHref}>
-            {contactDetails.email}
-          </a>
-        </p>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

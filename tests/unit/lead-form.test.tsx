@@ -30,6 +30,14 @@ describe("LeadForm", () => {
         "You do not need a full project brief. Short and messy is fine. After payment, this is where you send the context that helps me review the right thing.",
       ),
     ).toBeInTheDocument();
+    expect(screen.getByText(/By submitting this form, you agree to the/i)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute(
+      "href",
+      "/privacy",
+    );
+    expect(
+      screen.getByText(/and consent to being contacted about your inquiry/i),
+    ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Send project details" })).toBeInTheDocument();
     expect(screen.getByText("Direct contact: jonathan@killough.works")).toBeInTheDocument();
     expect(container.querySelector(".console-form-submit")).not.toBeNull();

@@ -9,7 +9,7 @@ describe("/paid page", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: "Payment received — let’s get to work.",
+        name: "Thank you — your payment is received.",
       }),
     ).toBeInTheDocument();
     expect(
@@ -34,10 +34,22 @@ describe("/paid page", () => {
       ),
     ).toBeInTheDocument();
     expect(
+      screen.getByText(/Send me one of the following so I can start with the right practical first step\./i),
+    ).toBeInTheDocument();
+    expect(screen.getByText("your website")).toBeInTheDocument();
+    expect(screen.getByText("Facebook or Instagram page")).toBeInTheDocument();
+    expect(screen.getByText("screenshot")).toBeInTheDocument();
+    expect(screen.getByText("offer idea")).toBeInTheDocument();
+    expect(screen.getByText("broken form or lead flow")).toBeInTheDocument();
+    expect(screen.getByText("what you want customers to do")).toBeInTheDocument();
+    expect(
       screen.getByText(
-        /Have extra context\? Send links, screenshots, or notes to Jonathan\./i,
+        /Optional: add a short note explaining what you paid for and what you want fixed first\./i,
       ),
     ).toBeInTheDocument();
+    expect(screen.getByText("Payment follow-up:")).toBeInTheDocument();
+    expect(screen.getAllByText("jonathan@killough.works").length).toBeGreaterThan(0);
+    expect(screen.getByRole("link", { name: "Terms" })).toHaveAttribute("href", "/terms");
     expect(
       screen.getByRole("link", { name: "Return Home" }),
     ).toBeInTheDocument();

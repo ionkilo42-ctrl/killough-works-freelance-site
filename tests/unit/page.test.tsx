@@ -34,19 +34,21 @@ describe("Home page", () => {
     expect(
       screen.getByText(/Messy is okay\. Send the site, page, or social profile\./i),
     ).toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: "Start with Friction Check — $35" })[0]).toHaveAttribute(
-      "href",
-      "https://buy.stripe.com/28E4gz2DDf66bXA0m41ZS04",
-    );
+    expect(
+      screen.getAllByRole("checkbox", {
+        name: /I have read and agree to the Terms of Service and Refund Policy/i,
+      }).length,
+    ).toBeGreaterThan(0);
+    for (const button of screen.getAllByRole("button", { name: "Start with Friction Check — $35" })) {
+      expect(button).toBeDisabled();
+    }
     expect(screen.getByRole("link", { name: "See Working Demos" })).toHaveAttribute("href", "/demos");
-    expect(screen.getByRole("link", { name: "Get a First Fix — $75" })).toHaveAttribute(
-      "href",
-      "https://buy.stripe.com/5kQbJ11zzaPQ9Ps7Ow1ZS05",
-    );
-    expect(screen.getByRole("link", { name: "Request a Mini Build — $150+" })).toHaveAttribute(
-      "href",
-      "https://buy.stripe.com/aFa4gz6TTaPQ4v81q81ZS03",
-    );
+    for (const button of screen.getAllByRole("button", { name: "Get a First Fix — $75" })) {
+      expect(button).toBeDisabled();
+    }
+    for (const button of screen.getAllByRole("button", { name: "Request a Mini Build — $150+" })) {
+      expect(button).toBeDisabled();
+    }
     expect(
       screen.getAllByText(/If the slots are full, I['’]ll tell you before you pay for anything larger than a Friction Check\./i)
         .length,

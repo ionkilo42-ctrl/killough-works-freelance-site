@@ -91,9 +91,9 @@ export const stripeBrandingSettings = {
 
 export const paymentFollowUpContact = {
   label: "Payment follow-up",
-  email: "ionkilo42@gmail.com",
+  email: "jonathan@killough.works",
   mailtoHref:
-    "mailto:ionkilo42@gmail.com?subject=Killough%20Works%20Payment%20Follow-Up",
+    "mailto:jonathan@killough.works?subject=Killough%20Works%20Payment%20Follow-Up",
 } as const;
 
 export const coreCategories: CoreCategory[] = [

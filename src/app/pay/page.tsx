@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 
 import { BrandLockup } from "@/components/brand-lockup";
+import { PayOptionsClient } from "@/components/pay-options-client";
+import { SiteFooter } from "@/components/site-footer";
 import { contactDetails, pricingTiers } from "@/data/site";
 
 const paymentGuidance = [
@@ -87,44 +88,7 @@ export default function PayPage() {
             payment link.
           </p>
         </div>
-        <div className="payment-grid">
-          {pricingTiers.map((option, index) => (
-            <article
-              className={`pricing-card payment-card payment-card-${index + 1}${option.featured ? " payment-card-featured" : ""}`}
-              key={option.title}
-            >
-              <div className="payment-card-image-wrap">
-                <Image
-                  src={option.imageSrc}
-                  alt={option.imageAlt}
-                  width={1254}
-                  height={1254}
-                  className="payment-card-image"
-                  sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 360px"
-                />
-              </div>
-              <p className="pricing-note">
-                {option.checkoutMode === "live"
-                  ? "live payment link"
-                  : option.checkoutMode === "starting-payment"
-                    ? "starter build payment"
-                    : "scope first"}
-              </p>
-              {option.badge ? <p className="payment-badge">{option.badge}</p> : null}
-              <h3>{option.title}</h3>
-              <p>{option.description}</p>
-              {option.handoff ? <p className="contact-note">{option.handoff}</p> : null}
-              <a
-                className="button primary payment-button"
-                href={option.href}
-                target={option.href.startsWith("https://") ? "_blank" : undefined}
-                rel={option.href.startsWith("https://") ? "noreferrer" : undefined}
-              >
-                {option.cta}
-              </a>
-            </article>
-          ))}
-        </div>
+        <PayOptionsClient options={pricingTiers} />
         <div className="signal-board pay-note-board">
           <p>Friction Check — $35: A focused review of your page, post, link, offer, or lead flow.</p>
           <p>First Fix — $75: One practical improvement completed for you.</p>
@@ -138,6 +102,7 @@ export default function PayPage() {
           </a>
         </p>
       </section>
+      <SiteFooter />
     </main>
   );
 }

@@ -29,18 +29,15 @@ describe("/pay page", () => {
         "A small custom build around your actual business, such as a quote flow, booking page, QR hub, intake system, simple dashboard, partner page, landing page, or lightweight automation.",
       ),
     ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Start with Friction Check — $35" })).toHaveAttribute(
-      "href",
-      "https://buy.stripe.com/28E4gz2DDf66bXA0m41ZS04",
-    );
-    expect(screen.getByRole("link", { name: "Get a First Fix — $75" })).toHaveAttribute(
-      "href",
-      "https://buy.stripe.com/5kQbJ11zzaPQ9Ps7Ow1ZS05",
-    );
-    expect(screen.getByRole("link", { name: "Request a Mini Build — $150+" })).toHaveAttribute(
-      "href",
-      "https://buy.stripe.com/aFa4gz6TTaPQ4v81q81ZS03",
-    );
+    expect(
+      screen.getByRole("checkbox", {
+        name: /I have read and agree to the Terms of Service and Refund Policy/i,
+      }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Start with Friction Check — $35" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "Get a First Fix — $75" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "Request a Mini Build — $150+" })).toBeDisabled();
+    expect(screen.getByRole("link", { name: "Terms" })).toHaveAttribute("href", "/terms");
     expect(
       screen.getAllByText(/After payment, send the page, post, screenshot, or idea you want fixed\./i)
         .length,
@@ -48,8 +45,8 @@ describe("/pay page", () => {
     expect(
       screen.getByText(/If the job needs more than the selected tier, I’ll say so before doing extra work\./i),
     ).toBeInTheDocument();
-    expect(screen.getByText("Direct contact:")).toBeInTheDocument();
-    expect(screen.getByText("jonathan@killough.works")).toBeInTheDocument();
+    expect(screen.getAllByText("Direct contact:").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("jonathan@killough.works").length).toBeGreaterThan(0);
     expect(screen.getAllByAltText(/Killough Works .* offer graphic/i).length).toBeGreaterThanOrEqual(3);
     expect(screen.queryByText("Venmo")).not.toBeInTheDocument();
     expect(screen.queryByText("Cash App")).not.toBeInTheDocument();

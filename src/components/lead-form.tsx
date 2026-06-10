@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 
+import { legalRoutes } from "@/data/legal";
 import { contactDetails } from "@/data/site";
 
 const initialState = {
@@ -139,6 +141,14 @@ export function LeadForm() {
           onChange={(event) => setForm((current) => ({ ...current, summary: event.target.value }))}
         />
       </label>
+
+      <p className="form-consent-note">
+        By submitting this form, you agree to the{" "}
+        <Link href={legalRoutes.privacy} className="text-link">
+          Privacy Policy
+        </Link>{" "}
+        and consent to being contacted about your inquiry.
+      </p>
 
       <div className="form-actions">
         <button type="submit" disabled={status === "loading"}>
