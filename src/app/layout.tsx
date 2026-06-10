@@ -16,9 +16,9 @@ const display = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Killough Works | Website Handyman for Local Businesses",
+  title: "Killough Works | Build. Explore. Collaborate.",
   description:
-    "Small, fast web fixes for local businesses tired of losing leads.",
+    "Jonathan Killough's portfolio — Feltabout, interactive prototypes, and design studies. Seeking product, AI, software, and workflow-focused opportunities.",
   icons: {
     icon: [{ url: "/brand/killough-works-mark.png", type: "image/png", sizes: "512x512" }],
     shortcut: "/favicon.ico",

@@ -7,9 +7,51 @@ import type { StarterFix } from "@/data/site";
 
 type SampleFixGalleryProps = {
   items: StarterFix[];
+  variant?: "gallery" | "compact" | "editorial" | "preview";
 };
 
-export function SampleFixGallery({ items }: SampleFixGalleryProps) {
+function SampleFixLightbox({
+  item,
+  onClose,
+}: {
+  item: StarterFix;
+  onClose: () => void;
+}) {
+  return (
+    <div
+      className="sample-fix-lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Expanded image for ${item.title}`}
+      onClick={onClose}
+    >
+      <div className="sample-fix-lightbox-panel" onClick={(event) => event.stopPropagation()}>
+        <button
+          type="button"
+          className="sample-fix-lightbox-close"
+          onClick={onClose}
+          aria-label="Close full-screen image"
+        >
+          Close
+        </button>
+        <div className="sample-fix-lightbox-image-wrap">
+          <Image
+            src={item.imageSrc}
+            alt={item.imageAlt}
+            width={1448}
+            height={1086}
+            className="sample-fix-lightbox-image"
+            sizes="100vw"
+            priority
+          />
+        </div>
+        <p className="sample-fix-lightbox-caption">{item.imageAlt}</p>
+      </div>
+    </div>
+  );
+}
+
+export function SampleFixGallery({ items, variant = "gallery" }: SampleFixGalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   useEffect(() => {
@@ -34,6 +76,116 @@ export function SampleFixGallery({ items }: SampleFixGalleryProps) {
   }, [selectedIndex]);
 
   const selectedItem = selectedIndex === null ? null : items[selectedIndex];
+
+  if (variant === "preview") {
+    return (
+      <>
+        <ul className="study-preview-list">
+          {items.map((item, index) => (
+            <li key={item.title}>
+              <button
+                type="button"
+                className="study-preview-card"
+                onClick={() => setSelectedIndex(index)}
+                aria-label={`View design study for ${item.title}`}
+              >
+                <span className="study-preview-media">
+                  <Image
+                    src={item.imageSrc}
+                    alt=""
+                    width={1448}
+                    height={1086}
+                    className="study-preview-image"
+                    sizes="(max-width: 680px) 100vw, 680px"
+                  />
+                </span>
+                <span className="study-preview-copy">
+                  <span className="study-preview-title">{item.title}</span>
+                  <span className="study-preview-summary">{item.explanation}</span>
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        {selectedItem ? <SampleFixLightbox item={selectedItem} onClose={() => setSelectedIndex(null)} /> : null}
+      </>
+    );
+  }
+
+  if (variant === "editorial") {
+    return (
+      <>
+        <ul className="work-entry-list">
+          {items.map((item, index) => (
+            <li key={item.title}>
+              <article className="work-entry">
+                <button
+                  type="button"
+                  className="work-entry-media"
+                  onClick={() => setSelectedIndex(index)}
+                  aria-label={`View design study for ${item.title}`}
+                >
+                  <Image
+                    src={item.imageSrc}
+                    alt={item.imageAlt}
+                    width={1448}
+                    height={1086}
+                    className="work-entry-image"
+                    sizes="(max-width: 680px) 100vw, 680px"
+                  />
+                </button>
+                <div className="work-entry-body">
+                  <p className="work-entry-eyebrow">{item.label}</p>
+                  <h3 className="work-entry-title">{item.title}</h3>
+                  <p className="work-entry-summary">{item.explanation}</p>
+                </div>
+              </article>
+            </li>
+          ))}
+        </ul>
+
+        {selectedItem ? <SampleFixLightbox item={selectedItem} onClose={() => setSelectedIndex(null)} /> : null}
+      </>
+    );
+  }
+
+  if (variant === "compact") {
+    return (
+      <>
+        <ul className="work-sample-list">
+          {items.map((item, index) => (
+            <li key={item.title}>
+              <button
+                type="button"
+                className="work-sample-row"
+                onClick={() => setSelectedIndex(index)}
+                aria-label={`View design study for ${item.title}`}
+              >
+                <span className="work-sample-thumb-wrap">
+                  <Image
+                    src={item.imageSrc}
+                    alt=""
+                    width={1448}
+                    height={1086}
+                    className="work-sample-thumb"
+                    sizes="96px"
+                  />
+                </span>
+                <span className="work-sample-copy">
+                  <span className="work-sample-label">{item.label}</span>
+                  <span className="work-sample-title">{item.title}</span>
+                  <span className="work-sample-explainer">{item.explanation}</span>
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        {selectedItem ? <SampleFixLightbox item={selectedItem} onClose={() => setSelectedIndex(null)} /> : null}
+      </>
+    );
+  }
 
   return (
     <>
@@ -65,41 +217,7 @@ export function SampleFixGallery({ items }: SampleFixGalleryProps) {
         ))}
       </div>
 
-      {selectedItem ? (
-        <div
-          className="sample-fix-lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Expanded image for ${selectedItem.title}`}
-          onClick={() => setSelectedIndex(null)}
-        >
-          <div
-            className="sample-fix-lightbox-panel"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <button
-              type="button"
-              className="sample-fix-lightbox-close"
-              onClick={() => setSelectedIndex(null)}
-              aria-label="Close full-screen image"
-            >
-              Close
-            </button>
-            <div className="sample-fix-lightbox-image-wrap">
-              <Image
-                src={selectedItem.imageSrc}
-                alt={selectedItem.imageAlt}
-                width={1448}
-                height={1086}
-                className="sample-fix-lightbox-image"
-                sizes="100vw"
-                priority
-              />
-            </div>
-            <p className="sample-fix-lightbox-caption">{selectedItem.imageAlt}</p>
-          </div>
-        </div>
-      ) : null}
+      {selectedItem ? <SampleFixLightbox item={selectedItem} onClose={() => setSelectedIndex(null)} /> : null}
     </>
   );
 }

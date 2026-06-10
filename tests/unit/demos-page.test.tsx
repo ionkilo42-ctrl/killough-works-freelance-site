@@ -11,11 +11,14 @@ describe("/demos page", () => {
     render(<DemosPage />);
 
     expect(
-      screen.getByRole("heading", { level: 1, name: "Simple digital fixes for local service businesses." }),
+      screen.getByRole("heading", {
+        level: 1,
+        name: "Working prototypes across real business workflows.",
+      }),
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /Working demos of quote forms, booking flows, deposit steps, review tools, landing pages, and follow-up systems/i,
+        /Interactive demos of quote forms, booking flows, deposit steps, review tools, landing pages, and follow-up systems/i,
       ),
     ).toBeInTheDocument();
 
@@ -30,20 +33,21 @@ describe("/demos page", () => {
     expect(screen.getByRole("heading", { level: 2, name: "Customer Follow-Up" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: "Business Operations" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: "Websites & Landing Pages" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { level: 2, name: "Content & Ministry Tools" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: "Experiments" })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Pressure Washing Quote Form" })).not.toBeInTheDocument();
 
-    expect(screen.getByRole("heading", { level: 2, name: "Service Booking Request Flow" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { level: 2, name: "Deposit Payment Flow" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { level: 2, name: "Estimate Approval Flow" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { level: 2, name: "Lead Follow-Up Dashboard" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { level: 2, name: "Local Service Landing Page" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { level: 2, name: "Live Bible Companion" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3, name: "Service Booking Request Flow" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3, name: "Deposit Payment Flow" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3, name: "Estimate Approval Flow" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3, name: "Lead Follow-Up Dashboard" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3, name: "Local Service Landing Page" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3, name: "Live Bible Companion" })).toBeInTheDocument();
 
-    expect(screen.getByRole("link", { name: "View Demo: Deposit Payment Flow" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Deposit Payment Flow" })).toHaveAttribute(
       "href",
       "/demos/deposit-payment-flow",
     );
-    expect(screen.getByRole("link", { name: "View Demo: Live Bible Companion" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Live Bible Companion" })).toHaveAttribute(
       "href",
       "/demos/live-bible-companion",
     );
@@ -62,15 +66,15 @@ describe("/demos page", () => {
     await user.selectOptions(screen.getByLabelText("Best callback time"), "morning");
     await user.click(screen.getByRole("button", { name: "Request pressure washing quote" }));
 
-    expect(screen.getByRole("status")).toBeInTheDocument();
     expect(screen.getByText("Request sent.")).toBeInTheDocument();
     expect(
       screen.getByText("The real version would send this lead straight to the business owner by email or text."),
     ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Want this customized for your business?" })).toHaveAttribute(
-      "href",
-      "/pay",
-    );
+    expect(
+      screen
+        .getAllByRole("link", { name: "Start a Conversation" })
+        .some((link) => link.getAttribute("href") === "/#contact"),
+    ).toBe(true);
   });
 
   it("shows the payment demo with a clean deposit success message", async () => {

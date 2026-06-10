@@ -2,57 +2,48 @@ import Link from "next/link";
 
 import { BrandLockup } from "@/components/brand-lockup";
 import { FieldNoteCard } from "@/components/field-note-card";
-import { fieldNotes } from "@/data/site";
+import { publicFieldNotes } from "@/data/site";
 
 export default function FieldNotesPage() {
   return (
-    <main className="shell innovation-shell">
-      <section className="section section-tray field-notes-page field-notes-archive">
+    <main className="shell portfolio-editorial">
+      <header className="site-header">
         <div className="topline">
-          <BrandLockup note="Practical workshop notes for messy business problems." />
+          <BrandLockup note="Build. Explore. Collaborate." />
           <nav className="route-nav" aria-label="Field Notes links">
             <Link href="/">Home</Link>
-            <Link href="/#contact">Send it</Link>
-            <Link className="route-nav-cta" href="/pay">
-              Start Here
+            <Link href="/demos">Prototypes</Link>
+            <Link className="route-nav-cta" href="/#contact">
+              Contact
             </Link>
           </nav>
         </div>
+      </header>
 
-        <div className="section-heading page-heading">
-          <p className="section-label">Field Notes</p>
-          <h1>Field Notes</h1>
-          <p>
-            A practical archive of common starter fixes: intake cleanup, offer pages, quote-flow
-            repairs, and small web tools that turn messy business moments into a clearer next step.
-          </p>
-        </div>
+      <div className="intro">
+        <p className="block-eyebrow">Build Notes</p>
+        <h1>How I think about product problems</h1>
+        <p className="intro-detail">
+          Secondary notes on intake design, offer clarity, workflow friction, and small interface
+          decisions — supporting context, not primary portfolio proof.
+        </p>
+      </div>
 
-        <div className="notes-grid full-notes-grid">
-          {fieldNotes.map((note) => (
-            <FieldNoteCard note={note} key={note.slug} />
-          ))}
-        </div>
+      <div className="note-entry-list note-entry-list-archive">
+        {publicFieldNotes.map((note) => (
+          <FieldNoteCard note={note} key={note.slug} variant="editorial" />
+        ))}
+      </div>
 
-        <div className="field-notes-cta quiet-cta">
-          <div>
-            <p className="section-label">Back to the intake desk</p>
-            <h2>Got a messy business moment of your own?</h2>
-            <p>
-              Do not wait for it to become a giant project. Send the raw link, rough offer, broken
-              form, or screenshot link and I&apos;ll help find the smallest useful fix.
-            </p>
-          </div>
-          <div className="field-notes-cta-actions">
-            <Link className="button primary" href="/#contact">
-              Submit a fix
-            </Link>
-            <Link className="button tertiary" href="/">
-              Back to homepage
-            </Link>
-          </div>
-        </div>
-      </section>
+      <p className="block-cta">
+        <Link className="text-link" href="/#contact">
+          Contact →
+        </Link>
+        <span aria-hidden="true"> · </span>
+        <Link className="text-link" href="/">
+          Back to homepage
+        </Link>
+      </p>
     </main>
   );
 }

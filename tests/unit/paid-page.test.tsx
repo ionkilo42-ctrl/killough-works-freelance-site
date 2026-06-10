@@ -56,7 +56,7 @@ describe("/paid page", () => {
     expect(
       screen
         .getAllByRole("link", { name: "Send Project Details" })
-        .some((link) => link.getAttribute("href") === "/#start"),
+        .some((link) => link.getAttribute("href") === "/#contact"),
     ).toBe(true);
   });
 });

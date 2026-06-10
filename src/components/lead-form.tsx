@@ -54,20 +54,11 @@ export function LeadForm() {
   }
 
   return (
-    <form className="lead-form console-form" onSubmit={onSubmit}>
-      <div className="form-intro">
-        <p className="panel-label">Start here</p>
+    <form className="lead-form lead-form-flat" onSubmit={onSubmit}>
+      <div className="form-intro form-intro-compact">
         <p className="form-note">
-          Drop the website, social page, or rough link that feels broken. I&apos;ll tell you the
-          first practical fix.
-        </p>
-        <p className="form-note">
-          You do not need a full project brief. Short and messy is fine. After payment, this is
-          where you send the context that helps me review the right thing.
-        </p>
-        <p className="required-note">
-          Required: name, email, business name, a starting option, and a short note about what
-          feels off.
+          Hiring managers and collaborators: share what you&apos;re exploring. A short note is enough
+          to begin.
         </p>
       </div>
 
@@ -92,10 +83,9 @@ export function LeadForm() {
           />
         </label>
         <label>
-          Business name
+          Company or project (optional)
           <input
-            required
-            placeholder="Your business name"
+            placeholder="Company, team, or project name"
             value={form.business}
             onChange={(event) => setForm((current) => ({ ...current, business: event.target.value }))}
           />
@@ -103,40 +93,40 @@ export function LeadForm() {
         <label>
           Website or social link
           <input
-            placeholder="Website, Facebook page, Instagram, booking page, or form link"
+            placeholder="Website, LinkedIn, GitHub, or relevant link"
             value={form.website}
             onChange={(event) => setForm((current) => ({ ...current, website: event.target.value }))}
           />
           <span className="field-help">
-            Messy is okay. A website, Facebook page, Instagram profile, or rough page link is
-            enough to start.
+            Optional. A portfolio link, job posting, repo, or project page is enough context.
           </span>
         </label>
         <label>
-          Which option are you interested in?
+          What kind of conversation is this?
           <select
             required
             value={form.budget}
             onChange={(event) => setForm((current) => ({ ...current, budget: event.target.value }))}
           >
             <option value="">Select one</option>
-            <option>$35 — Friction Check</option>
-            <option>$75 — First Fix</option>
-            <option>$150+ — Mini Build</option>
-            <option>Not sure yet</option>
+            <option>Portfolio / hiring review</option>
+            <option>Collaboration or prototype</option>
+            <option>Scoped client project</option>
+            <option>Ministry / education tool</option>
+            <option>General inquiry</option>
           </select>
           <span className="field-help">
-            Pick the closest fit. If you are not sure yet, I can tell you the best place to start.
+            This helps me understand how to respond. New engagements are considered individually.
           </span>
         </label>
       </div>
 
       <label>
-        What feels broken, confusing, or annoying?
+        What should I know?
         <textarea
           required
-          rows={6}
-          placeholder="Example: our contact form is broken, people keep messaging for quotes without details, the mobile page is messy, or there is no clear payment link..."
+          rows={4}
+          placeholder="Example: hiring for a product role, exploring a prototype collaboration, or discussing selective project work..."
           value={form.summary}
           onChange={(event) => setForm((current) => ({ ...current, summary: event.target.value }))}
         />
@@ -153,7 +143,7 @@ export function LeadForm() {
       <div className="form-actions">
         <button type="submit" disabled={status === "loading"}>
           <span className="console-form-submit">
-            {status === "loading" ? "Sending..." : "Send project details"}
+            {status === "loading" ? "Sending..." : "Send message"}
           </span>
         </button>
         <a className="text-link" href={contactDetails.mailtoHref}>

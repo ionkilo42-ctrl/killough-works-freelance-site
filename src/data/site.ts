@@ -11,6 +11,16 @@ export type FieldNote = {
   after: string;
   why: string;
   slug: string;
+  archived?: boolean;
+};
+
+export type NowBuildingProject = {
+  name: string;
+  status: string;
+  summary: string;
+  collaborationNote: string;
+  githubUrl: string;
+  githubLabel: string;
 };
 
 export type ProcessStep = {
@@ -55,6 +65,25 @@ export type FaqItem = {
   answer: string;
 };
 
+export const employmentSignal =
+  "Currently seeking product, AI, software, and workflow-focused opportunities. Open to collaboration and selective project work." as const;
+
+export const nowBuildingProject: NowBuildingProject = {
+  name: "Feltabout",
+  status: "Work in progress",
+  summary:
+    "Safety-first reflection and conversation-prep tooling that helps someone slow down, clarify what happened, and prepare calmer language before a difficult conversation.",
+  collaborationNote:
+    "An ongoing project Jonathan is building with his father — focused on practical reflection flows, not a product launch.",
+  githubUrl: "https://github.com/ionkilo42-ctrl/feltabout",
+  githubLabel: "View Feltabout on GitHub",
+};
+
+export const profileLinks = {
+  githubUrl: "https://github.com/ionkilo42-ctrl/feltabout",
+  githubLabel: "GitHub — active projects and experiments",
+} as const;
+
 export const contactDetails = {
   name: "Jonathan",
   email: "jonathan@killough.works",
@@ -62,8 +91,59 @@ export const contactDetails = {
   mailtoHref: "mailto:jonathan@killough.works?subject=Killough%20Works%20Inquiry",
   location: "South Jersey",
   trustBlurb:
-    "Killough Works is run by Jonathan, helping local service businesses turn messy websites, forms, profiles, and customer handoffs into clearer digital systems.",
+    "Jonathan Killough builds workflows, interfaces, and small systems. Killough Works is his portfolio home for active projects, prototypes, and experiments — with code and builds on GitHub.",
 } as const;
+
+export const studioHighlights: ProcessStep[] = [
+  {
+    number: "Build",
+    title: "",
+    summary: "Ship interfaces, flows, and small systems with clear scope.",
+  },
+  {
+    number: "Explore",
+    title: "",
+    summary: "Prototype ideas through working demos and field notes.",
+  },
+  {
+    number: "Collaborate",
+    title: "",
+    summary: "Partner with teams, employers, and clients who want a direct builder.",
+  },
+];
+
+export const studioFaqs: FaqItem[] = [
+  {
+    question: "What is Killough Works right now?",
+    answer:
+      "A professional portfolio and project studio. The site showcases what I build, how I think, and how collaboration starts — not a public service menu.",
+  },
+  {
+    question: "How do new engagements work?",
+    answer:
+      "They begin with a conversation. I consider new work individually during this selective collaboration phase. There is no public checkout on the homepage.",
+  },
+  {
+    question: "Who should reach out?",
+    answer:
+      "Employers reviewing my work, collaborators with a build or prototype in mind, and future clients who want to discuss scope before committing.",
+  },
+  {
+    question: "Can I see working examples?",
+    answer:
+      "Yes. The Demos section contains interactive prototypes for intake flows, dashboards, booking, payments, and landing pages.",
+  },
+  {
+    question: "What kind of work do you focus on?",
+    answer:
+      "Workflow design, front-end builds, lead capture, operational dashboards, payment handoffs, and the small systems that connect product intent to something shippable.",
+  },
+  {
+    question: "How do I contact you?",
+    answer:
+      "Use the conversation form on this page or email jonathan@killough.works with a short note about what you're exploring.",
+  },
+];
 
 const stripeLinkDefaults = {
   frictionCheck: "https://buy.stripe.com/28E4gz2DDf66bXA0m41ZS04",
@@ -127,7 +207,7 @@ export const fieldNotes: FieldNote[] = [
   {
     title: "Quote request cleanup",
     category: "Intake Repair",
-    label: "Common starter fix",
+    label: "Workflow pattern",
     before: "DM me for a quote.",
     after: "A short intake path that collects service type, location, photos/link, and urgency.",
     why: "Less back-and-forth before the first reply.",
@@ -136,7 +216,7 @@ export const fieldNotes: FieldNote[] = [
   {
     title: "Offer page cleanup",
     category: "Offer Cleanup",
-    label: "Example repair",
+    label: "Interface pattern",
     before: "A good idea buried inside a social post.",
     after: "A simple page with the offer, price range, next step, and contact/payment path.",
     why: "The next action becomes obvious.",
@@ -145,16 +225,17 @@ export const fieldNotes: FieldNote[] = [
   {
     title: "Lead flow repair",
     category: "Lead Flow",
-    label: "Common starter fix",
+    label: "Workflow pattern",
     before: "Messages arrive with missing details.",
     after: "A cleaner form asks the right questions once.",
     why: "Fewer follow-up messages and cleaner quote context.",
     slug: "lead-flow-repair",
+    archived: true,
   },
   {
     title: "Form friction audit",
     category: "Intake Repair",
-    label: "Example repair",
+    label: "Interface pattern",
     before: "A long form asks too much too soon.",
     after: "The first step collects only the details needed to qualify the request.",
     why: "Less drop-off and less confusion.",
@@ -163,7 +244,7 @@ export const fieldNotes: FieldNote[] = [
   {
     title: "Small page/tool",
     category: "Tiny Build",
-    label: "Common starter fix",
+    label: "Workflow pattern",
     before: "A repeated manual explanation happens in every DM.",
     after: "A small page or helper tool explains the options once.",
     why: "The owner stops retyping the same answer.",
@@ -172,13 +253,15 @@ export const fieldNotes: FieldNote[] = [
   {
     title: "Payment/contact path cleanup",
     category: "Conversion Path",
-    label: "Example repair",
+    label: "Interface pattern",
     before: "A visitor does not know whether to message, book, or pay.",
     after: "The page separates submit-first, quote-next, and payment-after-agreement.",
     why: "Fewer trust leaks.",
     slug: "payment-contact-path-cleanup",
   },
 ];
+
+export const publicFieldNotes = fieldNotes.filter((note) => !note.archived);
 
 export const processSteps: ProcessStep[] = [
   {
@@ -290,14 +373,14 @@ export const availabilitySlots: AvailabilitySlot[] = [
 export const starterFixes: StarterFix[] = [
   {
     title: "Missing quote button",
-    label: "Illustrative mockup",
+    label: "Design study",
     explanation: "Turns buried contact details into a clear quote path.",
     imageSrc: "/examples/missing-quote-button.png",
     imageAlt: "Before and after mockup showing a landscaping website with no quote button transformed into a page with a prominent request a quote path.",
   },
   {
     title: "Messy intake process",
-    label: "Illustrative mockup",
+    label: "Design study",
     explanation:
       "Turns scattered messages into one simple form with the details needed to quote faster.",
     imageSrc: "/examples/messy-intake-process.png",
@@ -305,14 +388,14 @@ export const starterFixes: StarterFix[] = [
   },
   {
     title: "Scattered Facebook info",
-    label: "Illustrative mockup",
+    label: "Design study",
     explanation: "Turns posts, captions, and comments into one organized service page.",
     imageSrc: "/examples/scattered-facebook-info.png",
     imageAlt: "Before and after mockup showing a Facebook business page replaced by a focused service website with one clear quote action.",
   },
   {
     title: "No next step after payment",
-    label: "Illustrative mockup",
+    label: "Design study",
     explanation:
       "Turns a generic success screen into a reassuring handoff page with clear next steps.",
     imageSrc: "/examples/no-next-step-after-payment.png",
@@ -320,7 +403,7 @@ export const starterFixes: StarterFix[] = [
   },
   {
     title: "Missed review opportunity",
-    label: "Illustrative mockup",
+    label: "Design study",
     explanation:
       "Turns happy customers into easier review requests and stronger local proof.",
     imageSrc: "/examples/missed-review-opportunity.png",
@@ -328,14 +411,14 @@ export const starterFixes: StarterFix[] = [
   },
   {
     title: "Leads lost in Messenger",
-    label: "Illustrative mockup",
+    label: "Design study",
     explanation: "Turns buried chats into a simple lead tracker with visible follow-up.",
     imageSrc: "/examples/leads-lost-in-messenger.png",
     imageAlt: "Before and after mockup showing Messenger leads scattered across chats replaced by an organized lead tracking dashboard.",
   },
   {
     title: "Realtor lead capture",
-    label: "Illustrative mockup",
+    label: "Design study",
     explanation:
       "Turns listing traffic into actual buyer, seller, or showing inquiries.",
     imageSrc: "/examples/realtor-lead-capture.png",
@@ -343,7 +426,7 @@ export const starterFixes: StarterFix[] = [
   },
   {
     title: "Contractor inspection request",
-    label: "Illustrative mockup",
+    label: "Design study",
     explanation:
       "Turns call-only intake into an inspection request form with photos and scheduling details.",
     imageSrc: "/examples/contractor-inspection-request.png",

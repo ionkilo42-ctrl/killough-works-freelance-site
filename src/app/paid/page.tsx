@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { paymentFollowUpContact } from "@/data/site";
 
 const followUpLinks = {
-  intake: "/#start",
+  intake: "/#contact",
   payHub: "/pay",
   home: "/",
 } as const;

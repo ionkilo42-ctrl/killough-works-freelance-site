@@ -132,7 +132,7 @@ function DemoMobileShell({
 
       <div className="demo-mobile-body">
         <div className="demo-mobile-copy">
-          <p className="demo-mobile-eyebrow">Simple digital fixes for local service businesses.</p>
+          <p className="demo-mobile-eyebrow">Interactive prototype — front-end demonstration.</p>
           <h3>{title}</h3>
           <p>{intro}</p>
         </div>
@@ -356,11 +356,11 @@ export function DemoFormSection({ demo }: DemoFormSectionProps) {
 
       <div className="demo-cta-row">
         <div>
-          <p className="panel-label">Starter pricing</p>
-          <p className="demo-starter-price">{demo.starterPrice}</p>
+          <p className="panel-label">Interested in a build like this?</p>
+          <p className="demo-starter-price">Start with a conversation about scope and fit.</p>
         </div>
-        <Link className="button tertiary" href={demo.ctaHref}>
-          {demo.ctaLabel}
+        <Link className="button tertiary" href="/#contact">
+          Start a Conversation
         </Link>
       </div>
     </section>

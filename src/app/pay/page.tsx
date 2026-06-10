@@ -60,7 +60,7 @@ export default function PayPage() {
               <a className="button primary" href="#payment-options">
                 Start here
               </a>
-              <Link className="button secondary" href="/#start">
+              <Link className="button secondary" href="/#contact">
                 Send details first
               </Link>
             </div>

@@ -27,7 +27,7 @@ export function BrandLockup({ note }: BrandLockupProps) {
           sizes="(max-width: 760px) 220px, 360px"
         />
       </div>
-      <p className="identity-note">{note ?? "Design with intent. Build with purpose."}</p>
+      <p className="identity-note">{note ?? "Build. Explore. Collaborate."}</p>
     </div>
   );
 }

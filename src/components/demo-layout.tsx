@@ -13,14 +13,14 @@ export function DemoLayout({ demo }: DemoLayoutProps) {
     <main className="shell inner-page">
       <section className="subpage-hero">
         <div className="identity-strip utility-strip">
-          <BrandLockup note="Digital fix-it shop for local service businesses." />
+          <BrandLockup note="Build. Explore. Collaborate." />
           <nav className="route-nav" aria-label="Demo page links">
             <span className="route-nav-label">Route</span>
             <div className="route-nav-links">
               <Link href="/">Home</Link>
               <Link href="/demos">All demos</Link>
-              <Link className="route-nav-cta" href={demo.ctaHref}>
-                Start
+              <Link className="route-nav-cta" href="/#contact">
+                Talk
               </Link>
             </div>
           </nav>
@@ -28,7 +28,7 @@ export function DemoLayout({ demo }: DemoLayoutProps) {
 
         <div className="hero-ledger demo-hero-ledger">
           <article className="hero-essay pay-essay">
-            <p className="micro-note">Simple digital fixes for local service businesses.</p>
+            <p className="micro-note">Portfolio prototype</p>
             <div className="hero-poster">
               <p className="headline-note">Working demo.</p>
               <div className="headline-stack">
@@ -38,14 +38,14 @@ export function DemoLayout({ demo }: DemoLayoutProps) {
               <div className="hero-orbit">
                 <span>{demo.category.toLowerCase()}</span>
                 <span>{demo.demoKind === "landing" ? "screen preview" : "mobile first"}</span>
-                <span>{demo.starterPrice.toLowerCase()}</span>
+                <span>prototype</span>
               </div>
             </div>
             <p className="lede">{demo.problem}</p>
             <p className="hero-quick-note">{demo.solutionLine}</p>
             <div className="hero-actions">
-              <Link className="button primary" href={demo.ctaHref}>
-                Start with this demo idea
+              <Link className="button primary" href="/#contact">
+                Start a Conversation
               </Link>
               <Link className="button secondary" href="/demos">
                 Back to demos

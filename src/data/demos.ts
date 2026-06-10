@@ -6,7 +6,7 @@ export type DemoCategory =
   | "Customer Follow-Up"
   | "Business Operations"
   | "Websites & Landing Pages"
-  | "Content & Ministry Tools";
+  | "Experiments";
 
 export const demoCategoryOrder: DemoCategory[] = [
   "Lead Capture & Intake",
@@ -16,8 +16,10 @@ export const demoCategoryOrder: DemoCategory[] = [
   "Customer Follow-Up",
   "Business Operations",
   "Websites & Landing Pages",
-  "Content & Ministry Tools",
+  "Experiments",
 ] as const;
+
+export type DemoVisibility = "public" | "unlisted";
 
 export type DemoFieldOption = {
   value: string;
@@ -120,6 +122,7 @@ export type DemoDefinition = {
     note: string;
   };
   leadCards?: DemoLeadCard[];
+  visibility?: DemoVisibility;
 };
 
 export const demoDefinitions: DemoDefinition[] = [
@@ -194,6 +197,7 @@ export const demoDefinitions: DemoDefinition[] = [
     slug: "pressure-washing-quote",
     title: "Pressure Washing Quote Form",
     category: "Lead Capture & Intake",
+    visibility: "unlisted",
     demoKind: "form",
     cardDescription: "Let homeowners request quotes with photos, surface type, town, and preferred callback time.",
     intro: "Make it easier for people to ask for a quote.",
@@ -268,6 +272,7 @@ export const demoDefinitions: DemoDefinition[] = [
     slug: "junk-removal-request",
     title: "Junk Removal Pickup Request",
     category: "Lead Capture & Intake",
+    visibility: "unlisted",
     demoKind: "form",
     cardDescription: "Let customers send item photos, pickup address, stairs/elevator info, and urgency.",
     intro: "Make it easier for people to ask for a quote.",
@@ -342,6 +347,7 @@ export const demoDefinitions: DemoDefinition[] = [
     slug: "landscaping-request",
     title: "Landscaping Job Request",
     category: "Lead Capture & Intake",
+    visibility: "unlisted",
     demoKind: "form",
     cardDescription: "Capture mowing, mulch, cleanup, hardscaping, and recurring service requests.",
     intro: "Make it easier for people to ask for a quote.",
@@ -777,7 +783,7 @@ export const demoDefinitions: DemoDefinition[] = [
   {
     slug: "live-bible-companion",
     title: "Live Bible Companion",
-    category: "Content & Ministry Tools",
+    category: "Experiments",
     demoKind: "companion",
     cardDescription:
       "Paste or stream conversation notes and surface Bible passages when references or familiar story phrases appear.",
@@ -807,4 +813,17 @@ export const demoDefinitions: DemoDefinition[] = [
 
 export function getDemoDefinition(slug: string) {
   return demoDefinitions.find((demo) => demo.slug === slug);
+}
+
+export const publicDemoDefinitions = demoDefinitions.filter(
+  (demo) => demo.visibility !== "unlisted",
+);
+
+export function getPublicDemosByCategory() {
+  return demoCategoryOrder
+    .map((category) => ({
+      category,
+      demos: publicDemoDefinitions.filter((demo) => demo.category === category),
+    }))
+    .filter((group) => group.demos.length > 0);
 }

@@ -16,7 +16,7 @@ describe("legal pages", () => {
     );
 
     expect(screen.getAllByRole("heading", { name: "Terms of Service" }).length).toBeGreaterThan(0);
-    expect(screen.getByText("Policy package version 1.1")).toBeInTheDocument();
+    expect(screen.getByText("Killough Works legal package v1.1.")).toBeInTheDocument();
     expect(screen.getByText(/These Terms govern Killough Works/i)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute("href", "/privacy");
   });

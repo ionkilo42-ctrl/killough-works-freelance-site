@@ -21,7 +21,6 @@ export function LegalPage({ slug, version, content }: LegalPageProps) {
           <p className="section-label">Killough Works</p>
           <h1>{meta.title}</h1>
           <p className="legal-document-lede">{meta.description}</p>
-          <p className="legal-version-note">Policy package version {version}</p>
           <nav className="legal-document-nav" aria-label="Legal documents">
             <Link href={legalRoutes.terms}>Terms</Link>
             <Link href={legalRoutes.privacy}>Privacy</Link>
@@ -35,8 +34,7 @@ export function LegalPage({ slug, version, content }: LegalPageProps) {
         </article>
 
         <p className="legal-version-footer">
-          Published under Killough Works legal package v{LEGAL_PACKAGE_VERSION}. Attorney review
-          recommended before relying on this draft as final legal advice.
+          Killough Works legal package v{LEGAL_PACKAGE_VERSION}.
         </p>
       </section>
       <SiteFooter />

@@ -116,14 +116,14 @@ export function LiveBibleCompanionDemo({ demo }: LiveBibleCompanionDemoProps) {
     <main className="shell inner-page">
       <section className="subpage-hero">
         <div className="identity-strip utility-strip">
-          <BrandLockup note="Digital fix-it shop for local service businesses." />
+          <BrandLockup note="Build. Explore. Collaborate." />
           <nav className="route-nav" aria-label="Demo page links">
             <span className="route-nav-label">Route</span>
             <div className="route-nav-links">
               <Link href="/">Home</Link>
               <Link href="/demos">All demos</Link>
-              <Link className="route-nav-cta" href="/#start">
-                Start
+              <Link className="route-nav-cta" href="/#contact">
+                Talk
               </Link>
             </div>
           </nav>
@@ -131,7 +131,7 @@ export function LiveBibleCompanionDemo({ demo }: LiveBibleCompanionDemoProps) {
 
         <div className="hero-ledger demo-hero-ledger live-companion-hero">
           <article className="hero-essay pay-essay">
-            <p className="micro-note">Working demo for live conversation support.</p>
+            <p className="micro-note">Experiment — AI-assisted conversation tool</p>
             <div className="hero-poster">
               <p className="headline-note">Scripture-aware transcript feed.</p>
               <div className="headline-stack">
